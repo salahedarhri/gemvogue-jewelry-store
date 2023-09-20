@@ -1,0 +1,116 @@
+@extends('layout')
+
+@section('content')
+
+<div class="lg:mx-24 xl:mx-48">
+
+  <!-- Section Anneau -->
+<div class="hero min-h-min h-48 shadow-md" style="background-image: url(images/bg-ring.jpg);">
+  <div class="hero-overlay bg-yellow-800 bg-opacity-70"></div>
+  <div class="hero-content text-center text-white ">
+    <div class="max-w-md">
+      <h1 class="mb-4 text-xl md:text-2xl font-bold ">Notre sélection d'anneaux</h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="grid gap-2 p-6 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+  @foreach ($bijoux as $bijou)
+
+    @if ( $bijou->type =='Anneau')
+
+    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+      <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
+        <figure class="px-2 pt-2">
+          <img src="images/{{ $bijou->photo1 }}"
+          alt="img bijou database"
+          class="rounded-lg h-48 w-48 object-cover">
+        </figure>
+
+        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <p class="text-sm "> {{ $bijou->type_metal }}</p> 
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+      </div>
+    </a>
+
+
+    @endif
+  @endforeach
+</div>
+
+<!-- Section Collier -->
+<div class="hero min-h-min h-48 mt-8 shadow-md" style="background-image: url(images/bg-collier.jpg);">
+  <div class="hero-overlay bg-amber-800 bg-opacity-70"></div>
+  <div class="hero-content text-center text-white">
+    <div class="max-w-md">
+      <h1 class="mb-4 text-xl md:text-2xl font-bold ">Notre sélection de colliers</h1>
+    </div>
+  </div>
+</div>
+
+<div class="grid gap-2 p-6 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+
+  @foreach ($bijoux as $bijou)
+
+    @if ($bijou->type =='Collier')
+
+    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+      <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
+        <figure class="px-2 pt-2">
+          <img src="images/{{ $bijou->photo1 }}"
+          alt="img bijou database"
+          class="rounded-lg h-48 w-48 object-cover">
+        </figure>
+
+        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <p class="text-sm "> {{ $bijou->type_metal }}</p> 
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+      </div>
+    </a>
+    
+    @endif
+  @endforeach
+
+</div>
+
+<!-- Section Bracelet -->
+<div class="hero min-h-min h-48 mt-8 shadow-md" style="background-image: url(images/bg-bracelet.jpg);">
+  <div class="hero-overlay bg-yellow-800 bg-opacity-70"></div>
+  <div class="hero-content text-center text-white">
+    <div class="max-w-md">
+      <h1 class="mb-4 text-xl md:text-2xl font-bold ">Notre sélection de bracelets</h1>
+    </div>
+  </div>
+</div>
+
+<div class="grid gap-2 p-6 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+
+  @foreach ($bijoux as $bijou)
+
+    @if ($bijou->type =='Bracelet')
+
+    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+      <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
+        <figure class="px-2 pt-2">
+          <img src="images/{{ $bijou->photo1 }}"
+          alt="img bijou database"
+          class="rounded-lg h-48 w-48 object-cover">
+        </figure>
+
+        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <p class="text-sm "> {{ $bijou->type_metal }}</p> 
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+      </div>
+    </a>
+    
+    @endif
+  @endforeach
+
+</div>
+
+</div>
+
+
+
+@endsection
