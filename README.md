@@ -5,6 +5,3 @@
 
 GemVogue is a e-commerce website project, for selling jewellery. Made with Laravel, Tailwind, React.js and Daisy UI.
 
-## License
-
-GemVogue is licensed under the [MIT license](https://opensource.org/licenses/MIT).

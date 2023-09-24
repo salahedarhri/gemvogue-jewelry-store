@@ -10,7 +10,7 @@
   <div class="hero-overlay bg-opacity-70"></div>
   <div class="hero-content text-center text-neutral-content">
     <div class="max-w-md">
-      <h1 class="mb-4 text-4xl max-sm:text-3xl font-bold ">Nouvelles arrivées !</h1>
+      <h1 class="mb-4 text-4xl max-sm:text-3xl font-bold ">Nouvelles Arrivées !</h1>
       <p class="mb-5">Découvrez notre nouvelle collection pour fin 2023</p>
       <a href="/boutique"><button class="btn btn-primary">Découvrir</button></a>
     </div>
