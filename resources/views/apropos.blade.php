@@ -2,11 +2,10 @@
 
 @section('content')
 
-    <div class="bg-gray-100 py-8">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
             <div class="bg-white p-8 rounded-lg shadow-lg">
 
-                <h1 class="text-4xl font-semibold mb-8">Qui sommes-nous ?</h1>
+                <h1 class="text-3xl font-semibold mb-8">Qui sommes-nous ?</h1>
 
                 <!-- Section Présentation -->
                 <div class="mb-8">
@@ -15,7 +14,7 @@
                     </p>
                 </div>
 
-                <!-- pics -->
+                <!-- pictures -->
                 <div class="mb-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:m-12">
                         <div>
@@ -45,14 +44,13 @@
                         Vous pouvez nous contacter à tout moment pour toute question ou demande. N'hésitez pas à visiter notre boutique à Agadir ou à nous envoyer un e-mail :
                     </p>
                     <ul class="list-disc pl-6 mt-4">
-                        <li>Adresse : Bijouterie gemVogue,Rue , Agadir, Maroc</li>
+                        <li>Adresse : Bijouterie gemVogue ,Rue ,Agadir, Maroc</li>
                         <li>Email : contact@gemvogue.com</li>
                         <li>Téléphone : +212 600000000</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
 
 
 @endsection

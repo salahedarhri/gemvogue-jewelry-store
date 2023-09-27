@@ -12,7 +12,7 @@
 
 
 </head>
-<body>
+<body class="bg-neutral bg-opacity-10">
 
   <!-- Barre Navigation -->
   <div class="navbar bg-base-100">
@@ -29,7 +29,7 @@
         <li><a href="/boutique" class="text-base">Boutique</a></li>
         <li><a href="/apropos" class="text-base">à propos</a></li>
         @auth
-        <li><a href="/dashboard" class="text-base">Espace Client</a></li>
+        <li><a href="/dashboard" class="text-base bg-green-600 text-white">Espace Client</a></li>
         @else
         <li><a href="{{ route('login') }}" class="text-base">Connexion</a></li>
         <li><a href="{{ route('register') }}" class="text-base">Inscription</a></li>
@@ -45,7 +45,7 @@
           <li><a href="/boutique" class="text-base" >Boutique</a></li>
           <li><a href="/apropos" class="text-base">à propos</a></li>
           @auth
-          <li><a href="/dashboard" class="text-base">{{ $auth->name}}</a></li>
+          <li><a href="/dashboard" class="text-base bg-green-300">Espace Client</a></li>
           @else
           <li><a href="{{ route('login') }}" class="text-base" >Connexion</a></li>
           <li><a href="{{ route('register') }}" class="text-base" >Inscription</a></li>
