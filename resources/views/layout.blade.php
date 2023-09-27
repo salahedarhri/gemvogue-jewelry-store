@@ -9,8 +9,7 @@
 
   <!-- Tailwind & Fonts -->
   @vite('resources/css/app.css')
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -46,7 +45,7 @@
           <li><a href="/boutique" class="text-base" >Boutique</a></li>
           <li><a href="/apropos" class="text-base">à propos</a></li>
           @auth
-          <li><a href="/dashboard" class="text-base">Espace Client</a></li>
+          <li><a href="/dashboard" class="text-base">{{ $auth->name}}</a></li>
           @else
           <li><a href="{{ route('login') }}" class="text-base" >Connexion</a></li>
           <li><a href="{{ route('register') }}" class="text-base" >Inscription</a></li>

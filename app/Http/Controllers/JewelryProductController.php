@@ -15,14 +15,13 @@ class JewelryProductController extends Controller
 
     public function show($id)
     {
-        $bijou = JewelryProduct::find($id);
-
-        $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
-        ->where( 'id' , '!=', $bijou->id)
-        ->limit(4)
-        ->get();
-
-        return view('produit', compact('bijou','bijouxSimilaires'));
+        //Afficher en fonction des collections
+            $bijou = JewelryProduct::find($id);
+            $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
+            ->where( 'id' , '!=', $bijou->id)
+            ->limit(4)
+            ->get();
+            return view('produit', compact('bijou','bijouxSimilaires'));
     }
     
 

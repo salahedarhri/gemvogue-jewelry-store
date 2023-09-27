@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('jewelry_products', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->double('prix', 10, 2);
+
             $table->string('type');
             $table->text('description');
             $table->string('photo1');
             $table->string('photo2');
             $table->string('collection');
 
-            $table->decimal('prix', 10, 2);
             $table->unsignedInteger('qte_stock');
             
             $table->string('type_metal');
