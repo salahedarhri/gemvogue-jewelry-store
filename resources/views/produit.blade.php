@@ -7,13 +7,17 @@
             <!-- Section des détails du produit -->
             <div class="lg:w-2/3">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-md:mx-12">
+                <!-- for meduim / big screen -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-md:mx-12 max-sm:hidden">
                     <div>
                         <img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover rounded-lg shadow-md">
                     </div>
                     <div>
                         <img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover rounded-lg shadow-md">
                     </div>
+
+                <!-- for mobile format -->
+                
 
                 </div>
                 <h1 class="text-3xl font-semibold m-4">{{ $bijou->nom }}</h1>
@@ -37,15 +41,15 @@
             <!-- Section des produits similaires -->
             <div class="lg:w-1/3 mt-8 lg:mt-0">
                 <h2 class="text-2xl font-semibold mb-4">Bijoux similaires</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 max-lg:mx-16 my-4">
+                <div class="grid max-lg:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 my-4">
                     @foreach ($bijouxSimilaires as $bijouSimilaire)
 
                     <a href="{{ route('bijou',[ 'id' => $bijouSimilaire->id]) }}">
-                        <div class="bg-white rounded-lg shadow-md p-4">
+                        <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
                             <img src="{{ asset('images/' . $bijouSimilaire->photo1) }}" alt="Produit similaire" class="w-full aspect-square object-cover rounded-md mb-2">
-                            <h3 class="text-lg font-semibold">{{ $bijouSimilaire->nom }}</h3>
-                            <p class="text-gray-700">{{ $bijouSimilaire->type_metal }}</p>
-                            <p class="text-gray-700">{{ $bijouSimilaire->prix }} DH</p>
+                            <h3 class="text-lg font-semibold max-sm:text-base">{{ $bijouSimilaire->nom }}</h3>
+                            <p class="text-gray-700 max-sm:text-sm">{{ $bijouSimilaire->type_metal }}</p>
+                            <p class="text-gray-700 max-sm:text-sm">{{ $bijouSimilaire->prix }} DH</p>
 
                         </div>
                     </a>
