@@ -22,7 +22,7 @@ Route::get('/apropos', function () {   return view('apropos');     });
 
 Route::get('/boutique', [JewelryProductController::class, 'index'])
   ->name('boutique');
-Route::get('/bijoux/{id}', [JewelryProductController::class,'show'])
+Route::get('/bijoux/{slug}', [JewelryProductController::class,'show'])
   ->name('bijou');
 
 //Laravel Breeze

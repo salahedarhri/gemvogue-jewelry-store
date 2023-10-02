@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->double('prix', 10, 2);
+            $table->string('slug')->unique();
 
             $table->string('type');
             $table->text('description');

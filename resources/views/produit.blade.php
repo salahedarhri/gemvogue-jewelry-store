@@ -26,7 +26,7 @@
                     <p class="text-xl font-semibold text-gray-800">Détails du produit</p>
                     <ul class="list-disc pl-6 mt-2">
                         <li>Type : {{ $bijou->type }}</li>
-                        <li>Prix : {{ $bijou->prix }} €</li>
+                        <li>Prix : {{ $bijou->prix }} DH</li>
                         <li>Type de métal : {{ $bijou->type_metal }}</li>
                         <li>Gemme : {{ $bijou->gemme }}</li>
                     </ul>
@@ -44,12 +44,12 @@
                 <div class="grid max-lg:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 my-4">
                     @foreach ($bijouxSimilaires as $bijouSimilaire)
 
-                    <a href="{{ route('bijou',[ 'id' => $bijouSimilaire->id]) }}">
+                    <a href="{{ route('bijou',[ 'slug' => $bijouSimilaire->slug]) }}">
                         <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
                             <img src="{{ asset('images/' . $bijouSimilaire->photo1) }}" alt="Produit similaire" class="w-full aspect-square object-cover rounded-md mb-2">
-                            <h3 class="text-lg font-semibold max-sm:text-base">{{ $bijouSimilaire->nom }}</h3>
-                            <p class="text-gray-700 max-sm:text-sm">{{ $bijouSimilaire->type_metal }}</p>
-                            <p class="text-gray-700 max-sm:text-sm">{{ $bijouSimilaire->prix }} DH</p>
+                            <h3 class="text-base font-semibold max-sm:text-sm text-center">{{ $bijouSimilaire->nom }}</h3>
+                            <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->type_metal }}</p>
+                            <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->prix }} DH</p>
 
                         </div>
                     </a>

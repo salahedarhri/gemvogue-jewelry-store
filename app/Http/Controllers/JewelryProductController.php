@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JewelryProduct;
+use Illuminate\Support\Str;
 
 class JewelryProductController extends Controller
 {
@@ -13,10 +14,13 @@ class JewelryProductController extends Controller
         return view('boutique', compact('bijoux'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        //Afficher en fonction des collections
-            $bijou = JewelryProduct::find($id);
+        $bijou = JewelryProduct::where('slug', $slug)->first();
+
+        if (!$bijou) {
+            abort(404);
+        }
             $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
             ->where( 'id' , '!=', $bijou->id)
             ->limit(4)
@@ -35,6 +39,7 @@ class JewelryProductController extends Controller
     //Admin seulement
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'nom' => 'required',
             'description' => 'required',
@@ -44,10 +49,16 @@ class JewelryProductController extends Controller
             'photo2' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'prix' => 'required|numeric',
             'qte_stock' => 'required|integer',
-            'type_metal' => 'required',
-            'gemme' => 'required',
 
         ]);
+
+        //Unique Slug setup pour lien :
+        $slug = Str::slug($data['nom'] . '-' . $data['type'] . '-' . $data['collection']);
+        $count = 1;
+        while (JewelryProduct::where('slug', $slug)->exists()) {
+            $slug = Str::slug($data['nom'] . '-' . $data['type'] . '-' . $data['collection'] . '-' . $count++);
+        }
+        $data['slug'] = $slug;
 
         // Upload des photos :
         if ($request->hasFile('photo1')) {

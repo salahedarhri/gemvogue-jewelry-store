@@ -20,7 +20,7 @@
 
     @if ( $bijou->type =='Anneau')
 
-    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+    <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
       <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
         <figure class="px-2 pt-2">
           <img src="images/{{ $bijou->photo1 }}"
@@ -28,9 +28,9 @@
           class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
         </figure>
 
-        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <h2 class="font-semibold text-sm text-center py-0.5 mx-1">{{ $bijou->nom }}</h2>
         <p class="text-sm "> {{ $bijou->type_metal }}</p> 
-        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} DH</p>
       </div>
     </a>
 
@@ -55,7 +55,7 @@
 
     @if ($bijou->type =='Collier')
 
-    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+    <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
       <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
         <figure class="px-2 pt-2">
           <img src="images/{{ $bijou->photo1 }}"
@@ -63,9 +63,9 @@
           class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
         </figure>
 
-        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <h2 class="font-semibold text-sm text-center py-0.5 mx-1">{{ $bijou->nom }}</h2>
         <p class="text-sm "> {{ $bijou->type_metal }}</p> 
-        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} DH</p>
       </div>
     </a>
     
@@ -90,7 +90,7 @@
 
     @if ($bijou->type =='Bracelet')
 
-    <a href="{{ route('bijou',[ 'id' => $bijou->id]) }}">
+    <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
       <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
         <figure class="px-2 pt-2">
           <img src="images/{{ $bijou->photo1 }}"
@@ -98,9 +98,9 @@
           class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
         </figure>
 
-        <h2 class=" font-semibold  p-0.5">{{ $bijou->nom }}</h2>
+        <h2 class=" font-semibold text-sm text-center py-0.5 mx-1">{{ $bijou->nom }}</h2>
         <p class="text-sm "> {{ $bijou->type_metal }}</p> 
-        <p class="text-sm pb-1.5" >{{ $bijou->prix }} $</p>
+        <p class="text-sm pb-1.5" >{{ $bijou->prix }} DH</p>
       </div>
     </a>
     
