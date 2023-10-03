@@ -9,6 +9,7 @@
 
   <!-- Tailwind & Fonts -->
   @vite('resources/css/app.css')
+  @vite('resources/js/app.js')
 
 
 </head>
@@ -17,7 +18,7 @@
   <!-- Barre Navigation -->
   <div class="navbar bg-base-100">
     <div class="flex-1 ">
-        <a href="/"><img src="images/ring-logo (2).png" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
+        <a href="/"><img src="{{asset('images/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
         <a href="/" class="font-semibold normal-case text-xl max-sm:text-md p-2">GemVogue</a>
     </div>
 
@@ -61,7 +62,7 @@
   
   <footer class="footer max-md:footer-center items-center p-4 bg-neutral text-neutral-content">
     <aside class="items-center grid-flow-col">
-      <img src="images/ring-logo (2).png" alt="logo" class="w-auto h-9 mx-1 invert">
+      <img src="{{asset('images/ring-logo (2).png')}}" alt="logo" class="w-auto h-9 mx-1 invert">
       <p>gemVogue © 2023 - All right reserved</p>
     </aside> 
   </footer>

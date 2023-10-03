@@ -1,11 +1,10 @@
 @extends('layout')
 
 @section('content')
-
         <div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
             <div class="bg-white p-8 rounded-lg shadow-lg">
 
-                <h1 class="text-3xl max-sm:text-xl font-semibold min-md:mb-8 max-sm:mb-2">Qui sommes-nous ?</h1>
+                <h1 class="text-3xl max-sm:text-xl font-semibold min-md:mb-8 max-sm:mb-2 sm:mb-5">Qui sommes-nous ?</h1>
 
                 <!-- Section Présentation -->
                 <div class="mb-8">
@@ -51,6 +50,4 @@
                 </div>
             </div>
         </div>
-
-
 @endsection

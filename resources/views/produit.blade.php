@@ -8,22 +8,33 @@
             <div class="lg:w-2/3">
                 
                 <!-- for meduim / big screen -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-md:mx-12 max-sm:hidden">
-                    <div>
-                        <img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                <div class="grid grid-cols-2 gap-4 max-sm:hidden">
+                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover rounded-lg shadow-md">
                     </div>
-                    <div>
-                        <img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover rounded-lg shadow-md">
                     </div>
+                </div>
 
                 <!-- for mobile format -->
-                
-
+                <div class="carousel w-full sm:hidden">
+                    <div id="slide1" class="carousel-item relative w-full">
+                      <img src="{{ asset('images/' . $bijou->photo1) }}" class="w-full" />
+                      <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
+                        <a href="#slide2" class="btn btn-circle">❯</a>
+                      </div>
+                    </div> 
+                    <div id="slide2" class="carousel-item relative w-full">
+                      <img src="{{ asset('images/' . $bijou->photo2) }}" class="w-full" />
+                      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 top-1/2">
+                        <a href="#slide1" class="btn btn-circle">❮</a> 
+                      </div>
+                    </div> 
                 </div>
-                <h1 class="text-3xl font-semibold m-4">{{ $bijou->nom }}</h1>
-                <p class="mt-4 text-gray-700">{{ $bijou->description }}</p>
+
+                <h1 class="text-3xl font-semibold m-4 max-sm:text-xl max-sm:text-center">{{ $bijou->nom }}</h1>
+                <p class="mt-4 text-gray-700 ">{{ $bijou->description }}</p>
                 <div class="mt-4">
-                    <p class="text-xl font-semibold text-gray-800">Détails du produit</p>
+                    <p class="text-xl font-semibold text-gray-800 max-sm:text-base">Détails du produit</p>
                     <ul class="list-disc pl-6 mt-2">
                         <li>Type : {{ $bijou->type }}</li>
                         <li>Prix : {{ $bijou->prix }} DH</li>
@@ -41,7 +52,7 @@
             <!-- Section des produits similaires -->
             <div class="lg:w-1/3 mt-8 lg:mt-0">
                 <h2 class="text-2xl font-semibold mb-4">Bijoux similaires</h2>
-                <div class="grid max-lg:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 my-4">
+                <div class="grid grid-cols-2 gap-4 my-4">
                     @foreach ($bijouxSimilaires as $bijouSimilaire)
 
                     <a href="{{ route('bijou',[ 'slug' => $bijouSimilaire->slug]) }}">
@@ -60,8 +71,4 @@
 
         </div>
     </div>
-
-    <script>
-        // Ajoutez ici des scripts JavaScript pour améliorer l'expérience utilisateur, par exemple, des animations ou des interactions
-    </script>
 @endsection
