@@ -8,15 +8,15 @@
             <div class="lg:w-2/3">
                 
                 <!-- for meduim / big screen -->
-                <div class="grid grid-cols-2 gap-4 max-sm:hidden">
-                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                <div class="grid grid-cols-2 gap-4 max-sm:hidden py-">
+                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg">
                     </div>
-                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover rounded-lg shadow-md">
+                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg">
                     </div>
                 </div>
 
                 <!-- for mobile format -->
-                <div class="carousel w-full sm:hidden">
+                <div class="carousel w-full sm:hidden shadow-lg">
                     <div id="slide1" class="carousel-item relative w-full">
                       <img src="{{ asset('images/' . $bijou->photo1) }}" class="w-full" />
                       <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
@@ -32,7 +32,7 @@
                 </div>
 
                 <h1 class="text-3xl font-semibold m-4 max-sm:text-xl max-sm:text-center">{{ $bijou->nom }}</h1>
-                <p class="mt-4 text-gray-700 ">{{ $bijou->description }}</p>
+                <p class="mt-4 text-gray-700 max-sm:text-center max-sm:px-2">{{ $bijou->description }}</p>
                 <div class="mt-4">
                     <p class="text-xl font-semibold text-gray-800 max-sm:text-base">Détails du produit</p>
                     <ul class="list-disc pl-6 mt-2">
@@ -51,7 +51,7 @@
 
             <!-- Section des produits similaires -->
             <div class="lg:w-1/3 mt-8 lg:mt-0">
-                <h2 class="text-2xl font-semibold mb-4">Bijoux similaires</h2>
+                <h2 class="text-2xl font-semibold mb-4 max-sm:text-lg">Bijoux similaires</h2>
                 <div class="grid grid-cols-2 gap-4 my-4">
                     @foreach ($bijouxSimilaires as $bijouSimilaire)
 

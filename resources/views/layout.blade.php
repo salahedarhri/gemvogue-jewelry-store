@@ -28,7 +28,7 @@
       <ul class="menu menu-horizontal px-1 max-md:hidden">
         <li><a href="/" class="text-base">Accueil</a></li>
         <li><a href="/boutique" class="text-base">Boutique</a></li>
-        <li><a href="/apropos" class="text-base">à propos</a></li>
+        <li><a href="/apropos" class="text-base">À propos</a></li>
         @auth
         <li><a href="/dashboard" class="text-base bg-green-600 text-white">Espace Client</a></li>
         @else
@@ -44,7 +44,7 @@
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
           <li><a href="/" class="text-base" >Accueil</a></li>
           <li><a href="/boutique" class="text-base" >Boutique</a></li>
-          <li><a href="/apropos" class="text-base">à propos</a></li>
+          <li><a href="/apropos" class="text-base">À propos</a></li>
           @auth
           <li><a href="/dashboard" class="text-base bg-green-300">Espace Client</a></li>
           @else
