@@ -20,10 +20,9 @@ Route::get('/', function () {   return view('accueil');     });
 Route::get('/welcome', function () {   return view('welcome');     });
 Route::get('/apropos', function () {   return view('apropos');     });
 
-Route::get('/boutique', [JewelryProductController::class, 'index'])
-  ->name('boutique');
-Route::get('/bijoux/{slug}', [JewelryProductController::class,'show'])
-  ->name('bijou');
+Route::get('/boutique', [JewelryProductController::class, 'index'])->name('boutique');
+Route::get('/bijoux/{slug}', [JewelryProductController::class,'show'])->name('bijou');
+Route::get('/addToCart/{id}', [JewelryProductController::class,'addToCart'])->name('panier');
 
 //Laravel Breeze
 Route::get('/dashboard', function () {

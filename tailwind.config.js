@@ -29,6 +29,6 @@ export default {
         forms],
 
     daisyui: {
-        themes: ["light", "dark", "autumn","garden"],
+        themes: ["light", "dark", "autumn","garden","cyberpunk"],
         },
 };

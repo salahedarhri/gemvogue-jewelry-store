@@ -26,7 +26,6 @@ return new class extends Migration
             $table->unsignedInteger('qte_stock');
             
             $table->string('type_metal');
-            $table->string('gemme');
             $table->timestamps();
         });
     }

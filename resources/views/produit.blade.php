@@ -8,7 +8,7 @@
             <div class="lg:w-2/3">
                 
                 <!-- for meduim / big screen -->
-                <div class="grid grid-cols-2 gap-4 max-sm:hidden py-">
+                <div class="grid grid-cols-2 gap-4 max-sm:hidden">
                     <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg">
                     </div>
                     <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg">
@@ -16,7 +16,7 @@
                 </div>
 
                 <!-- for mobile format -->
-                <div class="carousel w-full sm:hidden shadow-lg">
+                <div class="carousel w-full aspect-square object-cover sm:hidden shadow-lg">
                     <div id="slide1" class="carousel-item relative w-full">
                       <img src="{{ asset('images/' . $bijou->photo1) }}" class="w-full" />
                       <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
@@ -39,12 +39,11 @@
                         <li>Type : {{ $bijou->type }}</li>
                         <li>Prix : {{ $bijou->prix }} DH</li>
                         <li>Type de métal : {{ $bijou->type_metal }}</li>
-                        <li>Gemme : {{ $bijou->gemme }}</li>
                     </ul>
                 </div>
 
                 <div class="mt-6 flex flex-row max-sm:flex-col gap-2">
-                    <button class="bg-secondary hover:bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">Ajouter au panier</button>
+                    <button class="bg-secondary hover:bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 "><a href="{{ route('panier', $bijou->id) }}">Ajouter au panier</a></button>
                     <button class="bg-neutral hover:bg-neutral text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">Ajouter à la liste de souhaits</button>
                 </div>
             </div>

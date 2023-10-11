@@ -39,7 +39,7 @@ class JewelryProductController extends Controller
             $cart[$id]['qte']++;
         }  else {
             $cart[$id] = [
-                "product_name" => $bijou->nom,
+                "nom_produit" => $bijou->nom,
                 "photo1" => $bijou->photo1,
                 "photo2" => $bijou->photo2,
                 "prix" => $bijou->prix,
@@ -50,7 +50,26 @@ class JewelryProductController extends Controller
         //Retourner la page avec notif :
         return redirect()->back()->with('success', 'Commande ajoutée au panier avec succès !');
     }
-
+    public function updateCart(Request $request){
+        if($request->id && $request->qte){
+            $cart = session()->get('cart');
+            $cart[$request->id]["qte"] = $request->qte;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Commande mise à jour avec succès !');
+        }
+    }
+  
+    public function removeCartItem(Request $request){
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Produit supprimé avec succès !');
+        }
+    }
+    /*
     //Admin seulement
     public function create()
     {
@@ -58,7 +77,7 @@ class JewelryProductController extends Controller
     }
 
     //Admin seulement
-    /*public function store(Request $request)
+    public function store(Request $request)
     {
 
         $data = $request->validate([
