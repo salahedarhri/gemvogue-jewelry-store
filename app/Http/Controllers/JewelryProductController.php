@@ -27,17 +27,38 @@ class JewelryProductController extends Controller
             ->get();
             return view('produit', compact('bijou','bijouxSimilaires'));
     }
-    
+    //Panier de shopping :
+    public function cart(){
+        return view('cart');
+    }
+    public function addToCart($id){
+        $bijou = JewelryProduct::findOrFail($id);
+        $cart = session()->get('cart',[]);
 
+        if(isset($cart[$id])) {
+            $cart[$id]['qte']++;
+        }  else {
+            $cart[$id] = [
+                "product_name" => $bijou->nom,
+                "photo1" => $bijou->photo1,
+                "photo2" => $bijou->photo2,
+                "prix" => $bijou->prix,
+                "qte" => 1 ];
+            }
+        //Enregister les données du panier du session avec :
+        session()->put('cart', $cart);
+        //Retourner la page avec notif :
+        return redirect()->back()->with('success', 'Commande ajoutée au panier avec succès !');
+    }
 
-    // admin seulement
+    //Admin seulement
     public function create()
     {
         return view('products.create');
     }
 
     //Admin seulement
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
 
         $data = $request->validate([
@@ -74,7 +95,7 @@ class JewelryProductController extends Controller
 
         return redirect()->route('produits.index')
             ->with('success', 'Produit créé avec succès.');
-    }
+    }*/
 
 
 }

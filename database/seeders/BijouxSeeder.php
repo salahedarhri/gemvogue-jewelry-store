@@ -49,7 +49,6 @@ class BijouxSeeder extends Seeder // Update the class name to match the file nam
                 'prix' => $faker->randomFloat(0,200, 700),
                 'qte_stock' => $faker->numberBetween(10, 100),
                 'type_metal' => $faker->randomElement(['Or', 'Argent', 'Platine']),
-                'gemme' => $faker->randomElement(['Diamond', 'Rubis', 'Sapphire']),
                 'slug' => $slug,
             ]);
         }
