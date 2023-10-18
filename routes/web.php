@@ -16,13 +16,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {   return view('accueil');     });
-Route::get('/welcome', function () {   return view('welcome');     });
-Route::get('/apropos', function () {   return view('apropos');     });
+Route::get('/', function () { 
+      return view('accueil');     });
+
+Route::get('/welcome', function () { 
+      return view('welcome');     });
+
+Route::get('/apropos', function () { 
+      return view('apropos');     });
+
+Route::get('/panier', function () {  
+      // //Dump and die resets the session
+      //   dd(session());
+      return view('panier');     })->name('panier');
 
 Route::get('/boutique', [JewelryProductController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [JewelryProductController::class,'show'])->name('bijou');
-Route::get('/addToCart/{id}', [JewelryProductController::class,'addToCart'])->name('panier');
+Route::get('/addToCart/{id}', [JewelryProductController::class,'addToCart'])->name('panier-add');
+Route::get('/updateCart', [JewelryProductController::class,'updateCart'])->name('panier-update');
+Route::get('/removeProduct', [JewelryProductController::class,'removeCartItem'])->name('panier-delete');
 
 //Laravel Breeze
 Route::get('/dashboard', function () {

@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JewelryProduct;
 use Illuminate\Support\Str;
+use Cart;
 
 class JewelryProductController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $bijoux = JewelryProduct::all();
         return view('boutique', compact('bijoux'));
     }
 
-    public function show($slug)
-    {
+    public function show($slug){
         $bijou = JewelryProduct::where('slug', $slug)->first();
 
         if (!$bijou) {
@@ -27,10 +26,8 @@ class JewelryProductController extends Controller
             ->get();
             return view('produit', compact('bijou','bijouxSimilaires'));
     }
+
     //Panier de shopping :
-    public function cart(){
-        return view('cart');
-    }
     public function addToCart($id){
         $bijou = JewelryProduct::findOrFail($id);
         $cart = session()->get('cart',[]);

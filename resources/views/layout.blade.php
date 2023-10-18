@@ -60,7 +60,7 @@
         <label tabindex="0">
           <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto ">
         </label>
-        <div tabindex="0" class="dropdown-content z-[1] card card-compact w-64 max-sm:w-58 p-1 shadow bg-neutral text-neutral-content">
+        <div tabindex="0" class="dropdown-content z-[1] card card-compact w-72 max-sm:w-64 p-1 shadow bg-neutral text-neutral-content">
           <div class="card-body">
             @php $total = 0 @endphp
                 @foreach((array) session('cart') as $id => $details)
@@ -70,15 +70,16 @@
 
                 @if(session('cart'))
                     @foreach(session('cart') as $id => $details)
-                    <div class="flex flex-row gap-3 rounded bg-opacity-30">
+                    <div class="flex flex-row gap-3 bg-opacity-30 pb-2 border-b">
                         <img src="{{ asset('images') }}/{{ $details['photo1'] }}" class="w-28 rounded aspect-square"/>
                         <div class="flex flex-col">
                           <p class="text-sm">{{ $details['nom_produit'] }}</p>
                           <p class="text-sm">{{ $details['prix'] }}DH</p>
-                          <p class="text-sm">Qte: {{ $details['qte'] }}</p>
+                          <p class="text-sm">Qte : {{ $details['qte'] }}</p>
                         </div>
                     </div>
                     @endforeach
+                    <button class="btn btn-primary"><a href="{{ route('panier') }}">Voir les articles</a></button>
                 @endif
           </div>
         </div>

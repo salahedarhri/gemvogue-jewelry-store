@@ -9,7 +9,7 @@
     <div class="max-w-md">
       <h1 class="mb-4 text-4xl max-sm:text-3xl font-bold ">Nouvelles Arrivées !</h1>
       <p class="mb-5">Découvrez notre nouvelle collection pour fin 2023</p>
-      <a href="/boutique"><button class="btn btn-primary">Découvrir</button></a>
+      <a href="/boutique"><button class="btn btn-secondary">Découvrir</button></a>
     </div>
   </div>
 </div>
