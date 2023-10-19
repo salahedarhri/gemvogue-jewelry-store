@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JewelryProductController;
+use App\Http\Controllers\BijouController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,22 +26,19 @@ Route::get('/welcome', function () {
 Route::get('/apropos', function () { 
       return view('apropos');     });
 
-Route::get('/panier', function () {  
-      // //Dump and die resets the session
-      //   dd(session());
-      return view('panier');     })->name('panier');
-
-Route::get('/boutique', [JewelryProductController::class, 'index'])->name('boutique');
-Route::get('/bijoux/{slug}', [JewelryProductController::class,'show'])->name('bijou');
-Route::get('/addToCart/{id}', [JewelryProductController::class,'addToCart'])->name('panier-add');
-Route::get('/updateCart', [JewelryProductController::class,'updateCart'])->name('panier-update');
-Route::get('/removeProduct', [JewelryProductController::class,'removeCartItem'])->name('panier-delete');
+// Display de bijoux
+Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
+Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 
 //Laravel Breeze
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//Panier
+Route::get('/panier',[PanierController::class,'index'])->name('panier');
+
+//Espace Client :
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\JewelryProduct;
+use App\Models\Bijou;
 use Illuminate\Support\Str;
 use Cart;
 
-class JewelryProductController extends Controller
+class BijouController extends Controller
 {
     public function index(){
         //Tous les produits 
-        $bijoux = JewelryProduct::all();
+        $bijoux = Bijou::all();
         return view('boutique', compact('bijoux'));
     }
 
     public function show($slug){
         //Produit avec similaires selon collection
-        $bijou = JewelryProduct::where('slug', $slug)->first();
+        $bijou = Bijou::where('slug', $slug)->first();
 
         if (!$bijou) { abort(404); }
 
-        $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
+        $bijouxSimilaires = Bijou::where('collection' , $bijou->collection )
         ->where( 'id' , '!=', $bijou->id)
         ->limit(4)
         ->get();

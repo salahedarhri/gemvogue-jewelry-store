@@ -3,12 +3,11 @@
 namespace Database\Seeders; // Make sure this matches your file location
 
 use Illuminate\Database\Seeder;
-use App\Models\JewelryProduct;
+use App\Models\Bijou;
 use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
-class BijouxSeeder extends Seeder // Update the class name to match the file name
-{
+class BijouSeeder extends Seeder {
     public function run()
     {
         $faker = Faker::create();
@@ -39,7 +38,7 @@ class BijouxSeeder extends Seeder // Update the class name to match the file nam
             $slug = Str::slug("$nom-$type_bijou");
 
             
-            JewelryProduct::create([
+            Bijou::create([
                 'nom' => $nom,
                 'description' => $faker->sentence,
                 'type' => $type_bijou,

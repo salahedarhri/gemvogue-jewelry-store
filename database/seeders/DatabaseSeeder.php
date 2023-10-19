@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(BijouxSeeder::class);
+        $this->call(BijouSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

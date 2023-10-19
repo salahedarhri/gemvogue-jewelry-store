@@ -8,8 +8,7 @@ class PanierController extends Controller
 {
     // Index Action
     public function index(){
-
-        
+        return view('panier');
     }
 
     // Create Action

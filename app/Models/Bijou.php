@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JewelryProduct extends Model
+class Bijou extends Model
 {
     use HasFactory;
 
+    protected $table = 'jewelry_products';
     protected $fillable = [
-        'nom', 'description','type' , 'photo', 'prix', 'qte_stock', 'type_metal', 'gemme'
+        'nom', 'description','type', 'prix', 'qte_stock', 'type_metal'
     ];
 
 /*     // Mutator for photo attribute 
