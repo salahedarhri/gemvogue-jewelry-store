@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Bijou;
 
-class PanierController extends Controller
-{
-    // Index Action
+class PanierController extends Controller{
+
     public function index(){
-        return view('panier');
+
+        $cartItems = Cart::instance('cart')->content();
+        return view('panier',['cartItems'=>$cartItems ]);
     }
 
-    // Create Action
-    public function create(){
+    public function addToCart(Request $request){
 
+        $product = Bijou::find($request->id);
+        $price = $product->sale_price ? $product->sale_price : $product->prix;
+        Cart::instance('cart')->add( $product->id, $product->nom, $request->qty,$price)->associate('App\Models\Bijou');
         
+        return redirect()->back()->with('success','Bijou ajouté avec succès !');
     }
 
     // Store Action
