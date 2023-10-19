@@ -55,36 +55,13 @@
 
       <!-- Systeme de Panier : -->
     <div class="indicator ml-1 mr-3">
-      <span class="indicator-item badge badge-secondary h-3 p-2">{{ count((array) session('cart')) }}</span> 
-      <div class="dropdown dropdown-bottom dropdown-end">
-        <label tabindex="0">
-          <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto ">
-        </label>
-        <div tabindex="0" class="dropdown-content z-[1] card card-compact w-72 max-sm:w-64 p-1 shadow bg-neutral text-neutral-content">
-          <div class="card-body">
-            @php $total = 0 @endphp
-                @foreach((array) session('cart') as $id => $details)
-                    @php $total += $details['prix'] * $details['qte'] @endphp
-                @endforeach
-                    <p class="p-2 border-b-2 font-semibold">Total: {{ $total }} DH</p>
-
-                @if(session('cart'))
-                    @foreach(session('cart') as $id => $details)
-                    <div class="flex flex-row gap-3 bg-opacity-30 pb-2 border-b">
-                        <img src="{{ asset('images') }}/{{ $details['photo1'] }}" class="w-28 rounded aspect-square"/>
-                        <div class="flex flex-col">
-                          <p class="text-sm">{{ $details['nom_produit'] }}</p>
-                          <p class="text-sm">{{ $details['prix'] }}DH</p>
-                          <p class="text-sm">Qte : {{ $details['qte'] }}</p>
-                        </div>
-                    </div>
-                    @endforeach
-                    <button class="btn btn-primary"><a href="{{ route('panier') }}">Voir les articles</a></button>
-                @endif
-          </div>
-        </div>
-      </div>
+      <a href="{{ route('panier')}}">
+        <!-- Logo Panier -->
+        <span class="indicator-item badge badge-secondary h-3 p-2">n°</span> 
+        <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto ">
+      </a>
     </div>
+
   </div>
 
   <!-- Alerts succes ou refus -->
@@ -95,6 +72,7 @@
     </div>
   @endif
 
+  <!-- Contenu -->
   @yield('content')
   
   <footer class="footer max-md:footer-center items-center p-4 bg-neutral text-neutral-content">

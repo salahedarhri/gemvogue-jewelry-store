@@ -10,62 +10,25 @@ use Cart;
 class JewelryProductController extends Controller
 {
     public function index(){
+        //Tous les produits 
         $bijoux = JewelryProduct::all();
         return view('boutique', compact('bijoux'));
     }
 
     public function show($slug){
+        //Produit avec similaires selon collection
         $bijou = JewelryProduct::where('slug', $slug)->first();
 
-        if (!$bijou) {
-            abort(404);
-        }
-            $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
-            ->where( 'id' , '!=', $bijou->id)
-            ->limit(4)
-            ->get();
-            return view('produit', compact('bijou','bijouxSimilaires'));
+        if (!$bijou) { abort(404); }
+
+        $bijouxSimilaires = JewelryProduct::where('collection' , $bijou->collection )
+        ->where( 'id' , '!=', $bijou->id)
+        ->limit(4)
+        ->get();
+        return view('produit', compact('bijou','bijouxSimilaires'));
     }
 
-    //Panier de shopping :
-    public function addToCart($id){
-        $bijou = JewelryProduct::findOrFail($id);
-        $cart = session()->get('cart',[]);
 
-        if(isset($cart[$id])) {
-            $cart[$id]['qte']++;
-        }  else {
-            $cart[$id] = [
-                "nom_produit" => $bijou->nom,
-                "photo1" => $bijou->photo1,
-                "photo2" => $bijou->photo2,
-                "prix" => $bijou->prix,
-                "qte" => 1 ];
-            }
-        //Enregister les données du panier du session avec :
-        session()->put('cart', $cart);
-        //Retourner la page avec notif :
-        return redirect()->back()->with('success', 'Commande ajoutée au panier avec succès !');
-    }
-    public function updateCart(Request $request){
-        if($request->id && $request->qte){
-            $cart = session()->get('cart');
-            $cart[$request->id]["qte"] = $request->qte;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Commande mise à jour avec succès !');
-        }
-    }
-  
-    public function removeCartItem(Request $request){
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Produit supprimé avec succès !');
-        }
-    }
     /*
     //Admin seulement
     public function create()

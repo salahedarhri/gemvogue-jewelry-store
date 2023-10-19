@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Darryldecode\Cart\Cart;
 
 class PanierController extends Controller
 {
@@ -26,25 +25,25 @@ class PanierController extends Controller
     }
 
     // Show Action
-    public function show(Cart $cart){
+    public function show(){
 
         
     }
 
     // Edit Action
-    public function edit(Cart $cart){
+    public function edit(){
 
         
     }
 
     // Update Action
-    public function update(Request $request, Cart $cart){
+    public function update(Request $request){
 
         
     }
 
     // Destroy Action
-    public function destroy(Cart $cart){
+    public function destroy(){
 
         
     
