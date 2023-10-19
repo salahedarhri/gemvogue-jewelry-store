@@ -6,13 +6,10 @@
           
             <!-- Section des détails du produit -->
             <div class="lg:w-2/3">
-                
-                <!-- for meduim / big screen -->
+                <!-- for meduim / big format -->
                 <div class="grid grid-cols-2 gap-4 max-sm:hidden">
-                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg">
-                    </div>
-                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg">
-                    </div>
+                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg"></div>
+                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg"></div>
                 </div>
 
                 <!-- for mobile format -->
@@ -42,6 +39,7 @@
                     </ul>
                 </div>
 
+                <!-- Section panier / Wishlist -->
                 <div class="mt-6 flex flex-row max-sm:flex-col gap-2">
                     <button class="bg-secondary hover:bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 "><a href="#">Ajouter au panier</a></button>
                     <button class="bg-neutral hover:bg-neutral text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">Ajouter à la liste de souhaits</button>
@@ -52,21 +50,19 @@
             <div class="lg:w-1/3 mt-8 lg:mt-0">
                 <h2 class="text-2xl font-semibold mb-4 max-sm:text-lg">Bijoux similaires</h2>
                 <div class="grid grid-cols-2 gap-4 my-4">
-                    @foreach ($bijouxSimilaires as $bijouSimilaire)
 
+                    @foreach ($bijouxSimilaires as $bijouSimilaire)
                     <a href="{{ route('bijou',[ 'slug' => $bijouSimilaire->slug]) }}">
                         <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
                             <img src="{{ asset('images/' . $bijouSimilaire->photo1) }}" alt="Produit similaire" class="w-full aspect-square object-cover rounded-md mb-2">
                             <h3 class="text-base font-semibold max-sm:text-sm text-center">{{ $bijouSimilaire->nom }}</h3>
                             <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->type_metal }}</p>
                             <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->prix }} DH</p>
-
                         </div>
                     </a>
                     @endforeach
                 </div>
             </div>
-            
 
         </div>
     </div>
