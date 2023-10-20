@@ -57,7 +57,8 @@
     <div class="indicator ml-1 mr-3">
       <a href="{{ route('panier')}}">
         <!-- Logo Panier -->
-        <span class="indicator-item badge badge-secondary h-3 p-2">n°</span> 
+        <span class="indicator-item badge badge-secondary h-3 p-2">
+          {{ Cart::instance('cart')->content()->count() }} </span> 
         <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto ">
       </a>
     </div>

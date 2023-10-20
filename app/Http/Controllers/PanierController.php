@@ -17,8 +17,8 @@ class PanierController extends Controller{
     public function addToCart(Request $request){
 
         $product = Bijou::find($request->id);
-        $price = $product->sale_price ? $product->sale_price : $product->prix;
-        Cart::instance('cart')->add( $product->id, $product->nom, $request->qty,$price)->associate('App\Models\Bijou');
+        $price = $product->prix;
+        Cart::instance('cart')->add($product->id,$product->nom, 1 , $product->prix)->associate('App\Models\Bijou');
         
         return redirect()->back()->with('success','Bijou ajouté avec succès !');
     }

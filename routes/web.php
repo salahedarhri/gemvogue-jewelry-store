@@ -37,6 +37,7 @@ Route::get('/dashboard', function () {
 
 //Panier
 Route::get('/panier',[PanierController::class,'index'])->name('panier');
+Route::post('/panier-add',[PanierController::class,'addToCart'])->name('ajouterProduitPanier');
 
 //Espace Client :
 Route::middleware('auth')->group(function () {

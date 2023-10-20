@@ -41,7 +41,20 @@
 
                 <!-- Section panier / Wishlist -->
                 <div class="mt-6 flex flex-row max-sm:flex-col gap-2">
-                    <button class="bg-secondary hover:bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 "><a href="#">Ajouter au panier</a></button>
+                    <button class="bg-secondary hover:bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">
+                        
+                        <a href="javascript:void(0)" onclick="event.preventDefault();
+                        document.getElementById('ajouterPanier').submit();"
+                        >Ajouter au panier
+
+                        <!-- Forme pour ajouter le produit dans panier -->
+                        <form id="ajouterPanier" action="{{ route('ajouterProduitPanier') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $bijou->id }}">
+                            <input type="hidden" name="quantity" id="qty" value="1">
+                        </form>
+                        </a>
+                    </button>
                     <button class="bg-neutral hover:bg-neutral text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">Ajouter à la liste de souhaits</button>
                 </div>
             </div>
