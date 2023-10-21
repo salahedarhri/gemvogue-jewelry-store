@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>gemVogue</title>
+  <title>GemVogue</title>
 
   <!-- Tailwind & Fonts -->
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
 
-
 </head>
-<body class="bg-neutral bg-opacity-10">
+<body class="bg-neutral bg-opacity-20">
 
   <!-- Barre Navigation -->
-  <div class="navbar bg-base-100">
+  <div class="navbar">
     <div class="flex-1 ">
         <a href="/"><img src="{{asset('images/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
         <a href="/" class="font-semibold normal-case text-xl max-sm:text-md p-2">GemVogue</a>
@@ -29,12 +28,26 @@
         <li><a href="/boutique" class="text-base">Boutique</a></li>
         <li><a href="/apropos" class="text-base">À propos</a></li>
         @auth
-        <li><a href="/dashboard" class="text-base bg-green-600 text-white">Espace Client</a></li>
+        <li><a href="/dashboard" class="text-base bg-emerald-600 hover:bg-emerald-500 bg-opacity-40">Espace Client</a></li>
         @else
         <li><a href="{{ route('login') }}" class="text-base">Connexion</a></li>
         <li><a href="{{ route('register') }}" class="text-base">Inscription</a></li>
         @endauth
       </ul>
+
+      <!-- Systeme de Panier : -->
+
+        <div class="indicator m-2">
+          <a href="{{ route('panier')}}">
+            @if( Cart::instance('cart')->content()->count() > 0)
+            <span class="indicator-item badge badge-secondary h-3 p-2">
+              {{ Cart::instance('cart')->content()->count() }} </span> 
+              @endif
+            <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto">
+          </a>
+        </div>
+
+
 
       <!-- medium to small screen -->
       <div class="dropdown dropdown-bottom dropdown-end md:hidden">
@@ -44,7 +57,7 @@
           <li><a href="/boutique" class="text-base" >Boutique</a></li>
           <li><a href="/apropos" class="text-base">À propos</a></li>
           @auth
-          <li><a href="/dashboard" class="text-base bg-green-300">Espace Client</a></li>
+          <li><a href="/dashboard" class="text-base bg-emerald-200">Espace Client</a></li>
           @else
           <li><a href="{{ route('login') }}" class="text-base" >Connexion</a></li>
           <li><a href="{{ route('register') }}" class="text-base" >Inscription</a></li>
@@ -53,15 +66,7 @@
       </div>
     </div>
 
-      <!-- Systeme de Panier : -->
-    <div class="indicator ml-1 mr-3">
-      <a href="{{ route('panier')}}">
-        <!-- Logo Panier -->
-        <span class="indicator-item badge badge-secondary h-3 p-2">
-          {{ Cart::instance('cart')->content()->count() }} </span> 
-        <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto ">
-      </a>
-    </div>
+
 
   </div>
 
@@ -82,5 +87,7 @@
       <p>gemVogue © 2023 - All right reserved</p>
     </aside> 
   </footer>
+
+
 </body>
 </html>

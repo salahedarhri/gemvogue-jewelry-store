@@ -38,6 +38,8 @@ Route::get('/dashboard', function () {
 //Panier
 Route::get('/panier',[PanierController::class,'index'])->name('panier');
 Route::post('/panier-add',[PanierController::class,'addToCart'])->name('ajouterProduitPanier');
+Route::put('/panier-update/{rowId}',[PanierController::class,'updateCart'])->name('updatePanier');
+Route::delete('/panier-delete/{rowId}',[PanierController::class,'deleteItem'])->name('retirerPanier');
 
 //Espace Client :
 Route::middleware('auth')->group(function () {

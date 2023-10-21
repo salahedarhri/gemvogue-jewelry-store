@@ -17,41 +17,37 @@ class PanierController extends Controller{
     public function addToCart(Request $request){
 
         $product = Bijou::find($request->id);
-        $price = $product->prix;
-        Cart::instance('cart')->add($product->id,$product->nom, 1 , $product->prix)->associate('App\Models\Bijou');
-        
-        return redirect()->back()->with('success','Bijou ajouté avec succès !');
+        Cart::instance('cart')->add($product->id,$product->nom,1 ,$product->prix)->associate('App\Models\Bijou');
+
+        return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
     }
 
-    // Store Action
-    public function store(Request $request){
+    public function updateCart(Request $request, $rowId){
 
-        
-    }
-
-    // Show Action
-    public function show(){
-
-        
-    }
-
-    // Edit Action
-    public function edit(){
-
-        
-    }
-
-    // Update Action
-    public function update(Request $request){
-
-        
-    }
-
-    // Destroy Action
-    public function destroy(){
-
-        
+        $cart = Cart::instance('cart');
+        $item = $cart->get($rowId);
     
-}
+        if ($item) {
+            $rowId = $item->rowId;
+            $quantity = $request->input('quantity');
+            $cart->update($rowId, $quantity);
+            return redirect()->route('panier')->with('success', 'Quantité mise à jour avec succès !');
+        }
+    
+        return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
+    }
+    
 
+    public function deleteItem($rowId){
+
+        $cart = Cart::instance('cart');
+        $item = $cart->get($rowId);
+
+        if ($item) {
+        Cart::remove($rowId);
+        return redirect()->route('panier')->with('success', 'Bijou retirée du panier avec succès !');
+        }
+
+        return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
+    }   
 }
