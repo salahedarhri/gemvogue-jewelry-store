@@ -21,6 +21,9 @@ export default {
                  ...defaultTheme.fontFamily.sans],
 
             },
+            colors:{
+                beige:'#dcd7d4'
+            }
         },
     },
 

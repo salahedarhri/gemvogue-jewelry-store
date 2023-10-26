@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mx-auto p-6">
-  <h1 class="text-2xl font-semibold mb-4">Your Cart</h1>
+  <h1 class="text-2xl font-semibold mb-4">Votre panier</h1>
 
   @if ($cartItems->count() > 0)
 

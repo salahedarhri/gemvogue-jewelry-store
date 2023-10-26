@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders; // Make sure this matches your file location
+namespace Database\Seeders; 
 
 use Illuminate\Database\Seeder;
 use App\Models\Bijou;

@@ -21,7 +21,7 @@
       <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
         <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
           <figure class="px-2 pt-2">
-            <img src="{{ asset('images/'. $bijou->photo1 )}}" 
+            <img src="{{ asset('images/'. $bijou->photo1 )}}" loading="lazy"
             alt="img bijou database"
             class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
           </figure>
@@ -52,7 +52,7 @@
       <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
         <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
           <figure class="px-2 pt-2">
-            <img src="{{ asset('images/'. $bijou->photo1 )}}"
+            <img src="{{ asset('images/'. $bijou->photo1 )}}" loading="lazy"
             alt="img bijou database"
             class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
           </figure>
@@ -83,7 +83,7 @@
       <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
         <div class="card w-50 bg-base-100 shadow-xl flex flex-col items-center m-1">
           <figure class="px-2 pt-2">
-            <img src="{{ asset('images/'. $bijou->photo1 )}}"
+            <img src="{{ asset('images/'. $bijou->photo1 )}}" loading="lazy"
             alt="img bijou database"
             class="rounded-lg h-48 w-48 max-sm:h-36 max-sm:w-36 object-cover">
           </figure>
