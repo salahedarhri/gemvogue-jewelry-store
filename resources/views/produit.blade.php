@@ -43,14 +43,13 @@
                 <div class="mt-6 flex flex-row max-sm:flex-col gap-2">
 
                     <!-- Panier -->
-                    <button class="bg-secondary text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">
-                        <form id="ajouterPanier" action="{{ route('ajouterProduitPanier') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $bijou->id }}">
-                            <input type="hidden" name="quantity" id="qty" value="1">
-                            <input type="submit" value="Ajouter au panier">
-                        </form>
-                    </button>
+                    <form id="ajouterPanier" action="{{ route('ajouterProduitPanier') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $bijou->id }}">
+                        <input type="hidden" name="quantity" id="qty" value="1">
+                        <input type="submit" value="Ajouter au panier" class="bg-secondary text-white font-semibold rounded-md max-sm:w-full px-3 py-3">
+                    </form>
+
 
                     <!-- Wishlist -->
                     <button class="bg-neutral text-white font-semibold px-4 py-3 rounded-md max-sm:m-1 ">

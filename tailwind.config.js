@@ -22,7 +22,10 @@ export default {
 
             },
             colors:{
-                beige:'#dcd7d4'
+                lighterBeige:'#E5D8D3',
+                Beige:'#EAD8CE',
+                whiteBeige:'#F2E1D9',
+                darkerBeige:'#DDC0B0',
             }
         },
     },

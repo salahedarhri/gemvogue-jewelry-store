@@ -12,10 +12,10 @@
   @vite('resources/js/app.js')
 
 </head>
-<body class="bg-beige min-h-screen flex flex-col">
+<body class="bg-lighterBeige min-h-screen">
 
   <!-- Barre Navigation -->
-  <div class="navbar bg-beige">
+  <div class="navbar bg-lighterBeige">
     <div class="flex-1 ">
         <a href="/"><img src="{{asset('images/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
         <a href="/" class="font-semibold normal-case text-xl max-sm:text-md p-2">GemVogue</a>
