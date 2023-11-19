@@ -17,11 +17,11 @@
                 <div class="mb-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:m-12 sm:m-3">
                         <div>
-                            <img src="{{ asset('images/shop (1).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
+                            <img src="{{ asset('images/composants/shop (1).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
                         <div>
-                            <img src="{{ asset('images/shop (2).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
+                            <img src="{{ asset('images/composants/shop (2).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
                         <div>
-                            <img src="{{ asset('images/shop (3).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
+                            <img src="{{ asset('images/composants/shop (3).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
                     </div>
                 </div>
 

@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () { 
-      return view('accueil');     });
+      return view('accueil');     })->name('accueil');
 
 Route::get('/welcome', function () { 
-      return view('welcome');     });
+      return view('welcome');     })->name('welcome');
 
 Route::get('/apropos', function () { 
-      return view('apropos');     });
+      return view('apropos');     })->name('apropos');
 
 // Display de bijoux
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');

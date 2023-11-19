@@ -12,12 +12,17 @@
   @vite('resources/js/app.js')
 
 </head>
-<body class="bg-lighterBeige min-h-screen">
+<body class="bg-lighterBeige min-h-screen overflow-x-hidden">
+  <div class="w-full bg-black text-white text-center p-2 ">
+    <a href="{{ route('boutique') }}">
+      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 décembre 2023)</p>
+    </a>
+  </div>
 
   <!-- Barre Navigation -->
   <div class="navbar bg-lighterBeige">
     <div class="flex-1 ">
-        <a href="/"><img src="{{asset('images/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
+        <a href="/"><img src="{{asset('images/composants/logo/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
         <a href="/" class="font-semibold normal-case text-xl max-sm:text-md p-2">GemVogue</a>
     </div>
 
@@ -43,7 +48,7 @@
             <span class="indicator-item badge badge-secondary h-3 p-2">
               {{ Cart::instance('cart')->content()->count() }} </span> 
               @endif
-            <img src="{{asset('images/shoppingb.png')}}" alt="Cart" class="h-7 w-auto">
+            <img src="{{asset('images/composants/logo/shoppingb.png')}}" alt="Cart" class="h-7 w-auto">
           </a>
         </div>
 
@@ -85,7 +90,7 @@
   
   <footer class="footer max-md:footer-center items-center p-4 bg-neutral text-neutral-content mt-auto">
     <aside class="items-center grid-flow-col">
-      <img src="{{asset('images/ring-logo (2).png')}}" alt="logo" class="w-auto h-9 mx-1 invert">
+      <img src="{{asset('images/composants/logo/ring-logo (2).png')}}" alt="logo" class="w-auto h-9 mx-1 invert">
       <p>gemVogue © 2023 - All right reserved</p>
     </aside> 
   </footer>

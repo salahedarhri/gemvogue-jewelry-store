@@ -1,8 +1,9 @@
 @extends('layout')
 
 @section('content')
+<div class="flex flex-col min-h-screen">
 
-  <div class="h-72 max-sm:h-60 w-screen bg-cover bg-fixed bg-right-bottom " style="background-image:url({{asset('images/bijoux-panier.jpg')}});">
+  <div class="h-72 max-sm:h-60 w-screen bg-cover bg-fixed bg-right-bottom " style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
     <div class="h-full w-full bg-slate-800 bg-opacity-40">
       <div class="flex items-center justify-center h-full pt-36">
         <p class="text-3xl text-white font-bold">Votre Panier</p>
@@ -20,7 +21,7 @@
             <div class="flex sm:flex-row max-sm:flex-col items-center p-3 border-b border-neutral max-sm:gap-3 max-sm:mx-12">
                 {{-- Photo --}}
                 <div class="sm:w-1/4">
-                  <img src="{{ asset('images/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-48 aspect-square object-cover">
+                  <img src="{{ asset('images/composants/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-48 aspect-square object-cover">
                 </div>
                 {{-- Infos du Produit --}}
                 <div class="sm:w-2/4 max-sm:text-center p-2 items-center">
@@ -64,10 +65,16 @@
           </div>
         
     @else
-      <p>Votre panier est vide.</p>
+      <div class="flex-1 text-center text-lg">
+        <p>Votre panier est vide.</p>
+
+
+      </div>
+        
     @endif
 
   </div>
+</div>
 @endsection
 
 {{-- <td class="p-2 text-center max-sm:text-sm">
