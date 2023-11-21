@@ -15,7 +15,7 @@ export default {
             fontFamily: {
                 
                 //Playfair Display is available too 
-                serif:['DM Sans',
+                serif:['Playfair Display',
                 ...defaultTheme.fontFamily.serif],
                 sans: ['DM Sans',
                  ...defaultTheme.fontFamily.sans],

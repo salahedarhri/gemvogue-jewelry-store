@@ -1,6 +1,20 @@
 @extends('layout')
 
 @section('content')
+    <!-- Alerts succes ou refus -->
+    @if(session('success'))
+    <div class="alert alert-success w-5/6 m-auto mt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>{{ session('success') }}</span>
+    </div>
+    @endif
+    @if(session('error'))
+    <div class="alert alert-error">
+    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <span>{{ session('error') }}</span>
+    </div>
+    @endif
+    
     <div class="container mx-auto p-4">
         <div class="lg:flex lg:flex-row gap-6">
           
@@ -8,20 +22,20 @@
             <div class="lg:w-2/3">
                 <!-- for meduim / big format -->
                 <div class="grid grid-cols-2 gap-4 max-sm:hidden">
-                    <div><img src="{{ asset('images/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg"></div>
-                    <div><img src="{{ asset('images/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg"></div>
+                    <div><img src="{{ asset('images/produits/' . $bijou->photo1) }}" alt="Photo 1" class="w-full aspect-square object-cover shadow-lg"></div>
+                    <div><img src="{{ asset('images/produits/' . $bijou->photo2) }}" alt="Photo 2" class="w-full aspect-square object-cover shadow-lg"></div>
                 </div>
 
                 <!-- for mobile format -->
                 <div class="carousel w-full aspect-square object-cover sm:hidden shadow-lg">
                     <div id="slide1" class="carousel-item relative w-full">
-                      <img src="{{ asset('images/' . $bijou->photo1) }}" class="w-full" />
+                      <img src="{{ asset('images/produits/' . $bijou->photo1) }}" class="w-full" />
                       <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
                         <a href="#slide2" class="btn btn-circle">❯</a>
                       </div>
                     </div> 
                     <div id="slide2" class="carousel-item relative w-full">
-                      <img src="{{ asset('images/' . $bijou->photo2) }}" class="w-full" />
+                      <img src="{{ asset('images/produits/' . $bijou->photo2) }}" class="w-full" />
                       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 top-1/2">
                         <a href="#slide1" class="btn btn-circle">❮</a> 
                       </div>
@@ -67,7 +81,7 @@
                     @foreach ($bijouxSimilaires as $bijouSimilaire)
                     <a href="{{ route('bijou',[ 'slug' => $bijouSimilaire->slug]) }}">
                         <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center">
-                            <img src="{{ asset('images/' . $bijouSimilaire->photo1) }}" alt="Produit similaire" class="w-full aspect-square object-cover rounded-md mb-2">
+                            <img src="{{ asset('images/produits/' . $bijouSimilaire->photo1) }}" alt="Produit similaire" class="w-full aspect-square object-cover rounded-md mb-2">
                             <h3 class="text-base font-semibold max-sm:text-sm text-center">{{ $bijouSimilaire->nom }}</h3>
                             <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->type_metal }}</p>
                             <p class="text-gray-700 max-sm:text-sm text-center">{{ $bijouSimilaire->prix }} DH</p>

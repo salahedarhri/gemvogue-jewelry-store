@@ -12,17 +12,18 @@
   @vite('resources/js/app.js')
 
 </head>
-<body class="bg-lighterBeige min-h-screen overflow-x-hidden">
-  <div class="w-full bg-black text-white text-center p-2 ">
+<body class="noise min-h-screen overflow-x-hidden antialiased ">
+    {{-- Banner --}}
+  <div class="w-full bg-rose-900 text-whiteBeige text-center p-2 max-sm:hidden">
     <a href="{{ route('boutique') }}">
       <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 décembre 2023)</p>
     </a>
   </div>
 
   <!-- Barre Navigation -->
-  <div class="navbar bg-lighterBeige">
+  <div class="navbar bg-transparent py-0 absolute text-whiteBeige z-10">
     <div class="flex-1 ">
-        <a href="/"><img src="{{asset('images/composants/logo/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7" alt="logo"></a>
+        <a href="/"><img src="{{asset('images/composants/logo/ring-logo (2).png')}}" class="h-9 w-auto ml-2 max-sm:h-7 invert" alt="logo"></a>
         <a href="/" class="font-semibold normal-case text-xl max-sm:text-md p-2">GemVogue</a>
     </div>
 
@@ -48,13 +49,14 @@
             <span class="indicator-item badge badge-secondary h-3 p-2">
               {{ Cart::instance('cart')->content()->count() }} </span> 
               @endif
-            <img src="{{asset('images/composants/logo/shoppingb.png')}}" alt="Cart" class="h-7 w-auto">
+            <img src="{{asset('images/composants/logo/shoppingb.png')}}" alt="Cart" class="h-7 w-auto invert">
           </a>
         </div>
 
       <!-- medium to small screen -->
       <div class="dropdown dropdown-bottom dropdown-end md:hidden">
-        <label tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="150px" height="150px" class="w-8 h-8 m-2"><path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/></svg></label>
+        <label tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="150px" height="150px" class="w-8 h-8 m-2 fill-whiteBeige">
+          <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/></svg></label>
         <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
           <li><a href="/" class="text-base" >Accueil</a></li>
           <li><a href="/boutique" class="text-base" >Boutique</a></li>
@@ -70,20 +72,6 @@
     </div>
 
   </div>
-
-  <!-- Alerts succes ou refus -->
-  @if(session('success'))
-    <div class="alert alert-success w-5/6 m-auto mt-3">
-      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-      <span>{{ session('success') }}</span>
-    </div>
-  @endif
-  @if(session('error'))
-  <div class="alert alert-error">
-    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-    <span>{{ session('error') }}</span>
-  </div>
-  @endif
 
   <!-- Contenu -->
   @yield('content')

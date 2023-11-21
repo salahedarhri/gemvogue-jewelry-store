@@ -1,27 +1,42 @@
 @extends('layout')
 
 @section('content')
-<div class="flex flex-col min-h-screen">
+<div class="min-h-screen">
 
-  <div class="h-72 max-sm:h-60 w-screen bg-cover bg-fixed bg-right-bottom " style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
+  <div class="h-72 max-sm:h-60 w-screen bg-cover bg-fixed bg-right-bottom "
+   style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
     <div class="h-full w-full bg-slate-800 bg-opacity-40">
       <div class="flex items-center justify-center h-full pt-36">
-        <p class="text-3xl text-white font-bold">Votre Panier</p>
+        <p class="text-3xl text-whiteBeige font-bold">Votre Panier</p>
       </div>
     </div>
   </div>
 
-  <div class="mx-auto sm:px-8 py-4 my-6 max-w-6xl flex sm:flex-row max-sm:flex-col">
+    <!-- Alerts succes ou refus -->
+    @if(session('success'))
+      <div class="alert alert-success w-5/6 m-auto mt-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>{{ session('success') }}</span>
+      </div>
+    @endif
+    @if(session('error'))
+    <div class="alert alert-error">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>{{ session('error') }}</span>
+    </div>
+    @endif
+
+  <div class="mx-auto sm:px-8 py-2 my-6 max-w-6xl flex sm:flex-row max-sm:flex-col">
     @if ($cartItems->count() > 0)
         {{-- Section Produit --}}
       <div class="wrapper sm:mx-4 sm:w-2/3 max-sm:w-full">
         <p class="text-xl font-semibold p-4">Votre panier ({{ $cartItems->count() }})</p>
 
         @foreach ($cartItems as $item)
-            <div class="flex sm:flex-row max-sm:flex-col items-center p-3 border-b border-neutral max-sm:gap-3 max-sm:mx-12">
+            <div class="flex flex-row max-sm:flex-col items-center p-3 border-b border-neutral max-sm:gap-3 max-sm:mx-12">
                 {{-- Photo --}}
                 <div class="sm:w-1/4">
-                  <img src="{{ asset('images/composants/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-48 aspect-square object-cover">
+                  <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-48 aspect-square object-cover">
                 </div>
                 {{-- Infos du Produit --}}
                 <div class="sm:w-2/4 max-sm:text-center p-2 items-center">
@@ -53,7 +68,7 @@
 
           {{-- Récapitulatif --}}
           <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center border-r border-l border-b border-neutral ">
-            <p class="font-bold underline mb-8 text-xl">Récapitulatif :</p>
+            <p class="font-bold mb-8 text-xl">Récapitulatif :</p>
             <div class="grid grid-cols-2">
               <p class="text-left">Total HT:</p> 
               <p class="text-right">{{ Cart::instance('cart')->subtotal() }} DH</p>
@@ -65,10 +80,39 @@
           </div>
         
     @else
-      <div class="flex-1 text-center text-lg">
-        <p>Votre panier est vide.</p>
+      <div class="w-full text-xl">
+        <p class="py-5 max-sm:p-3 max-sm:text-center ">Votre panier est vide pour le moment.</p>
 
+        <div class="w-full flex md:flex-row max-md:flex-col items-center gap-2">
 
+          {{-- Onglet Anneaux --}}
+            <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-1/2" 
+              style="background-image:url({{ asset('images/produits/anneau2.jpg') }})">
+
+                <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
+                <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+                <p class="absolute top-3/4 w-full text-center text-white">Anneaux</p>
+            </div>
+
+          {{-- Onglet Colliers --}}
+            <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-1/2" 
+              style="background-image:url({{ asset('images/produits/collier2.jpg') }})">
+
+                <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
+                <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+                <p class="absolute top-3/4 w-full text-center text-white">Colliers</p>
+            </div>
+
+          {{-- Onglet Bracelets --}}
+            <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-1/2" 
+            style="background-image:url({{ asset('images/produits/bracelet2.jpg') }})">
+
+              <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
+              <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+              <p class="absolute top-3/4 w-full text-center text-white">Bracelets</p>
+            </div>
+
+        </div>
       </div>
         
     @endif
