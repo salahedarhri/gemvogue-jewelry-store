@@ -17,23 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () { 
-      return view('accueil');     })->name('accueil');
-
-Route::get('/welcome', function () { 
-      return view('welcome');     })->name('welcome');
-
-Route::get('/apropos', function () { 
-      return view('apropos');     })->name('apropos');
+Route::get('/', function () { return view('accueil');     })
+    ->name('accueil');
+Route::get('/welcome', function () { return view('welcome');     })
+    ->name('welcome');
+Route::get('/apropos', function () { return view('apropos');     })
+    ->name('apropos');
 
 // Display de bijoux
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
-
-//Laravel Breeze
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 //Panier
 Route::get('/panier',[PanierController::class,'index'])->name('panier');
@@ -41,11 +34,36 @@ Route::post('/panier-add',[PanierController::class,'addToCart'])->name('ajouterP
 Route::put('/panier-update/{rowId}',[PanierController::class,'updateCart'])->name('updatePanier');
 Route::delete('/panier-delete/{rowId}',[PanierController::class,'deleteItem'])->name('retirerPanier');
 
-//Espace Client :
+//Profil :
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//Espace Admin (à revoir ) 
+Route::middleware('admin.check')->group(function () {
+      Route::get('/admin/dashboard', function () {
+          return view('admin.dashboard');
+      })->name('admin.dashboard');
+  });
+
+Route::get('/dashboard', function () {
+    if (auth()->user()->is_admin) {
+        return view('admin.dashboard');
+    } else {
+        return view('dashboard');
+    }})->middleware(['auth', 'verified'])->name('dashboard');
+
+//Admininstration
+// Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){
+//     Route::resource('utilisateurs', AdminUserController::class);
+//     Route::resource('bijoux', AdminCarController::class);
+//     Route::resource('achats', AdminReservationController::class);
+// });
+
+// Route::prefix('admin')->group(  function(){
+
+// });
 
 require __DIR__.'/auth.php';

@@ -12,6 +12,9 @@ export default {
 
     theme: {
         extend: {
+            spacing:{
+                'largeHeight':'32rem',
+            },
             fontFamily: {
                 
                 //Playfair Display is available too 
