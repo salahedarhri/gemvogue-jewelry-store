@@ -17,11 +17,9 @@ export default {
             },
             fontFamily: {
                 
-                //Playfair Display is available too 
-                serif:['Playfair Display',
-                ...defaultTheme.fontFamily.serif],
-                sans: ['DM Sans',
-                 ...defaultTheme.fontFamily.sans],
+                serif:['Playfair Display'],
+                sans: ['DM Sans'],
+                tables:['Roboto'],
 
             },
             colors:{
@@ -29,13 +27,18 @@ export default {
                 Beige:'#EAD8CE',
                 whiteBeige:'#F2E1D9',
                 darkerBeige:'#DDC0B0',
+
+                //Theme
+                darkShade:'#4D4D4D',
+                mediumShade:'#B46060',
+                lightShade:'#FFBF9B',
+                whiteShade:'#FFF4E0',
             }
         },
     },
 
     plugins: [
-        require("daisyui"),
-        forms],
+        require("daisyui"), forms],
 
     daisyui: {
         themes: ["light", "dark", "autumn","garden","cyberpunk"],

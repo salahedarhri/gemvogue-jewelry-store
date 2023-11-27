@@ -4,6 +4,10 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BijouController;
 use Illuminate\Support\Facades\Route;
+//Admin
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminBijouController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,14 +60,14 @@ Route::get('/dashboard', function () {
     }})->middleware(['auth', 'verified'])->name('dashboard');
 
 //Admininstration
-// Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){
-//     Route::resource('utilisateurs', AdminUserController::class);
-//     Route::resource('bijoux', AdminCarController::class);
-//     Route::resource('achats', AdminReservationController::class);
-// });
+Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){
+    Route::resource('utilisateurs', AdminUserController::class);
+    Route::resource('bijoux', AdminBijouController::class);
+});
 
-// Route::prefix('admin')->group(  function(){
-
-// });
+Route::prefix('admin')->group(  function(){
+    Route::get('utilisateurs',[ AdminUserController::class,'index'])->name('admin.utilisateurs.index');
+    Route::get('bijoux',[ AdminBijouController::class,'index'])->name('admin.bijoux.index');
+});
 
 require __DIR__.'/auth.php';
