@@ -16,10 +16,9 @@ export default {
                 'largeHeight':'32rem',
             },
             fontFamily: {
-                
-                serif:['Playfair Display'],
-                sans: ['DM Sans'],
-                tables:['Roboto'],
+                playfair:['Playfair Display'],
+                dmsans: ['DM Sans'],
+                roboto:['Roboto'],
 
             },
             colors:{
@@ -27,12 +26,10 @@ export default {
                 Beige:'#EAD8CE',
                 whiteBeige:'#F2E1D9',
                 darkerBeige:'#DDC0B0',
-
                 //Theme
-                darkShade:'#4D4D4D',
-                mediumShade:'#B46060',
-                lightShade:'#FFBF9B',
-                whiteShade:'#FFF4E0',
+                first:'#1B1B1B',
+                second:'#B07B54',
+                third:'#EAD9CE',
             }
         },
     },
