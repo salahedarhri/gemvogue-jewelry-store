@@ -12,7 +12,7 @@ class BijouSeeder extends Seeder {
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 40; $i++) {
 
             //Seeding Photos :
             $type_bijou = $faker->randomElement(['Collier', 'Anneau', 'Bracelet']);
@@ -45,7 +45,7 @@ class BijouSeeder extends Seeder {
                 'photo1' => $photo1_bijou,
                 'photo2' => $photo2_bijou,
                 'collection' => $faker->randomElement(['Automne 2023','Ete 2023','Hiver 2023']),
-                'prix' => $faker->randomFloat(0,200, 700),
+                'prix' => $faker->randomFloat(0,100, 3000),
                 'qte_stock' => $faker->numberBetween(10, 100),
                 'type_metal' => $faker->randomElement(['Or', 'Argent', 'Platine']),
                 'slug' => $slug,

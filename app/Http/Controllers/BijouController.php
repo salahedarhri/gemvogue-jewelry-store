@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bijou;
-use Illuminate\Support\Str;
-use Cart;
 
 class BijouController extends Controller
 {
     public function index(){
         //Tous les produits 
-        $bijoux = Bijou::all();
-        return view('boutique', compact('bijoux'));
+        $bijoux = Bijou::paginate(10);
+        return view('shop', compact('bijoux'));
     }
 
     public function show($slug){

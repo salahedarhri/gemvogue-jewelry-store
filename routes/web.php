@@ -3,6 +3,7 @@
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BijouController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 //Admin
 use App\Http\Controllers\Admin\AdminUserController;
@@ -31,6 +32,12 @@ Route::get('/apropos', function () { return view('apropos');     })
 // Display de bijoux
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
+
+//Sorting & Filter 
+Route::get('/boutique/byCategory',[ShopController::class,'sortCategory'])->name('shopCategoryFilter');
+Route::get('/boutique/byPrix',[ShopController::class,'sortPrix'])->name('shopPrixFilter');
+Route::get('/boutique/byPrixRange',[ShopController::class,'sortPrixRange'])->name('shopPrixRangeFilter');
+Route::get('/boutique/Order',[ShopController::class,''])->name('shopSortingOrder');
 
 //Panier
 Route::get('/panier',[PanierController::class,'index'])->name('panier');
