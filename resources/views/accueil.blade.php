@@ -8,7 +8,7 @@
         <div class="flex flex-col p-8 justify-evenly">
           <p class="md:text-4xl max-md:text-2xl font-semibold py-4">Your One-Stop Destination for Unique and Exquisite Jewelry Pieces</p>
           <p class="font-dmsans text-lg py-2">Here, we offer various types of jewelry, including necklaces, bracelets, earrings, and rings. From classic designs to modern styles, we have something for everyone.</p>
-          <a href="#" class="bg-second text-third text-center p-3 w-44 rounded-l-full my-4">Shop the collection</a>
+          <a href="#" class="bg-second text-third text-lg text-center p-3 w-52 rounded-l-full my-4">Shop the collection</a>
         </div>
       
         <div class="flex items-center">

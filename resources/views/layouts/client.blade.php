@@ -19,7 +19,7 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
-<body class="overflow-x-hidden antialiased">
+<body class="overflow-x-hidden antialiased font-swap">
 
     {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-second text-third font-dmsans">
@@ -85,9 +85,9 @@
     <nav class="cabin flex justify-between px-4 py-3 max-w-5xl mx-auto text-first">
   
       <div class="flex gap-10 py-3 align-center max-md:hidden">
-        <a href="{{ route('accueil')}}" class="text-md cursor-pointer">Accueil</a>
-        <a href="#" class="text-md cursor-pointer">Boutique</a>
-        <a href="#" class="text-md cursor-pointer">À propos</a>
+        <a href="{{ route('accueil') }}" class="text-md cursor-pointer">Accueil</a>
+        <a href="{{ route('boutique') }}" class="text-md cursor-pointer">Boutique</a>
+        <a href="{{ route('apropos') }}" class="text-md cursor-pointer">À propos</a>
       </div>
       <div class="flex items-center">
         <a href="{{ route('accueil')}}" class="flex">
