@@ -16,7 +16,7 @@ class ShopController extends Controller
                 $typeBijou = $request->typeBijou;
 
                 $bijoux = Bijou::where('type', $typeBijou)
-                ->paginate(10);
+                ->paginate(12);
 
                 return view('shop',compact('bijoux','typeBijou'));
             }
@@ -24,25 +24,35 @@ class ShopController extends Controller
         }
 
          //Prix : selection + entrer fourchette 
-        public function sortPrix(Request $request){
-
-            if($request ->has('prixRange')){
+         public function sortPrix(Request $request){
+                if($request->has('prixRange')){
                 $prixRange = $request->prixRange;
 
-                if( $prixRange == '0-500'){ $bijoux = Bijou::where('prix','<=',500)->where('prix','>=',0)
-                    ->paginate(10);}
-                if( $prixRange == '500-1000'){ $bijoux = Bijou::where('prix','<=',1000)->where('prix','>=',500)
-                    ->paginate(10);}
-                if( $prixRange == '1000-1500'){ $bijoux = Bijou::where('prix','<=',1500)->where('prix','>=',1000)
-                    ->paginate(10);}
-                if( $prixRange == '1500-2000'){ $bijoux = Bijou::where('prix','<=',2000)->where('prix','>=',1500)
-                    ->paginate(10);}
-                if( $prixRange == '2000+'){ $bijoux = Bijou::where('prix','>=',2000)->paginate(10);;}
-
-                return view('shop',compact('bijoux','prixRange'));
+                switch ($prixRange) {
+                    case '0-500':
+                        $bijoux = Bijou::where('prix', '<=', 500)->where('prix', '>=', 0)->paginate(12);
+                        break;
+                    case '500-1000':
+                        $bijoux = Bijou::where('prix', '<=', 1000)->where('prix', '>=', 500)->paginate(12);
+                        break;
+                    case '1000-1500':
+                        $bijoux = Bijou::where('prix', '<=', 1500)->where('prix', '>=', 1000)->paginate(12);
+                        break;
+                    case '1500-2000':
+                        $bijoux = Bijou::where('prix', '<=', 2000)->where('prix', '>=', 1500)->paginate(12);
+                        break;
+                    case '2000+':
+                        $bijoux = Bijou::where('prix', '>=', 2000)->paginate(12);
+                        break;
+                    default:
+                        return redirect()->back();
+                }
+        
+                return view('shop', compact('bijoux', 'prixRange'));
             }
             return redirect()->back();
         }
+        
 
         public function sortPrixRange(Request $request){
 
@@ -52,15 +62,15 @@ class ShopController extends Controller
             if ($prixMin && $prixMax) {
                 $bijoux = Bijou::where('prix', '>=', $prixMin)
                                ->where('prix', '<=', $prixMax)
-                               ->paginate(10);
+                               ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMin', 'prixMax'));
             } elseif ($prixMin) {
                 $bijoux = Bijou::where('prix', '>=', $prixMin)
-                               ->paginate(10);
+                               ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMin'));
             } elseif ($prixMax) {
                 $bijoux = Bijou::where('prix', '<=', $prixMax)
-                                ->paginate(10);
+                                ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMax'));
             }
         

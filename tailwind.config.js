@@ -26,6 +26,7 @@ export default {
                 Beige:'#EAD8CE',
                 whiteBeige:'#F2E1D9',
                 darkerBeige:'#DDC0B0',
+                
                 //Theme
                 first:'#1B1B1B',
                 second:'#B07B54',

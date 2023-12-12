@@ -13,7 +13,7 @@ class AdminBijouController extends Controller
      */
     public function index()
     {
-        $bijoux=Bijou::paginate(10);
+        $bijoux=Bijou::paginate(12);
         return view('admin.bijoux.index',compact('bijoux'));
     }
 
