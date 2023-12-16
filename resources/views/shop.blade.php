@@ -14,70 +14,85 @@
   </div>
 
 
-  <div class="max-w-7xl mx-auto grid md:grid-cols-4 justify-center gap-4 p-4">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-4 p-4">
 
-    <div class="max-w-sm text-sm flex flex-col dm-sans p-4">
-      <p class="text-xl font-bold font-playfair">Affiner Par</p>
-      <form action="{{ route('shopCategoryFilter')}}" class="flex flex-col gap-2 py-4 border-b border-amber-700 border-opacity-20">
-        <p class="font-semibold">Catégorie :</p>
-        @csrf
-        <label for="typeBijou"><input type="radio" name="typeBijou" value="Anneau"
-          @if(isset($typeBijou)) {{ ($typeBijou == 'Anneau')?'checked' : ''}} @endif >&nbsp; Anneau</label>
-        <label for="typeBijou"><input type="radio" name="typeBijou" value="Collier"
-          @if(isset($typeBijou)) {{ ($typeBijou == 'Collier')?'checked' : ''}} @endif >&nbsp; Collier</label>
-        <label for="typeBijou"><input type="radio" name="typeBijou" value="Bracelet"
-          @if(isset($typeBijou)) {{ ($typeBijou == 'Bracelet')?'checked' : ''}} @endif >&nbsp; Bracelet</label>
-        <input type="submit" class="px-3 py-2 w-24 text-center bg-second text-third" value="Rechercher">
-      </form>
+    <div class="w-60 text-sm flex flex-col dm-sans p-2 max-md:mx-auto">
+      <p class="text-2xl font-bold font-playfair mb-3">Affiner Par</p>
 
-      <form action="{{ route('shopPrixFilter')}}" class="flex flex-col gap-2 py-4 border-b border-amber-700 border-opacity-20">
-        <p class="font-semibold">Prix :</p>
-        @csrf
-        <label for="prixRange"><input type="radio" name="prixRange" value="0-500"
-          @if(isset($prixRange)){{ ($prixRange == '0-500')?'checked':''}}@endif >&nbsp; 0-500</label>
-        <label for="prixRange"><input type="radio" name="prixRange" value="500-1000"
-          @if(isset($prixRange)){{ ($prixRange == '500-1000')?'checked':''}}@endif >&nbsp; 500-1000</label>
-        <label for="prixRange"><input type="radio" name="prixRange" value="1000-1500"
-          @if(isset($prixRange)){{ ($prixRange == '1000-1500')?'checked':''}}@endif >&nbsp; 1000-1500</label>
-        <label for="prixRange"><input type="radio" name="prixRange" value="1500-2000"
-          @if(isset($prixRange)){{ ($prixRange == '1500-2000')?'checked':''}}@endif >&nbsp; 1500-2000</label>
-        <label for="prixRange"><input type="radio" name="prixRange" value="2000+"
-          @if(isset($prixRange)){{ ($prixRange == '2000+')?'checked':''}}@endif >&nbsp; 2000+</label>
-        <input type="submit" class="px-3 py-2 w-24 text-center bg-second text-third" value="Rechercher">
+      <div x-data="{open1:false}" class="py-1">
 
-      </form>
+        <button @click="open1 =! open1" class="text-xl font-bold font-playfair">
+          <div class="flex gap-2 justify-between">
+            <p>Catégorie</p>
+            <div class="">
+                <i x-show="!open1" class="ri-arrow-down-s-fill text-2xl"></i>
+                <i x-show="open1" class="ri-arrow-up-s-fill"></i>
+            </div>
+        </div>
+        
+        </button>
 
-      <form action="{{ route('shopPrixRangeFilter')}}" class="flex flex-col gap-2 py-4 border-b border-amber-700 border-opacity-20">
-        <p class="font-semibold">Prix Range :</p>
-        @csrf
-        <div class="flex mx-2">
-          <label for="prixMin"><input type="number" class="w-16 py-1" min="0" name="prixMin" 
-            @if(isset($prixMin)) value="{{ $prixMin }}" @endif> - </label>
-          <label for="prixMax"><input type="number" class="w-16 py-1" min="0" name="prixMax" 
-            @if(isset($prixMax)) value="{{ $prixMax }}" @endif></label>
+        <div x-show="open1" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100">
+
+          @include('composants/shopCategoryForm')
+        </div>
+      </div>
+
+      <div x-data="{open2:false}" class="py-1">
+
+        <button @click="open2 =! open2" class="text-xl font-bold font-playfair">
+          <div class="flex gap-2">
+            <p>Prix</p>
+            <i x-show="!open2" class="ri-arrow-down-s-fill text-2xl"></i>
+            <i x-show="open2" class="ri-arrow-up-s-fill"></i>
+          </div>
+        </button>
+
+        <div x-show="open2" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100">
+
+          @include('composants/shopPriceForm')
         </div>
 
-        <input type="submit" class="px-3 py-2 w-24 text-center bg-second text-third" value="Rechercher">
-      </form>
+      </div>
+
+      <div x-data="{open3:false}" class="py-1">
+
+        <button @click="open3 =! open3" class="text-xl font-bold font-playfair">
+          <div class="flex gap-2">
+            <p>Fourchette de prix</p>
+            <i x-show="!open3" class="ri-arrow-down-s-fill text-2xl"></i>
+            <i x-show="open3" class="ri-arrow-up-s-fill"></i>
+          </div>
+        </button>
+
+        <div x-show="open3" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100">
+
+          @include('composants/shopPriceRangeForm')
+        </div>
+      </div>
 
     </div>
 
-    <div class="md:col-span-3 ">
+    <div class="lg:col-span-3 md:col-span-2">
 
-      <div class="flex max-sm:flex-col max-sm:gap-2 justify-between items-center p-2">
+      <div class="flex max-sm:flex-col max-sm:gap-2 justify-between items-center p-3">
         <p class=" font-bold">{{ $bijoux->total()}} Articles Trouvées</p>
 
-        <form action="shopOrder" method="post" >
+        {{-- <form action="shopOrder" method="post" >
           <label for="order" class="text-sm">Trier par :</label>
-          <select name="order" class="text-sm">
+          <select name="order" class="focus:ring-second text-sm border-second focus:border-second" >
             <option value="prixAsc">Prix (Croissant)</option>
             <option value="prixDesc">Prix (Décroissant)</option>
           </select>
-        </form>
+        </form> --}}
+
       </div>
 
 
-      <div class="grid md:grid-cols-4 max-md:grid-cols-2 items-center gap-2">
+      <div class="grid lg:grid-cols-4 md:grid-cols-3 max-md:grid-cols-2 items-center gap-2">
 
         @foreach ($bijoux as $bijou)
     
@@ -97,7 +112,7 @@
         @endforeach
       </div>
 
-      <div class="lg:max-w-xl max-w-md mx-auto justify-center p-4">
+      <div class="mx-auto justify-center md:p-4 max-md:p-2">
         {{$bijoux->links()}}
       </div>
 

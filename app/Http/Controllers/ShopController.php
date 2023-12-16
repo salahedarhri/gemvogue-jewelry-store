@@ -30,19 +30,24 @@ class ShopController extends Controller
 
                 switch ($prixRange) {
                     case '0-500':
-                        $bijoux = Bijou::where('prix', '<=', 500)->where('prix', '>=', 0)->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 500)->where('prix', '>=', 0)->orderBy('prix','asc')
+                        ->paginate(12);
                         break;
                     case '500-1000':
-                        $bijoux = Bijou::where('prix', '<=', 1000)->where('prix', '>=', 500)->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 1000)->where('prix', '>=', 500)->orderBy('prix','asc')
+                        ->paginate(12);
                         break;
                     case '1000-1500':
-                        $bijoux = Bijou::where('prix', '<=', 1500)->where('prix', '>=', 1000)->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 1500)->where('prix', '>=', 1000)->orderBy('prix','asc')
+                        ->paginate(12);
                         break;
                     case '1500-2000':
-                        $bijoux = Bijou::where('prix', '<=', 2000)->where('prix', '>=', 1500)->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 2000)->where('prix', '>=', 1500)->orderBy('prix','asc')
+                        ->paginate(12);
                         break;
                     case '2000+':
-                        $bijoux = Bijou::where('prix', '>=', 2000)->paginate(12);
+                        $bijoux = Bijou::where('prix', '>=', 2000)->orderBy('prix','asc')
+                        ->paginate(12);
                         break;
                     default:
                         return redirect()->back();
@@ -62,16 +67,22 @@ class ShopController extends Controller
             if ($prixMin && $prixMax) {
                 $bijoux = Bijou::where('prix', '>=', $prixMin)
                                ->where('prix', '<=', $prixMax)
+                               ->orderBy('prix','asc')
                                ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMin', 'prixMax'));
+                
             } elseif ($prixMin) {
                 $bijoux = Bijou::where('prix', '>=', $prixMin)
+                                ->orderBy('prix','asc')
                                ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMin'));
+                
             } elseif ($prixMax) {
                 $bijoux = Bijou::where('prix', '<=', $prixMax)
+                                ->orderBy('prix','asc')
                                 ->paginate(12);
                 return view('shop', compact('bijoux', 'prixMax'));
+                
             }
         
             return redirect()->back();
