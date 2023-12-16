@@ -23,7 +23,7 @@ class BijouController extends Controller
         ->where( 'id' , '!=', $bijou->id)
         ->limit(4)
         ->get();
-        return view('produit', compact('bijou','bijouxSimilaires'));
+        return view('produitNew', compact('bijou','bijouxSimilaires'));
     }
 
 

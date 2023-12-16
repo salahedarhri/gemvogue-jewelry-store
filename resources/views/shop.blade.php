@@ -5,10 +5,10 @@
 
 <div class="w-full font-dmsans font-swap bg-third">
 
-  <div class="max-w-7xl mx-auto md:h-80 max-md:h-60 bg-cover bg-center" style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
+  <div class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center" style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
     <div class="h-full w-full bg-amber-950 bg-opacity-30">
-      <div class="flex items-center justify-center h-full pt-36">
-        <p class="text-4xl text-third font-playfair font-semibold">Boutique</p>
+      <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
+        <p class="md:text-4xl max-md:text-3xl text-third font-playfair font-semibold">Boutique</p>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
   <div class="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-4 p-4">
 
     <div class="w-60 text-sm flex flex-col dm-sans p-2 max-md:mx-auto">
-      <p class="text-2xl font-bold font-playfair mb-3">Affiner Par</p>
+      <p class="text-2xl font-bold font-playfair mb-3 underline-offset-4 underline ">Affiner Par</p>
 
       <div x-data="{open1:false}" class="py-1">
 
@@ -78,7 +78,9 @@
 
     <div class="lg:col-span-3 md:col-span-2">
 
-      <div class="flex max-sm:flex-col max-sm:gap-2 justify-between items-center p-3">
+      <div class="flex
+       {{-- max-sm:flex-col max-sm:gap-2 --}}
+        items-center p-3">
         <p class=" font-bold">{{ $bijoux->total()}} Articles Trouvées</p>
 
         {{-- <form action="shopOrder" method="post" >
@@ -98,7 +100,7 @@
     
           <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
 
-            <div class="flex flex-col place-items-center border border-second relative">
+            <div class="flex flex-col place-items-center border border-second relative shadow">
               <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center absolute hover:opacity-0 transition-all">
               <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center">
               <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
