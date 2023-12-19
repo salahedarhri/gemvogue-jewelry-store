@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- First part -->
-    <div class="w-screen bg-third">
+    <div class="w-full bg-third">
       <div class="font-playfair grid md:grid-cols-2 max-md:grid-cols-1 justify-center align-center max-w-7xl mx-auto text-first lg:py-8">
         <div class="flex flex-col p-8 justify-evenly">
           <p class="md:text-4xl max-md:text-2xl font-semibold py-4">Your One-Stop Destination for Unique and Exquisite Jewelry Pieces</p>
@@ -19,7 +19,7 @@
     </div>
     
     <!-- Second part -->
-    <div class="font-playfair w-screen bg-white text-first py-6">
+    <div class="font-playfair w-full bg-white text-first py-6">
       <p class="text-center text-2xl p-4">Our Collection</p>
   
       <div class="grid md:grid-cols-3 max-md:grid-cols-1 max-w-4xl mx-auto justify-between gap-12 md:py-6 max-md:items-center">
@@ -39,7 +39,7 @@
     </div>
   
     <!-- Third part -->
-    <div class="font-playfair w-screen bg-third">
+    <div class="font-playfair w-full bg-third">
      <div class="flex flex-col justify-evenly md:py-16 md:px-6 max-md:p-8 max-w-4xl mx-auto  text-center text-orange-950">
       <p class="text-2xl font-semibold md:pb-12 max-md:pb-6">A diamond is a woman's best friends!</p>
       <p class="font-dmsans max-md:text-sm">A diamond is a timeless symbol of beauty and friendship, making it the perfect gift for any woman.

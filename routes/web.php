@@ -29,7 +29,7 @@ Route::get('/welcome', function () { return view('welcome');     })
 Route::get('/apropos', function () { return view('apropos');     })
     ->name('apropos');
 
-// Display de bijoux
+//Display de bijoux
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 
@@ -66,7 +66,7 @@ Route::get('/dashboard', function () {
         return view('dashboard');
     }})->middleware(['auth', 'verified'])->name('dashboard');
 
-//Admininstration
+//Administration
 Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){
     Route::resource('utilisateurs', AdminUserController::class);
     Route::resource('bijoux', AdminBijouController::class);

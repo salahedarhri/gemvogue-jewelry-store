@@ -21,9 +21,9 @@ class BijouController extends Controller
 
         $bijouxSimilaires = Bijou::where('collection' , $bijou->collection )
         ->where( 'id' , '!=', $bijou->id)
-        ->limit(4)
+        ->limit(8)
         ->get();
-        return view('produitNew', compact('bijou','bijouxSimilaires'));
+        return view('produit', compact('bijou','bijouxSimilaires'));
     }
 
 

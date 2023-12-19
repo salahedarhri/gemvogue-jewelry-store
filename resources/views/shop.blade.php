@@ -100,9 +100,9 @@
     
           <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
 
-            <div class="flex flex-col place-items-center border border-second relative shadow">
-              <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center absolute hover:opacity-0 transition-all">
-              <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center">
+            <div class="flex flex-col place-items-center relative shadow rounded-2xl">
+              <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
+              <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center rounded-t-xl">
               <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
                 <p class="truncate font-semibold">{{ $bijou->nom }}</p>
                 <p class="text-xs"> {{ $bijou->type_metal }}</p> 

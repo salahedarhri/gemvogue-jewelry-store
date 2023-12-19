@@ -29,10 +29,10 @@
   </div>
 
   <!-- Navbar -->
-  <div class="w-screen font-dmsans bg-third border-b border-second">
-    <nav class="cabin flex justify-between px-4 py-3 max-w-5xl mx-auto text-first">
+  <div class="w-full font-dmsans bg-third border-b border-second">
+    <nav class="cabin flex justify-between px-6 py-3 max-w-5xl mx-auto text-first">
   
-      <div class="flex gap-10 py-2 align-center max-md:hidden">
+      <div class="flex gap-10 items-center max-md:hidden">
         <a href="{{ route('accueil') }}" class="text-md cursor-pointer">Accueil</a>
         <a href="{{ route('boutique') }}" class="text-md cursor-pointer">Boutique</a>
         <a href="{{ route('apropos') }}" class="text-md cursor-pointer">À propos</a>
@@ -63,8 +63,8 @@
 
 
 
-        <div class="dropdown dropdown-bottom dropdown-end md:hidden text-first mr-3 ml-4">
-          <label tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="150px" height="150px" class="w-8 h-8 my-2 mr-3 fill-first">
+        <div class="dropdown dropdown-bottom dropdown-end md:hidden text-first">
+          <label tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="150px" height="150px" class="w-8 h-8 ml-3 fill-first">
             <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"/></svg></label>
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-48">
             <li><a href="/" class="text-base" >Accueil</a></li>
@@ -91,7 +91,7 @@
   @yield('content')
   
   <!-- Footer -->
-  <footer class="w-screen border-t border-first bg-third font-playfair">
+  <footer class="w-full border-t border-first bg-third font-playfair">
     <div class="grid lg:grid-cols-5 md:grid-cols-2 max-md:grid-cols-1 max-lg:text-center max-w-7xl mx-auto max-md:p-3 text-first md:gap-4 max-md:gap-2 md:p-6">
   
       <!-- Email -->
