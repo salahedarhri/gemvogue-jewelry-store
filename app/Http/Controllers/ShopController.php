@@ -20,6 +20,7 @@ class ShopController extends Controller
 
                 return view('shop',compact('bijoux','typeBijou'));
             }
+
             return redirect()->back();
         }
 
@@ -30,28 +31,25 @@ class ShopController extends Controller
 
                 switch ($prixRange) {
                     case '0-500':
-                        $bijoux = Bijou::where('prix', '<=', 500)->where('prix', '>=', 0)->orderBy('prix','asc')
-                        ->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 500)->where('prix', '>=', 0)->orderBy('prix','asc');
                         break;
                     case '500-1000':
-                        $bijoux = Bijou::where('prix', '<=', 1000)->where('prix', '>=', 500)->orderBy('prix','asc')
-                        ->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 1000)->where('prix', '>=', 500)->orderBy('prix','asc');
                         break;
                     case '1000-1500':
-                        $bijoux = Bijou::where('prix', '<=', 1500)->where('prix', '>=', 1000)->orderBy('prix','asc')
-                        ->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 1500)->where('prix', '>=', 1000)->orderBy('prix','asc');
                         break;
                     case '1500-2000':
-                        $bijoux = Bijou::where('prix', '<=', 2000)->where('prix', '>=', 1500)->orderBy('prix','asc')
-                        ->paginate(12);
+                        $bijoux = Bijou::where('prix', '<=', 2000)->where('prix', '>=', 1500)->orderBy('prix','asc');
                         break;
                     case '2000+':
-                        $bijoux = Bijou::where('prix', '>=', 2000)->orderBy('prix','asc')
-                        ->paginate(12);
+                        $bijoux = Bijou::where('prix', '>=', 2000)->orderBy('prix','asc');
                         break;
                     default:
                         return redirect()->back();
                 }
+
+                $bijoux = $bijoux->paginate(12);
         
                 return view('shop', compact('bijoux', 'prixRange'));
             }
@@ -88,11 +86,5 @@ class ShopController extends Controller
             return redirect()->back();
         }
         
-
-
-        // Du plus cher au plus abordable :
-
-        // Du plus abordable au plus cher :
-        
-
+        //Appends
 }

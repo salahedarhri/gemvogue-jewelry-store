@@ -11,7 +11,7 @@
       @if(isset($prixMax)) value="{{ $prixMax }}" @endif></label>
   </div>
     
-  <input type="submit" class="w-28 py-2 px-4 text-center bg-second text-third mt-3 ml-2" value="Rechercher">
+  <input type="submit" class="w-28 py-2 px-4 text-center bg-second text-white font-semibold mt-3 ml-2" value="Rechercher">
 
 
 

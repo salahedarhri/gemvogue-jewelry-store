@@ -13,13 +13,13 @@
 
     <!-- Alerts succes ou refus -->
     @if(session('success'))
-      <div class="alert alert-success max-w-5xl mx-auto my-4">
+      <div class="alert alert-success max-w-xl mx-auto my-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         <span>{{ session('success') }}</span>
       </div>
     @endif
     @if(session('error'))
-    <div class="alert alert-error max-w-5xl mx-auto my-4">
+    <div class="alert alert-error max-w-xl mx-auto my-4">
       <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
       <span>{{ session('error') }}</span>
     </div>
@@ -34,16 +34,16 @@
           <p class="text-xl font-semibold p-4">Votre panier ({{ $cartItems->count() }})</p>
 
           @foreach ($cartItems as $item)
-              <div class="flex flex-row max-sm:flex-col items-center p-1 border-b border-neutral max-sm:gap-3 max-sm:mx-12">
+              <div class="flex flex-row max-sm:flex-col items-center p-1 border-b border-second border-opacity-40 max-sm:gap-3 max-sm:mx-12">
                   {{-- Photo --}}
                   <div class="sm:w-1/4">
-                    <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-48 aspect-square object-cover">
+                    <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow border border-amber-800 border-opacity-40">
                   </div>
                   {{-- Infos du Produit --}}
                   <div class="sm:w-3/4 max-sm:text-center sm:p-2 max-sm:py-2 items-center">
-                    <p class="text-lg">{{ $item->name }}</p>
-                    <p class="text-sm mt-2">Prix : {{ $item->price }} Dh</p>
-                    <p class="text-sm mb-2">Qte : {{ $item->qty}}</p>
+                    <p class="text-lg font-semibold">{{ $item->name }}</p>
+                    <p class="text-sm mt-2 italic text-second pl-1">Prix : {{ $item->price }} Dh</p>
+                    <p class="text-sm mb-2 italic text-second pl-1">Qte : {{ $item->qty}}</p>
                     <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
 
                                       {{-- Options --}}
@@ -53,7 +53,7 @@
                       @csrf
                       <input type="hidden" name="_method" value="put">
                       <div class="flex flex-row gap-2 items-center">
-                        <input type="number" name="quantity" value="{{ $item->qty }}" class="w-16 h-fit py-1">
+                        <input type="number" name="quantity" min="1" value="{{ $item->qty }}" class="w-10 h-fit py-1 [appearance:textfield]">
                         <button type="submit" class="p-2 bg-second shadow rounded text-sm text-white font-semibold">Modifier</button>
                       </div>
                     </form> 
@@ -73,13 +73,13 @@
         </div>
 
             {{-- Récapitulatif --}}
-            <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center border-r border-l border-b border-neutral ">
+            <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center border-r border-l border-b border-opacity-70 border-second ">
               <p class="font-bold mb-8 text-xl">Récapitulatif :</p>
               <div class="grid grid-cols-2">
                 <p class="text-left">Total HT:</p> 
-                <p class="text-right">{{ Cart::instance('cart')->subtotal() }} DH</p>
+                <p class="text-right text-second">{{ Cart::instance('cart')->subtotal() }} DH</p>
                 <p class="text-left">Tax: </p> 
-                <p class="text-right">{{ Cart::instance('cart')->tax() }} DH</p>
+                <p class="text-right text-second">{{ Cart::instance('cart')->tax() }} DH</p>
                 <p class="text-left text-lg mt-3">Total TTC: </p> 
                 <p class="text-right text-lg mt-3">{{ Cart::instance('cart')->total() }} DH</p>
               </div>
@@ -132,54 +132,3 @@
 </div>
 @endsection
 
-{{-- <td class="p-2 text-center max-sm:text-sm">
-  <!-- Quantity update -->
-  <form method="post" action="{{ route('updatePanier', $item->rowId) }}">
-    @csrf
-    <input type="hidden" name="_method" value="put">
-    <input type="number" name="quantity" value="{{ $item->qty }}" class="w-16">
-    <button type="submit">Modifier</button>
-  </form> 
-</td> --}}
-
-{{-- <h1 class="text-2xl font-semibold m-4">Votre panier</h1>
-
-<div class="container grid grid-cols-3 gap-5 m-2">
-
-  @if ($cartItems->count() > 0)
-
-    @foreach ($cartItems as $item)
-      <div class="inline-flex flex-row border-1 border-orange-500 shadow-md rounded">
-        <img src="{{ asset('images/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}" class="w-36 aspect-square object-cover">
-        <div class="flex flex-col">
-          <p class="p-2 text-center max-sm:text-sm">{{ $item->name }} DH</p>
-          <p class="p-2 text-center max-sm:text-sm">{{ $item->price }} DH</p>
-          <p class="p-2 text-center max-sm:text-sm">{{ $item->subtotal() }} DH</p>
-        </div>
-        <!-- Item delete -->
-        <form method="post" action="{{ route('retirerPanier', $item->rowId) }}">
-          @csrf
-          @method('delete')
-          <button type="submit" class="p-2">&#11199</button>
-        </form>
-      </div>
-    @endforeach
-  </div>
-
-  <div class="mt-4 p-2 rounded border border-gray-300 text-center">
-    <h1 class="text-lg font-semibold mb-2">Total HT: {{ Cart::instance('cart')->subtotal() }} DH</h1>
-    <h1 class="text-lg font-semibold mb-2">Tax: {{ Cart::instance('cart')->tax() }} DH</h1>
-    <h1 class="text-lg font-semibold mb-2">Total TTC: {{ Cart::instance('cart')->total() }} DH</h1>
-  </div>
-  <div class="mt-4 flex justify-center">
-    <a href="{{ route('boutique') }}" class="btn btn-secondary">Continue Shopping</a>
-  </div>
-
-  @else
-  <div class="alert mt-4 text-center">
-    <i class="fas fa-info-circle text-info text-4xl mb-2"></i>
-    <p>Votre panier est actuellement vide. Veuillez choisir vos produits en visitant la boutique.</p>
-    <a href="{{ route('boutique') }}" class="btn btn-primary mt-2">Visiter la Boutique</a>
-  </div>
-  @endif
-</div> --}}

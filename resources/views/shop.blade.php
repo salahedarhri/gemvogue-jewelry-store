@@ -115,7 +115,7 @@
       </div>
 
       <div class="mx-auto justify-center md:p-4 max-md:p-2">
-        {{$bijoux->links()}}
+        {{$bijoux->withQueryString()->links()}}
       </div>
 
     </div>
