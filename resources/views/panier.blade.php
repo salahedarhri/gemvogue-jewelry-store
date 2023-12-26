@@ -28,7 +28,7 @@
 
   @if ($cartItems->count() > 0)
 
-    <div class="mx-auto sm:px-8 sm:py-14 max-sm:py-6 max-w-6xl flex sm:flex-row max-sm:flex-col">
+    <div class="mx-auto sm:px-8 sm:py-14 max-sm:py-6 max-w-6xl flex sm:flex-row max-sm:flex-col font-dmsans">
 
           {{-- Section Produit --}}
         <div class="wrapper sm:mx-4 sm:w-2/3 max-sm:w-full">
@@ -47,7 +47,7 @@
                     <p class="text-sm mb-2 italic text-second pl-1">Qte : {{ $item->qty}}</p>
                     <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
 
-                                      {{-- Options --}}
+                  {{-- Options --}}
                   <div class="w-fit mx-auto flex flex-row gap-2 items-center pt-3">
                     {{-- Modifier Quantité --}}
                     <form method="post" action="{{ route('updatePanier', $item->rowId) }}">
@@ -55,7 +55,7 @@
                       <input type="hidden" name="_method" value="put">
                       <div class="flex flex-row gap-2 items-center">
                         <input type="number" name="quantity" min="1" value="{{ $item->qty }}" class="w-10 h-fit py-1 [appearance:textfield]">
-                        <button type="submit" class="md:px-3 p-2 bg-second shadow rounded text-sm text-white font-semibold">Modifier</button>
+                        <button type="submit" class="md:px-3 p-2 bg-second shadow rounded text-sm text-white">Modifier</button>
                       </div>
                     </form> 
 
@@ -63,7 +63,7 @@
                     <form method="post" action="{{ route('retirerPanier', $item->rowId) }}">
                       @csrf
                       @method('delete')
-                      <button type="submit" class="md:px-3 p-2 bg-red-600 bg-opacity-80 shadow rounded text-sm text-white font-semibold">Supprimer&nbsp;&#11199</button>
+                      <button type="submit" class="md:px-3 p-2 bg-red-600 bg-opacity-80 shadow rounded text-sm text-white">Supprimer&nbsp;&#11199</button>
                     </form>
                   </div>
 
@@ -73,23 +73,28 @@
           @endforeach
         </div>
 
-            {{-- Récapitulatif --}}
-            <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center border-r border-l border-b border-opacity-70 border-second ">
+        {{-- Récapitulatif --}}
+        <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center 
+          border-r border-l border-b border-opacity-70 border-second font-dmsans">
 
-              <p class="font-bold mb-8 text-xl">Récapitulatif :</p>
+          <p class="font-bold mb-8 text-xl">Récapitulatif :</p>
 
-              <div class="flex flex-col justify-between">
-                <div class="grid grid-cols-2">
-                  <p class="text-left">Total HT:</p> 
-                  <p class="text-right text-second">{{ Cart::instance('cart')->subtotal() }} DH</p>
-                  <p class="text-left">Tax: </p> 
-                  <p class="text-right text-second">{{ Cart::instance('cart')->tax() }} DH</p>
-                  <p class="text-left text-lg mt-3">Total TTC: </p> 
-                  <p class="text-right text-lg mt-3">{{ Cart::instance('cart')->total() }} DH</p>
-                </div>
-                <a href="">Checkout</a>
-              </div>
+          <div class="flex flex-col gap-16">
+            <div class="grid grid-cols-2">
+              <p class="text-left">Total HT:</p> 
+              <p class="text-right text-second">{{ Cart::instance('cart')->subtotal() }} DH</p>
+              <p class="text-left">Tax: </p> 
+              <p class="text-right text-second">{{ Cart::instance('cart')->tax()}} DH</p>
+              <p class="text-left text-lg mt-3">Total TTC: </p> 
+              <p class="text-right text-lg mt-3">{{ Cart::instance('cart')->total() }} DH</p>
             </div>
+
+            <form action="{{route('checkout')}}" method="POST">
+              @csrf
+              <button class="w-full mx-auto px-4 py-2 text-center bg-green-700 hover:bg-opacity-100 transition bg-opacity-90 shadow-lg rounded-lg text-white">Procéder au payement</button>
+            </form>
+          </div>
+        </div>
           
 
 

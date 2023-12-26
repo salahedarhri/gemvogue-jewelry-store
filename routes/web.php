@@ -45,6 +45,11 @@ Route::post('/panier-add',[PanierController::class,'addToCart'])->name('ajouterP
 Route::put('/panier-update/{rowId}',[PanierController::class,'updateCart'])->name('updatePanier');
 Route::delete('/panier-delete/{rowId}',[PanierController::class,'deleteItem'])->name('retirerPanier');
 
+//Paiement 
+Route::post('/checkout',[PanierController::class,'checkout'])->name('checkout');
+Route::get('/success',[PanierController::class,'success'])->name('success');
+Route::get('/cancel',[PanierController::class,'cancel'])->name('cancel');
+
 //Profil :
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

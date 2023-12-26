@@ -47,19 +47,21 @@
               </div> 
           </div>
 
+          {{-- Description et Ajout au panier --}}
           <div class="flex flex-col font-playfair p-4 max-md:w-96 max-md:mx-auto max-md:items-center">
 
             <h2 class="text-2xl font-bold ">{{ $bijou->nom }}</h2>
             <p class="font-dmsans font-semibold pt-4">{{ $bijou->prix }} DH</p>
 
-            <div class="bg-second text-white w-fit flex items-center font-dmsans text-center py-1 px-4 my-4">
+            <div class="bg-second hover:bg-amber-700 transition text-white w-fit flex items-center font-dmsans text-center  my-4">
 
-                <i class="ri-shopping-bag-fill text-2xl mr-2"></i>
                 <form id="ajouterPanier" action="{{ route('ajouterProduitPanier') }}" method="post">
                   @csrf
                   <input type="hidden" name="id" value="{{ $bijou->id }}">
                   <input type="hidden" name="quantity" id="qty" value="1">
-                  <input type="submit" value="Ajouter au panier">
+                  <button type="submit" class="py-1 px-6 text-lg align-center">
+                    <i class="ri-shopping-bag-fill mr-1 text-2xl"></i>
+                    Ajouter au panier</button>
                 </form>
             </div>
 

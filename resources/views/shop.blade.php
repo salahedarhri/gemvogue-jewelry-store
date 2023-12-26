@@ -16,6 +16,7 @@
 
   <div class="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-4 p-4">
 
+    {{-- Tri --}}
     <div class="w-60 text-sm flex flex-col dm-sans p-2 max-md:mx-auto">
       <p class="text-2xl font-bold font-playfair mb-3 underline-offset-4 underline ">Affiner Par</p>
 
@@ -94,13 +95,14 @@
       </div>
 
 
+      {{-- Produits --}}
       <div class="grid lg:grid-cols-4 md:grid-cols-3 max-md:grid-cols-2 items-center gap-2">
 
         @foreach ($bijoux as $bijou)
     
           <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
 
-            <div class="flex flex-col place-items-center relative shadow rounded-2xl">
+            <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
               <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
               <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center rounded-t-xl">
               <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">

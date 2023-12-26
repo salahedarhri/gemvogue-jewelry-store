@@ -79,7 +79,7 @@
           </ul>
         </div>
 
-        <a href="{{ route('register') }}" class=" pl-5 pr-3 max-md:hidden">Sign Up</a>
+        <a href="{{ route('register') }}" class=" pl-5 pr-3 max-md:hidden">S'inscrire</a>
 
       </div>
 
