@@ -14,7 +14,18 @@ class PanierController extends Controller{
     public function index(){
 
         $cartItems = Cart::instance('cart')->content();
-        return view('panier',['cartItems'=>$cartItems ]);
+
+        if($cartItems->count() >= 3){
+            $livraison = (float)60;
+        }else{
+            $livraison = (float)45;
+        }
+
+        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());
+        
+        $total = $subtotal + $livraison;
+
+        return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'));
     }
 
     public function addToCart(Request $request){
@@ -70,18 +81,35 @@ class PanierController extends Controller{
                     'currency' => 'mad',
                     'product_data' => [
                         'name' => $produit->name,
-                        'images' => [$produit->model->photo1]   
+                        'images' => ['images/produits/'. $produit->model->photo1],
                      ],
                     'unit_amount' => $produit->price * 100,],
                 'quantity' => $produit->qty,
             ];
         }
 
+        if(count($produitsPanier) >= 3){
+            $livraison = 60;
+        }else{
+            $livraison = 45;
+        }
+
+        $lineItems[] = [
+            'price_data' => [
+                'currency' => 'mad',
+                'product_data' => [
+                    'name' => 'Frais de livraison (Partout au Maroc)',
+                ],
+                'unit_amount' => $livraison * 100,
+            ],
+            'quantity' => 1,
+        ];
+
          $session = \Stripe\Checkout\Session::create([
                 'line_items' => $lineItems,
                 'mode' => 'payment',
-                'success_url' => route('success'),
-                'cancel_url' =>route('cancel'),
+                'success_url' => route('success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
+                'cancel_url' => route('cancel', [], true),
             ]);
 
             $order = new Order();
@@ -96,29 +124,27 @@ class PanierController extends Controller{
         
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $sessionId = $request->get('session_id');
-
-        // try {
+        try {
             $session = \Stripe\Checkout\Session::retrieve($sessionId);
-            if (!$session) {
-                throw new NotFoundHttpException;
-            }
+
+            if(!$session){  throw new NotFoundHttpException; }
             
-            $client = \Stripe\Customer::retrieve($session->customer);
+            // $client = \Stripe\Customer::retrieve($session->customer);
 
-            $order = Order::where('session_id', $session->id)->first();
+            // $order = Order::where('session_id', $session->id)->first();
 
-            if (!$order) {
-                throw new NotFoundHttpException();
-            }
-            if ($order->status === 'Non payé') {
-                $order->status = 'Payé';
-                $order->save();
-            }
+            // if (!$order) {
+            //     throw new NotFoundHttpException();}
+
+            // if ($order->status === 'Non payé') {
+            //     $order->status = 'Payé';
+            //     $order->save(); }
 
             return view('checkout.success', compact('client'));
-        // } catch (\Exception $e) {
-        //     throw new NotFoundHttpException();
-        // }
 
+        } catch (\Exception $e) {
+            
+            throw new NotFoundHttpException();
+        }
     }
 } 

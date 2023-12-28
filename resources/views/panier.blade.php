@@ -81,12 +81,17 @@
 
           <div class="flex flex-col gap-16">
             <div class="grid grid-cols-2">
-              <p class="text-left">Total HT:</p> 
-              <p class="text-right text-second">{{ Cart::instance('cart')->subtotal() }} DH</p>
-              <p class="text-left">Tax: </p> 
-              <p class="text-right text-second">{{ Cart::instance('cart')->tax()}} DH</p>
+
+              @foreach ($cartItems as $item)
+              <p class="text-left">{{ $item->model->type }} x {{ $item->qty }}</p> 
+              <p class="text-right text-second">{{ $item->price }} DH x {{ $item->qty }}</p>
+              @endforeach
+
+              <p class="text-left mt-3"> Livraison<i class="text-sm text-second"> / Pays : Maroc</i> </p> 
+              <p class="text-right text-second mt-3">{{ $livraison }} DH</p>
+
               <p class="text-left text-lg mt-3">Total TTC: </p> 
-              <p class="text-right text-lg mt-3">{{ Cart::instance('cart')->total() }} DH</p>
+              <p class="text-right text-lg mt-3">{{ $total }} DH</p>
             </div>
 
             <form action="{{route('checkout')}}" method="POST">
