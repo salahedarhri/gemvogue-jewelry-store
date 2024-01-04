@@ -59,8 +59,9 @@
                   @csrf
                   <input type="hidden" name="id" value="{{ $bijou->id }}">
                   <input type="hidden" name="quantity" id="qty" value="1">
-                  <button type="submit" class="py-1 px-6 text-lg align-center">
-                    <i class="ri-shopping-bag-fill mr-1 text-2xl"></i>
+
+                  <button type="submit" class="py-2 px-5 text-lg flex align-center justify-center">
+                    <i class="ri-shopping-bag-fill mr-3 text-xl"></i>
                     Ajouter au panier</button>
                 </form>
             </div>
@@ -68,7 +69,7 @@
             <p class="text-xl font-bold p-4">Description</p>
             <p class="font-dmsans">Collection : {{ $bijou->collection }}</p>
             <p class="font-dmsans">Métal : {{ $bijou->type_metal }}</p>
-            <p class="font-dmsans pb-4">{{ $bijou->description }}</p>
+            <p class="font-dmsans pt-2 pb-4 max-sm:text-center">{{ $bijou->description }}</p>
           </div>
 
         </div>

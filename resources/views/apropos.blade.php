@@ -1,53 +1,54 @@
 @extends('layouts.client')
 
 @section('content')
-        <div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-            <div class="bg-white p-8 rounded-lg shadow-lg">
 
-                <h1 class="text-3xl max-sm:text-xl font-semibold min-md:mb-8 max-sm:mb-2 sm:mb-5">Qui sommes-nous ?</h1>
+<div class="w-full bg-third">
 
-                <!-- Section Présentation -->
-                <div class="mb-8">
-                    <p class="min-md: text-gray-700 leading-relaxed">
-                        Nous sommes une entreprise de bijouterie basée à Agadir, au Maroc, spécialisée dans la création et la vente de bijoux uniques depuis plus de 10 ans. Notre passion pour l'art de la bijouterie nous a conduit à développer des collections exceptionnelles qui captivent nos clients à travers le monde.
+    <div class="h-72 max-sm:h-60 max-w-7xl mx-auto bg-cover bg-top" style="background-image:url({{asset('images/composants/landing-md.jpg')}});">
+        <div class="h-full w-full bg-slate-950 bg-opacity-30">
+          <div class="flex items-center justify-center h-full pt-36">
+            <p class="text-3xl text-third font-playfair font-semibold">Notre Histoire</p>
+          </div>
+        </div>
+    </div>
+
+    {{-- 1er section --}}
+    <div class="w-full pt-5">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 max-md:grid-cols-1">
+            <div class="md:bg-gradient-to-r from-third to-second max-md:bg-gradient-to-b p-4 max-md:p-6">
+                <img class="object-center object-cover aspect-square  border-4 rounded border-third shadow-xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
+            </div>
+
+            <div class="flex flex-col justify-center md:bg-gradient-to-r max-md:bg-gradient-to-b from-second to-secondDarker text-third font-martel md:px-12 max-md:p-4 max-md:h-96">
+                <p class="text-lg max-md:text-center">Nous sommes une entreprise de bijouterie basée à Agadir, au Maroc, spécialisée dans la création et la vente de bijoux uniques depuis plus de 10 ans.
+                    Notre passion pour l'art de la bijouterie nous a conduit à développer des collections exceptionnelles qui captivent nos clients à travers le monde.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+        {{-- 2e section --}}
+        <div class="w-full">
+            <div class="max-w-6xl mx-auto grid grid-cols-3 max-md:grid-cols-1">
+
+                <div class="flex flex-col justify-center md:bg-gradient-to-l max-md:bg-gradient-to-t from-cyan-600 to-cyan-700 md:col-span-2 text-third font-martel md:px-12 max-md:p-4 max-md:h-96">
+                    <p class="text-lg max-md:text-center">Nous sommes une entreprise de bijouterie basée à Agadir, au Maroc, spécialisée dans la création et la vente de bijoux uniques depuis plus de 10 ans.
+                        Notre passion pour l'art de la bijouterie nous a conduit à développer des collections exceptionnelles qui captivent nos clients à travers le monde.
                     </p>
                 </div>
 
-                <!-- Pictures -->
-                <div class="mb-8">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:m-12 sm:m-3">
-                        <div>
-                            <img src="{{ asset('images/composants/shop (1).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
-                        <div>
-                            <img src="{{ asset('images/composants/shop (2).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
-                        <div>
-                            <img src="{{ asset('images/composants/shop (3).jpg') }}" alt="shop photo" class="w-full aspect-square object-cover rounded-lg shadow-md"></div>
-                    </div>
+                <div class="md:bg-gradient-to-l from-third to-cyan-600 max-md:bg-gradient-to-t p-4 max-md:p-6">
+                    <img class="object-center object-cover aspect-square  border-4 rounded border-third shadow-xl" src="{{ asset('images/composants/element (1).jpg')}}" alt="shop(1)">
                 </div>
+    
 
-                <!--Google maps -->
-                <div class="mb-8">
-                    <h2 class="text-2xl max-sm:text-xl font-semibold mb-4">Notre Emplacement</h2>
-                    <div class="relative" style="padding-bottom: 50%; ">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.2589382925135!2d-9.594355084265923!3d30.403532181758586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda73f34d6b3c2c1%3A0x1598bf88e9c8ed2d!2sAgadir!5e0!3m2!1sen!2sma!4v1630934397009!5m2!1sen!2sma" width="100%" height="0" frameborder="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <div>
-                    <h2 class="text-2xl max-sm:text-xl font-semibold mb-4">Contactez-nous</h2>
-                    <p class="text-gray-700 leading-relaxed">
-                        Vous pouvez nous contacter à tout moment pour toute question ou demande. N'hésitez pas à visiter notre boutique à Agadir ou à nous envoyer un e-mail :
-                    </p>
-                    <ul class="list-disc pl-6 mt-4">
-                        <li>Adresse : Bijouterie gemVogue ,Rue ,Agadir, Maroc</li>
-                        <li>Email : contact@gemvogue.com</li>
-                        <li>Téléphone : +212 600000000</li>
-                    </ul>
-                </div>
-
-                <!-- Champs pour commentaire : -->
-                
+    
             </div>
         </div>
+
+</div>
+
+
+
 @endsection

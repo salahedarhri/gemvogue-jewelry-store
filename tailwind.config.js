@@ -19,6 +19,7 @@ export default {
                 playfair:['Playfair Display'],
                 dmsans: ['DM Sans'],
                 roboto:['Roboto'],
+                martel:['Martel'],
 
             },
             colors:{
@@ -34,8 +35,9 @@ export default {
                 
                 //Theme
                 first:'#1B1B1B',
-                second:'#B07B54',
-                third:'#EAD9CE',
+                second:'#AB724F',
+                secondDarker:'#93533B',
+                third:'#EAD8CE',
             }
         },
     },

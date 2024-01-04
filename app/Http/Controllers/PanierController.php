@@ -108,12 +108,12 @@ class PanierController extends Controller{
          $session = \Stripe\Checkout\Session::create([
                 'line_items' => $lineItems,
                 'mode' => 'payment',
-                'success_url' => route('success', [], true) . "?session_id={CHECKOUT_SESSION_ID}",
-                'cancel_url' => route('cancel', [], true),
+                'success_url' => route('success',[],true ) . "?session_id={CHECKOUT_SESSION_ID}",
+                'cancel_url' => route('cancel',[],true ),
             ]);
 
             $order = new Order();
-            $order->status = 'Non payé';
+            $order->status = 'non payé';
             $order->session_id = $session->id;
             $order->save();
     
@@ -121,30 +121,64 @@ class PanierController extends Controller{
         }
 
     public function success(Request $request){
-        
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
         $sessionId = $request->get('session_id');
+
+    
         try {
-            $session = \Stripe\Checkout\Session::retrieve($sessionId);
 
-            if(!$session){  throw new NotFoundHttpException; }
-            
-            // $client = \Stripe\Customer::retrieve($session->customer);
+        $session = $stripe->checkout->sessions->retrieve('$sessionId', []);
 
-            // $order = Order::where('session_id', $session->id)->first();
+        $customer = $stripe->customers->retrieve($session->customer);
 
-            // if (!$order) {
-            //     throw new NotFoundHttpException();}
+        $order = Order::where('session_id', $session->id)->first();
 
-            // if ($order->status === 'Non payé') {
-            //     $order->status = 'Payé';
-            //     $order->save(); }
+        if (!$order) {
+            throw new NotFoundHttpException();}
 
-            return view('checkout.success', compact('client'));
+        if ($order->status === 'Non payé') {
+            $order->status = 'Payé';
+            $order->save(); }
 
-        } catch (\Exception $e) {
-            
-            throw new NotFoundHttpException();
-        }
+        return view('checkout.success', compact('client'));
+
+    } catch (\Exception $e) {
+        
+        throw new NotFoundHttpException();
     }
+    }
+
+
+
+
+    // public function success(Request $request){
+        
+    //     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+    //     $sessionId = $request->get('session_id');
+    //     try {
+    //         $session = \Stripe\Checkout\Session::retrieve($sessionId);
+
+    //         if(!$session){  throw new NotFoundHttpException; }
+            
+    //         // $client = \Stripe\Customer::retrieve($session->customer);
+
+    //         // $order = Order::where('session_id', $session->id)->first();
+
+    //         // if (!$order) {
+    //         //     throw new NotFoundHttpException();}
+
+    //         // if ($order->status === 'Non payé') {
+    //         //     $order->status = 'Payé';
+    //         //     $order->save(); }
+
+    //         return view('checkout.success', compact('client'));
+
+    //     } catch (\Exception $e) {
+            
+    //         throw new NotFoundHttpException();
+    //     }
+    // }
 } 
