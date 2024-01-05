@@ -19,10 +19,10 @@
 <body class="bg-neutral-100 min-h-screen text-black">
 
   {{-- SideBar --}}
-  <div class="fixed left-0 top-0 w-64 h-full p-4 max-md:hidden bg-gradient-to-b from-darkShade to-mediumShade">
-    <a href="#" class="flex items-center pb-4 border-b border-b-whiteShade">
+  <div class="fixed left-0 top-0 w-64 h-full p-4 max-md:hidden bg-gradient-to-b from-secondDarker to-second">
+    <a href="#" class="flex items-center pb-4 border-b border-b-third">
       <img src="{{ asset('images/composants/logo/ring-logo (2).png') }}" alt="logo" class="w-8 h-auto invert">
-      <span class="text-lg font-bold text-whiteShade ml-3 font-sans">GemVogue</span>
+      <span class="text-lg font-bold text-third ml-3 font-sans">GemVogue</span>
     </a>
     <ul>
       <li>

@@ -132,7 +132,7 @@ class PanierController extends Controller{
 
         $session = $stripe->checkout->sessions->retrieve('$sessionId', []);
 
-        $customer = $stripe->customers->retrieve($session->customer);
+        $client = $stripe->customers->retrieve($session->customer);
 
         $order = Order::where('session_id', $session->id)->first();
 
@@ -149,6 +149,13 @@ class PanierController extends Controller{
         
         throw new NotFoundHttpException();
     }
+    }
+
+    public function cancel(){
+
+        $this->index();
+
+        return view('panier')->with('error','Paiement échoué. Vérifiez vos données ou réessayez plus tard. Contactez le support en cas de problème persistant. Merci.');
     }
 
 

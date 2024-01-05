@@ -23,6 +23,12 @@
     @if(isset($typeBijou)) {{ ($typeBijou == 'Bracelet')?'checked' : ''}} @endif
      >&nbsp; Bracelet</label>
 
+    <label for="typeBijou">
+    <input type="radio" name="typeBijou" value="Boucles oreilles"
+      onchange="this.form.submit()" class="focus:ring-second text-second"
+    @if(isset($typeBijou)) {{ ($typeBijou == 'Boucles oreilles')?'checked' : ''}} @endif
+      >&nbsp; Boucles d'oreilles</label>
+
   {{-- <input type="submit" class="px-3 py-2 w-24 text-center bg-second text-third" value="Rechercher"> --}}
   
 </form>

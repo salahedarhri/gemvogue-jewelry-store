@@ -16,7 +16,7 @@ class ShopController extends Controller
                 $typeBijou = $request->typeBijou;
 
                 $bijoux = Bijou::where('type', $typeBijou)
-                ->paginate(12);
+                ->paginate(24);
 
                 return view('shop',compact('bijoux','typeBijou'));
             }

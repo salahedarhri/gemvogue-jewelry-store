@@ -22,7 +22,7 @@
 <body class="overflow-x-hidden antialiased font-swap">
 
     {{-- Banner --}}
-  <div class="w-full text-center p-2 max-md:hidden bg-second text-third font-dmsans">
+  <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a href="{{ route('boutique') }}">
       <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 décembre 2023)</p>
     </a>

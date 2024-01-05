@@ -9,7 +9,7 @@ class BijouController extends Controller
 {
     public function index(){
         //Tous les produits 
-        $bijoux = Bijou::Paginate(12);
+        $bijoux = Bijou::Paginate(24);
         return view('shop', compact('bijoux'));
     }
 

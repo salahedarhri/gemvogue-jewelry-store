@@ -54,17 +54,40 @@
      </div>
     </div> 
 
-     {{-- Ancien page d'accueil --}}
-  {{-- <div class="w-full h-largeHeight bg-top bg-no-repeat bg-cover" style="background-image:url({{ asset('images/composants/landing-md.jpg') }})">
-    <div class="w-full h-full relative">
+    <!-- Fourth part -->
+    <div class="w-full bg-third text-first">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-4 place-items-center">
 
-      <div class="absolute left-10 md:top-1/2 md:right-2/3 p-4  max-md:top-3/4 max-md:left-1/2">
-        <p class="text-3xl text-whiteBeige font-serif max-md:text-xl">Des bijouteries exquices près de vous</p>
+        <img src="{{ asset('images/composants/landing-4women.png')}}" alt="4women" class="object-cover object-center max-md:h-96 w-auto md:p-6">
+
+        <div class="flex flex-col gap-4 max-md:text-center justify-center p-4">
+
+          <h4 class="font-playfair text-2xl font-bold">Nous conçernant</h4>
+          <p class="font-dmsans">Nous sommes un groupe de cinq amis passionnés par la création de bijoux uniques et magnifiques
+            . Que ce soit en fabriquant des colliers de perles complexes ou en concevant des bracelets élégants,
+             notre créativité et nos compétences transparaissent dans chaque pièce que nous créons.
+              Nous attachons de l'importance à la collaboration et travaillons ensemble pour élaborer de nouvelles idées et techniques qui enrichissent notre métier.
+               De la recherche des matériaux de la plus haute qualité à la mise en place des touches finales sur chaque pièce, nous sommes fiers de chaque étape du processus.
+                Au cœur de notre activité se trouve un amour authentique pour la création de bijoux,
+             et nous sommes impatients de partager notre passion avec vous.</p>
+
+        </div>
+
       </div>
 
-      <div class="w-full h-full bg-slate-800 bg-opacity-30"></div>
     </div>
-  </div> --}}
+
+     {{-- Ancien page d'accueil --}}
+    {{-- <div class="w-full h-largeHeight bg-top bg-no-repeat bg-cover" style="background-image:url({{ asset('images/composants/landing-md.jpg') }})">
+      <div class="w-full h-full relative">
+
+        <div class="absolute left-10 md:top-1/2 md:right-2/3 p-4  max-md:top-3/4 max-md:left-1/2">
+          <p class="text-3xl text-whiteBeige font-serif max-md:text-xl">Des bijouteries exquices près de vous</p>
+        </div>
+
+        <div class="w-full h-full bg-slate-800 bg-opacity-30"></div>
+      </div>
+    </div> --}}
 
 @endsection
 

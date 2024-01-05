@@ -38,6 +38,8 @@ export default {
                 second:'#AB724F',
                 secondDarker:'#93533B',
                 third:'#EAD8CE',
+                fourth:'#a86570',
+                fourthDarker:'#82444e',
             }
         },
     },
