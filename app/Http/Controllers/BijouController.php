@@ -8,12 +8,14 @@ use App\Models\Bijou;
 class BijouController extends Controller
 {
     public function index(){
+        
         //Tous les produits 
         $bijoux = Bijou::Paginate(24);
         return view('shop', compact('bijoux'));
     }
 
     public function show($slug){
+
         //Produit avec similaires selon collection
         $bijou = Bijou::where('slug', $slug)->first();
 
@@ -25,7 +27,6 @@ class BijouController extends Controller
         ->get();
         return view('produit', compact('bijou','bijouxSimilaires'));
     }
-
 
 
 }

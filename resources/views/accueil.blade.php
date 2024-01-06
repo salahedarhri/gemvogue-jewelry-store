@@ -7,9 +7,9 @@
       <div class="font-playfair grid md:grid-cols-2 max-md:grid-cols-1 justify-center align-center max-w-7xl mx-auto text-first lg:py-8">
         <div class="flex flex-col p-8 justify-evenly">
           <p class="md:text-4xl max-md:text-2xl font-semibold py-4">Votre destination unique pour des pièces de bijouterie  uniques et exquises.</p>
-          <p class=" text-md py-2 font-martel">
+          <p class=" text-md py-2 font-dmsans">
             Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.          </p>
-          <a href="#" class="bg-second text-third text-lg text-center py-3 px-6 w-fit rounded-l-full my-4 font-semibold hover:bg-amber-700 transition">
+          <a href="#" class="bg-second text-third text-lg text-center py-3 px-6 w-fit rounded-l-full my-4 font-semibold hover:bg-secondDarker hover:text-white transition">
           Découvrir la collection</a>
         </div>
       
@@ -25,17 +25,23 @@
       <p class="text-center text-2xl p-4">Notre Collection</p>
   
       <div class="grid md:grid-cols-3 max-md:grid-cols-1 max-w-4xl mx-auto justify-between gap-12 md:py-6 max-md:items-center text-lg font-semibold">
+        
         <div class="relative aspect-square max-md:max-w-xs mx-auto">
           <img class="object-cover w-full h-full" src="{{ asset('images/composants/landing-earrings.png')}}" alt="landing earrings" srcset="">
-          <a href="#" class="absolute top-3/4 left-0 bg-second text-third text-center p-2 w-48 rounded-r-full shadow-xl my-4">Boucles d'oreilles</a>
+          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'boucles oreilles'])}}" 
+            class="absolute top-3/4 left-0 bg-second hover:bg-secondDarker transition text-third hover:text-white text-center p-2 w-48 rounded-r-full shadow-xl my-4">Boucles d'oreilles</a>
         </div>
+        
         <div class="relative aspect-square max-md:max-w-xs mx-auto">
           <img class="object-cover w-full h-full" src="{{ asset('images/composants/landing-necklace.png')}}" alt="landing necklace" srcset="">
-          <a href="#" class="absolute top-3/4 left-0 bg-second text-third text-center p-2 w-48 rounded-r-full shadow-xl my-4">Colliers</a>
+          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Collier'])}}" 
+            class="absolute top-3/4 left-0 bg-second hover:bg-secondDarker transition text-third hover:text-white text-center p-2 w-48 rounded-r-full shadow-xl my-4">Colliers</a>
         </div>
+        
         <div class="relative aspect-square max-md:max-w-xs mx-auto">
           <img class="object-cover w-full h-full" src="{{ asset('images/composants/landing-ring.png')}}" alt="landing ring" srcset="">
-          <a href="#" class="absolute top-3/4 left-0 bg-second text-third text-center p-2 w-48 rounded-r-full shadow-xl my-4">Bagues</a>
+          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Anneau'])}}" 
+            class="absolute top-3/4 left-0 bg-second hover:bg-secondDarker transition text-third hover:text-white text-center p-2 w-48 rounded-r-full shadow-xl my-4">Bagues</a>
         </div>
       </div>
     </div>
@@ -46,7 +52,7 @@
       <p class="text-2xl font-semibold md:pb-12 max-md:pb-6">
         Un diamant est le meilleur ami d'une femme !
       </p>
-      <p class="font-martel max-md:text-sm">
+      <p class="font-dmsans ">
         Un diamant est un symbole intemporel de beauté et d'amitié, en faisant le cadeau parfait pour toute femme. On dit souvent que les diamants sont les meilleurs amis d'une femme, et cela a du sens.
         Non seulement un diamant représente une loyauté et une dévotion inébranlables, mais c'est aussi un symbole de luxe, de glamour et de classe. Un diamant dit au monde que vous êtes fier de votre bien-aimée et que vous souhaitez lui offrir seulement le meilleur.
         Comme l'a dit Coco Chanel, "Un diamant est l'éternité, il est réel et il est incassable".
@@ -54,28 +60,35 @@
      </div>
     </div> 
 
-    <!-- Fourth part -->
-    <div class="w-full bg-third text-first">
-      <div class="max-w-7xl mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-4 place-items-center">
+    <!-- Jewels -->
+    <div class="w-full bg-white">
+      <div class="max-w-7xl mx-auto grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 place-items-center">
 
-        <img src="{{ asset('images/composants/landing-4women.png')}}" alt="4women" class="object-cover object-center max-md:h-96 w-auto md:p-6">
+
+      </div>
+    </div>
+
+    <!-- Fourth part -->
+    <div class="w-full bg-third text-first border-t border-secondDarker">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 max-md:grid-cols-1 md:gap-4 place-items-center ">
+
+        <img src="{{ asset('images/composants/landing-4women.png')}}" alt="4women" class="object-cover object-center max-md:h-96 w-auto md:p-6 max-md:p-4">
 
         <div class="flex flex-col gap-4 max-md:text-center justify-center p-4">
 
           <h4 class="font-playfair text-2xl font-bold">Nous conçernant</h4>
-          <p class="font-dmsans">Nous sommes un groupe de cinq amis passionnés par la création de bijoux uniques et magnifiques
-            . Que ce soit en fabriquant des colliers de perles complexes ou en concevant des bracelets élégants,
-             notre créativité et nos compétences transparaissent dans chaque pièce que nous créons.
-              Nous attachons de l'importance à la collaboration et travaillons ensemble pour élaborer de nouvelles idées et techniques qui enrichissent notre métier.
-               De la recherche des matériaux de la plus haute qualité à la mise en place des touches finales sur chaque pièce, nous sommes fiers de chaque étape du processus.
-                Au cœur de notre activité se trouve un amour authentique pour la création de bijoux,
-             et nous sommes impatients de partager notre passion avec vous.</p>
+          <p class="font-dmsans px-2">Nous sommes cinq amis passionnés de bijoux uniques.
+             Que ce soit des colliers de perles élaborés ou des bracelets élégants, notre créativité brille dans chaque pièce. La collaboration est clé, et ensemble, nous explorons de nouvelles idées et techniques.<br><br> De la sélection des meilleurs matériaux aux touches finales, chaque étape nous remplit de fierté.
+             Au cœur de notre entreprise, un amour véritable pour la création de bijoux.
+              Nous sommes impatients de partager cette passion avec vous.</p>
 
         </div>
 
       </div>
 
     </div>
+
+    <!-- Fifth part -->
 
      {{-- Ancien page d'accueil --}}
     {{-- <div class="w-full h-largeHeight bg-top bg-no-repeat bg-cover" style="background-image:url({{ asset('images/composants/landing-md.jpg') }})">

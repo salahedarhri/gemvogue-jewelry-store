@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Log;
 use App\Models\Bijou;
 use App\Models\Order;
+use Stripe\Stripe;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -69,7 +71,7 @@ class PanierController extends Controller{
 
     public function checkout(){
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $produitsPanier = Cart::instance('cart')->content();
 
@@ -119,37 +121,14 @@ class PanierController extends Controller{
     
             return redirect($session->url);
         }
-
-    public function success(Request $request){
-
-
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-
-        $sessionId = $request->get('session_id');
-
-    
-        try {
-
-        $session = $stripe->checkout->sessions->retrieve('$sessionId', []);
-
-        $client = $stripe->customers->retrieve($session->customer);
-
-        $order = Order::where('session_id', $session->id)->first();
-
-        if (!$order) {
-            throw new NotFoundHttpException();}
-
-        if ($order->status === 'Non payé') {
-            $order->status = 'Payé';
-            $order->save(); }
-
-        return view('checkout.success', compact('client'));
-
-    } catch (\Exception $e) {
         
-        throw new NotFoundHttpException();
-    }
-    }
+        public function success(Request $request){
+        
+                return view('checkout.success');
+
+        }
+        
+        
 
     public function cancel(){
 

@@ -33,9 +33,9 @@
     <nav class="cabin flex justify-between px-6 py-3 max-w-5xl mx-auto text-first">
   
       <div class="flex gap-10 items-center max-md:hidden">
-        <a href="{{ route('accueil') }}" class="text-md cursor-pointer">Accueil</a>
-        <a href="{{ route('boutique') }}" class="text-md cursor-pointer">Boutique</a>
-        <a href="{{ route('apropos') }}" class="text-md cursor-pointer">À propos</a>
+        <a href="{{ route('accueil') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Accueil</a>
+        <a href="{{ route('boutique') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Boutique</a>
+        <a href="{{ route('apropos') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">À propos</a>
       </div>
       <div class="flex items-center">
         <a href="{{ route('accueil')}}" class="flex">
@@ -51,14 +51,14 @@
             <span class="indicator-item badge badge-secondary h-3 p-2">
               {{ Cart::instance('cart')->content()->count() }} </span> 
               @endif
-              <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" srcset="" class="w-6 h-auto">
+              <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" srcset="" class="w-6 h-auto hover:translate-x-1  transition-transform duration-300 ease-in-out">
             </a>
         </div>
         
         @auth
-        <a href="{{ route('dashboard')}}"><i class="ri-user-fill text-2xl px-4 border-x border-second"></i></a>
+        <a href="{{ route('dashboard')}}"><i class="ri-user-fill text-2xl px-4 border-x border-second "></i></a>
         @else
-        <a href="{{ route('login') }}"><i class="ri-user-fill text-2xl px-4 border-x border-second"></i></a>
+        <a href="{{ route('login') }}"><i class="ri-user-fill text-2xl px-4 border-x border-second "></i></a>
         @endauth
 
 
@@ -79,7 +79,7 @@
           </ul>
         </div>
 
-        <a href="{{ route('register') }}" class=" pl-5 pr-3 max-md:hidden">S'inscrire</a>
+        <a href="{{ route('register') }}" class=" pl-5 pr-3 max-md:hidden hover:translate-x-2 transition-transform duration-300 ease-in-out">S'inscrire</a>
 
       </div>
 
@@ -100,7 +100,7 @@
         <p class="py-4 text-sm">S'abonner à GemVogue vous permet de rester informé(e) des dernières tendances et designs de l'industrie de la bijouterie.</p>
         <div class="flex max-lg:justify-center font-playfair">
           <input type="email" name="" id="" placeholder="Email" class="rounded-l-full max-md:w-36 py-2 appearance-none">
-          <input type="submit" value="Envoyer" class="rounded-r-full py-2 px-5 bg-second text-third">
+          <input type="submit" value="Envoyer" class="rounded-r-full py-2 px-5 bg-second text-third hover:bg-secondDarker hover:text-white transition ">
         </div>  
       </div>
     

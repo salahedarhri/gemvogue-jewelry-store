@@ -22,14 +22,15 @@ use App\Http\Controllers\Admin\AdminBijouController;
 */
 
 
-Route::get('/', function () { return view('accueil');     })
-    ->name('accueil');
+
+
 Route::get('/welcome', function () { return view('welcome');     })
     ->name('welcome');
 Route::get('/apropos', function () { return view('apropos');     })
     ->name('apropos');
 
 //Display de bijoux
+Route::get('/', function(){ return view('accueil'); })->name('accueil');
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 

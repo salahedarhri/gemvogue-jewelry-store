@@ -16,6 +16,7 @@ class BijouSeeder extends Seeder {
 
             //Seeding Photos :
             $type_bijou = $faker->randomElement(['Collier', 'Anneau', 'Bracelet','Boucles oreilles']);
+            
             switch ($type_bijou) {
                 case 'Anneau':
                       $photo1_bijou = 'ring1.jpg';
