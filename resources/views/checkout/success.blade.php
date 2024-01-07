@@ -1,27 +1,29 @@
-<!-- resources/views/payment-success.blade.php -->
-
-@extends('layouts.client') <!-- Use your base layout if you have one -->
+@extends('layouts.client')
 
 @section('content')
-    <div class="flex items-center justify-center h-screen bg-third font-dmsans">
-        <div class="bg-white p-8 rounded shadow-md max-w-md">
-            <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                <path d="M22 4L12 14.01l-3-3"></path>
-            </svg>
 
-            <h2 class="mt-6 text-center text-2xl font-extrabold text-gray-900">
-                Payment Successful!
-            </h2>
+<div class="container mt-8">
+    <div class="max-w-md mx-auto bg-beige p-6 rounded-lg shadow-lg">
+        <h3 class="text-3xl font-semibold mb-4 text-center">Merci pour votre achat, {{ $client->name }}!</h3>
 
+        <p class="text-lg">Nous tenons à vous remercier sincèrement pour votre récent achat sur notre site. C'est un plaisir de vous compter parmi nos clients.</p>
 
-            <div class="mt-6">
-                <a href="{{ route('boutique') }}"
-                    class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-800">
-                    Continue Shopping
-                </a>
-            </div>
+        <p class="text-lg">Votre commande a été traitée avec soin, et nous sommes en train de la préparer pour l'expédition. Dès que votre commande sera prête à partir, nous vous enverrons un email de confirmation avec tous les détails d'expédition.</p>
+
+        <div class="bg-green-100 text-green-800 p-4 my-4">
+            <p class="text-lg mb-0">Votre paiement a été traité avec succès. Vous pouvez consulter les détails de votre commande à tout moment en vous connectant à votre compte sur notre site.</p>
         </div>
+
+        <p class="text-lg">Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous sommes là pour vous aider!</p>
+
+        <p class="text-lg">Merci encore pour votre confiance.</p>
+
+        <hr class="my-4">
+
+        <p class="text-gray-600">Cordialement,</p>
+        <p class="italic">GemVogue</p>
     </div>
+</div>
+
 @endsection
+

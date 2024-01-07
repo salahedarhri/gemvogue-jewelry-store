@@ -75,9 +75,14 @@ class PanierController extends Controller{
 
         $produitsPanier = Cart::instance('cart')->content();
 
+        $prixTotal = 0;
+
         $lineItems =[];
 
         foreach($produitsPanier as $produit){
+
+            $prixTotal += $produit->price;
+
             $lineItems[] = [
                 'price_data' => [
                     'currency' => 'mad',
@@ -97,6 +102,7 @@ class PanierController extends Controller{
         }
 
         $lineItems[] = [
+
             'price_data' => [
                 'currency' => 'mad',
                 'product_data' => [
@@ -114,8 +120,10 @@ class PanierController extends Controller{
                 'cancel_url' => route('cancel',[],true ),
             ]);
 
+            // Créer la commande 
             $order = new Order();
-            $order->status = 'non payé';
+            $order->status = 'Non payé';
+            $order->prix_total = $prixTotal;
             $order->session_id = $session->id;
             $order->save();
     
@@ -123,8 +131,28 @@ class PanierController extends Controller{
         }
         
         public function success(Request $request){
-        
-                return view('checkout.success');
+
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            $sessionId = $request->get('session_id');
+
+            // Données de la session en fonction du session_id
+            $session = \Stripe\Checkout\Session::retrieve($sessionId);
+
+            //Détails du client ( address->country , email, name)
+            $client = $session->customer_details;
+
+            //Mettre à jour la commande
+            $order = Order::where('session_id', $sessionId)->first();
+
+            if ($order->status === 'Non payé') {
+                $order->status = 'Payé';
+                $order->save(); 
+            }
+
+            Cart::instance('cart')->store($client->name);
+
+            return view('checkout.success',compact('order','client'));
 
         }
         

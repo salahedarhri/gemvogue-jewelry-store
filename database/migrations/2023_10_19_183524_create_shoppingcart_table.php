@@ -16,6 +16,8 @@ class CreateShoppingcartTable extends Migration
             $table->string('instance');
             $table->longText('content');
             $table->nullableTimestamps();
+            
+            $table->string('session_id');
 
             $table->primary(['identifier', 'instance']);
         });
