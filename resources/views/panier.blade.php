@@ -48,14 +48,14 @@
                     <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
 
                   {{-- Options --}}
-                  <div class="w-fit mx-auto flex flex-row gap-2 items-center pt-3">
+                  <div class="w-fit mx-auto flex flex-row gap-3 items-center pt-3">
                     {{-- Modifier Quantité --}}
                     <form method="post" action="{{ route('updatePanier', $item->rowId) }}">
                       @csrf
                       <input type="hidden" name="_method" value="put">
                       <div class="flex flex-row gap-2 items-center">
                         <input type="number" name="quantity" min="1" value="{{ $item->qty }}" class="w-10 h-fit py-1 [appearance:textfield]">
-                        <button type="submit" class="md:px-3 p-2 bg-second shadow rounded text-sm text-white">Modifier</button>
+                        <button type="submit" class="md:px-3 p-2 bg-second hover:bg-secondDarker transition shadow rounded text-xs text-white">Modifier</button>
                       </div>
                     </form> 
 
@@ -63,7 +63,7 @@
                     <form method="post" action="{{ route('retirerPanier', $item->rowId) }}">
                       @csrf
                       @method('delete')
-                      <button type="submit" class="md:px-3 p-2 bg-red-600 bg-opacity-80 shadow rounded text-sm text-white">Supprimer&nbsp;&#11199</button>
+                      <button type="submit" class="md:px-3 p-2 bg-red-600 hover:bg-red-700 transition bg-opacity-80 shadow rounded text-xs text-white">Supprimer&nbsp;&#11199</button>
                     </form>
                   </div>
 
@@ -96,7 +96,7 @@
 
             <form action="{{route('checkout')}}" method="POST">
               @csrf
-              <button class="w-full mx-auto px-4 py-2 text-center bg-green-700 hover:bg-opacity-100 transition bg-opacity-90 shadow-lg rounded-lg text-white">Procéder au payement</button>
+              <button class="w-full mx-auto px-4 py-2 text-center bg-softGreen hover:bg-softGreenDarker transition shadow-lg rounded-lg text-white">Payer en ligne (via Stripe)</button>
             </form>
           </div>
         </div>
@@ -111,33 +111,42 @@
     <p class="py-5 text-center md:text-xl text-lg">Votre panier est vide pour le moment.<br> Trouvez ce qui vous correspond en visitant notre humble sélection.</p>
     <p class="py-5 max-sm:p-2 font-semibold underline md:text-2xl max-md:text-lg">Nos sélections :</p>
 
-    <div class="flex md:flex-row max-md:flex-col items-center gap-2 p-4 text-xl">
+    <div class="flex max-md:flex-col items-center gap-2 p-4 text-xl">
 
       {{-- Onglet Anneaux --}}
-        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-3/4" 
+        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4" 
           style="background-image:url({{ asset('images/produits/ring2.jpg') }})">
 
             <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-            <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+              <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Anneau'])}}" class="h-full w-full absolute"></a></div>
             <p class="absolute top-3/4 w-full text-center text-white">Anneaux</p>
         </div>
 
       {{-- Onglet Colliers --}}
-        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-3/4" 
+        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4" 
           style="background-image:url({{ asset('images/produits/necklace2.jpg') }})">
 
             <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-            <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+              <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Collier'])}}"  class="h-full w-full absolute"></a></div>
             <p class="absolute top-3/4 w-full text-center text-white">Colliers</p>
         </div>
 
       {{-- Onglet Bracelets --}}
-        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-sm:w-3/4" 
+        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4" 
         style="background-image:url({{ asset('images/produits/bracelet2.jpg') }})">
 
           <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-          <a href="{{ route('boutique') }}" class="h-full w-full absolute"></a></div>
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Bracelet'])}}" class="h-full w-full absolute"></a></div>
           <p class="absolute top-3/4 w-full text-center text-white">Bracelets</p>
+        </div>
+
+        {{-- Onglet Bracelets --}}
+        <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4" 
+        style="background-image:url({{ asset('images/produits/boucles2.jpg') }})">
+
+          <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Boucles oreilles'])}}" class="h-full w-full absolute"></a></div>
+          <p class="absolute top-3/4 w-full text-center text-white">Boucles d'oreilles</p>
         </div>
 
     </div>

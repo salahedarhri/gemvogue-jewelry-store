@@ -122,6 +122,7 @@ class PanierController extends Controller{
 
             // Créer la commande 
             $order = new Order();
+
             $order->status = 'Non payé';
             $order->prix_total = $prixTotal;
             $order->session_id = $session->id;
@@ -151,6 +152,8 @@ class PanierController extends Controller{
             }
 
             Cart::instance('cart')->store($client->name);
+
+            Cart::instance('cart')->destroy();
 
             return view('checkout.success',compact('order','client'));
 

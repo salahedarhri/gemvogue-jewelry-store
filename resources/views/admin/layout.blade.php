@@ -51,7 +51,7 @@
 
         {{-- Mobile seulement --}}
         <div class="dropdown dropdown-bottom md:hidden">
-          <label tabindex="0" class="btn m-1 bg-slate-100 hover:bg-slate-300 border-slate-100 hover:border-slate-500"><i class="ri-menu-fill text-lg"></i></label>
+          <label tabindex="0" class="btn m-1 bg-neutral-100 hover:bg-neutral-300 border-neutral-100 hover:border-neutral-500"><i class="ri-menu-fill text-lg"></i></label>
           <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-darkShade text-whiteShade">
             <li><a href="{{ route('admin.utilisateurs.index')}}"><i class="ri-account-circle-line mr-3 text-2xl"></i>Utilisateurs</a></li>
             <li><a href="{{ route('admin.bijoux.index')}}"><i class="ri-vip-diamond-line mr-3 text-2xl"></i>Produits</a></li>
@@ -60,21 +60,21 @@
         </div>
 
         <ul class="flex items-center ml-4 max-md:hidden">
-          <li class="mr-2"><a href="#" class="text-slate-500 hover:text-slate-700 font-semiBold">Dashboard</a></li>
-          <li class="mr-2 text-slate-500">/</li>
-          <li class="mr-2 text-slate-500">Analytiques</li>
+          <li class="mr-2"><a href="#" class="text-neutral-500 hover:text-neutral-700 font-semiBold">Dashboard</a></li>
+          <li class="mr-2 text-neutral-500">/</li>
+          <li class="mr-2 text-neutral-500">Analytiques</li>
         </ul>
       
       <ul class="ml-auto">
         <li class="flex items-center">
-          <i class="ri-search-line text-xl mr-2 text-slate-700"></i>
+          <i class="ri-search-line text-xl mr-2 text-neutral-700"></i>
           {{-- Recherche --}}
           <form action="" method="post">
-            <input type="text" placeholder="Rechercher" class="rounded appearence-none border-slate-300 focus:border-slate-300 mr-2 h-10 max-md:w-32">
+            <input type="text" placeholder="Rechercher" class="rounded appearence-none border-neutral-300 focus:border-neutral-300 mr-2 h-10 max-md:w-32">
           </form>
           {{-- Profil --}}
           <div class="dropdown dropdown-end p-0 m-0">
-            <label tabindex="0" class="btn bg-slate-100 hover:bg-red-100 border-slate-100 hover:border-red-300 px-2">
+            <label tabindex="0" class="btn bg-neutral-100 hover:bg-red-100 border-neutral-100 hover:border-red-300 px-2">
               <i class="ri-account-circle-fill text-4xl text-darkShade"></i>
             </label>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-white">

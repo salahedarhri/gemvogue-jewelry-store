@@ -2,28 +2,47 @@
 
 @section('content')
 
-<div class="container mt-8">
-    <div class="max-w-md mx-auto bg-beige p-6 rounded-lg shadow-lg">
-        <h3 class="text-3xl font-semibold mb-4 text-center">Merci pour votre achat, {{ $client->name }}!</h3>
+<div class="w-full bg-third md:py-24 p-2">
 
-        <p class="text-lg">Nous tenons à vous remercier sincèrement pour votre récent achat sur notre site. C'est un plaisir de vous compter parmi nos clients.</p>
+    <div class="max-w-7xl mx-auto bg-white bg-opacity-50 rounded-xl border border-secondDarker">
 
-        <p class="text-lg">Votre commande a été traitée avec soin, et nous sommes en train de la préparer pour l'expédition. Dès que votre commande sera prête à partir, nous vous enverrons un email de confirmation avec tous les détails d'expédition.</p>
+        {{-- Remerciements --}}
+        <div class="flex flex-col text-center gap-8 p-8 pb-0">
+            <h3 class="text-3xl font-semibold font-playfair">Merci pour votre achat,  {{ $client->name }}! </h3>
+            <p class="font-dmsans">Nous tenons à vous remercier sincèrement pour votre récent achat sur notre site. C'est un plaisir de vous compter parmi nos clients.</p>
+        </div>
+    
+        <div class="grid grid-cols-3 max-md:grid-cols-1 justify-center place-items-center gap-8 ">
+    
+            <div class="font-dmsans p-4 md:px-8 flex flex-col gap-4 max-md:text-center md:col-span-2">
+                <p >Votre commande a été traitée avec soin, et nous sommes en train de la préparer pour l'expédition. Dès que votre commande sera prête à partir,  nous vous enverrons un email de confirmation  à cette adresse : <b class="text-softGreen underline">{{$client->email}}</b> avec tous les détails d'expédition.</p>
+                <p class="">Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous sommes là pour vous aider!</p>
+                <p class="">Merci encore pour votre confiance.</p>
+                <p class="mt-8 text-secondDarker font-playfair">Cordialement,</p>
+                <p class="italic text-secondDarker font-playfair">GemVogue</p>
+    
+            </div>
 
-        <div class="bg-green-100 text-green-800 p-4 my-4">
-            <p class="text-lg mb-0">Votre paiement a été traité avec succès. Vous pouvez consulter les détails de votre commande à tout moment en vous connectant à votre compte sur notre site.</p>
+            <img src="{{asset('images/composants/confirm.png')}}" loading="lazy" alt="" srcset="" 
+            class="object-center object-cover">
+    
         </div>
 
-        <p class="text-lg">Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter. Nous sommes là pour vous aider!</p>
+        <div class="flex flex-row justify-between p-8">
 
-        <p class="text-lg">Merci encore pour votre confiance.</p>
 
-        <hr class="my-4">
+            <a href="{{ route('accueil') }}" class=><button class="py-2 px-4 bg-second text-white font-dmsans rounded shadow-lg ">Rediriger vers l'accueil</button></a>
+            <a href="{{ route('boutique') }}" class=><button class="py-2 px-4 bg-rose-500 text-white font-dmsans rounded shadow-lg ">Continuer vos achats</button></a>
 
-        <p class="text-gray-600">Cordialement,</p>
-        <p class="italic">GemVogue</p>
+        </div>
+
+
     </div>
+
+
+
 </div>
+
 
 @endsection
 

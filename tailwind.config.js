@@ -40,6 +40,9 @@ export default {
                 third:'#EAD8CE',
                 fourth:'#a86570',
                 fourthDarker:'#82444e',
+
+                softGreen:'#3b7830',
+                softGreenDarker:'#2b5e22',
             }
         },
     },
