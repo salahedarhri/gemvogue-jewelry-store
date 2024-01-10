@@ -4,6 +4,7 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BijouController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 //Admin
 use App\Http\Controllers\Admin\AdminUserController;
@@ -65,12 +66,7 @@ Route::middleware('admin.check')->group(function () {
       })->name('admin.dashboard');
   });
 
-Route::get('/dashboard', function () {
-    if (auth()->user()->is_admin) {
-        return view('admin.dashboard');
-    } else {
-        return view('dashboard');
-    }})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 //Administration
 Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){

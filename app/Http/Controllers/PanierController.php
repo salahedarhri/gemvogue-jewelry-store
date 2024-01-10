@@ -143,7 +143,12 @@ class PanierController extends Controller{
             //Détails du client ( address->country , email, name)
             $client = $session->customer_details;
 
-            //Mettre à jour la commande
+            $produits = $session->allLineItems($sessionId,null,null);
+
+            $descriptions = collect($produits)->pluck('description')->unique()->toArray();
+
+            $bijoux = Bijou::whereIn('nom', $descriptions)->get();
+
             $order = Order::where('session_id', $sessionId)->first();
 
             if ($order->status === 'Non payé') {
@@ -155,7 +160,7 @@ class PanierController extends Controller{
 
             Cart::instance('cart')->destroy();
 
-            return view('checkout.success',compact('order','client'));
+            return view('checkout.success',compact('order','client','produits','bijoux'));
 
         }
         
