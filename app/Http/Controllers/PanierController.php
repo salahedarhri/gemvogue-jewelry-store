@@ -147,8 +147,6 @@ class PanierController extends Controller{
 
             $descriptions = collect($produits)->pluck('description')->unique()->toArray();
 
-            $bijoux = Bijou::whereIn('nom', $descriptions)->get();
-
             $order = Order::where('session_id', $sessionId)->first();
 
             if ($order->status === 'Non payé') {
@@ -160,7 +158,7 @@ class PanierController extends Controller{
 
             Cart::instance('cart')->destroy();
 
-            return view('checkout.success',compact('order','client','produits','bijoux'));
+            return view('checkout.success',compact('order','client'));
 
         }
         

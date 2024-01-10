@@ -69,8 +69,8 @@
     </div>
 
     <!-- Fourth part -->
-    <div class="w-full bg-third text-first border-t border-secondDarker">
-      <div class="max-w-7xl mx-auto grid grid-cols-2 max-md:grid-cols-1 md:gap-4 place-items-center ">
+    <div class="w-full bg-fourth text-third border-t border-secondDarker">
+      <div class="max-w-7xl mx-auto grid grid-cols-2 max-md:grid-cols-1 md:gap-4 place-items-center p-4">
 
         <img src="{{ asset('images/composants/landing-4women.png')}}" alt="4women" class="object-cover object-center max-md:h-96 w-auto md:p-6 max-md:p-4">
 

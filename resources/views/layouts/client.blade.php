@@ -99,28 +99,29 @@
         <p class="text-xl font-semibold font-playfair text-second">Rejoignez notre NewsLetter</p>
         <p class="py-4 text-sm">S'abonner à GemVogue vous permet de rester informé(e) des dernières tendances et designs de l'industrie de la bijouterie.</p>
         <div class="flex max-lg:justify-center font-playfair">
-          <input type="email" name="" id="" placeholder="Email" class="rounded-l-full max-md:w-36 py-2 appearance-none">
-          <input type="submit" value="Envoyer" class="rounded-r-full py-2 px-5 bg-second text-third hover:bg-secondDarker hover:text-white transition ">
+
+          {{-- <form action="{{ route('Newsletter')}}" method="POST"> --}}
+            {{-- @csrf --}}
+            <input type="email" name="email" placeholder="Email" class="rounded-l-full max-md:w-36 py-2 appearance-none">
+            <input type="submit" value="Envoyer" class="rounded-r-full py-2 px-5 bg-second text-third hover:bg-secondDarker hover:text-white transition ">
+          {{-- </form> --}}
         </div>  
       </div>
     
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">Boutique</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-          <a href="">Collections</a>
-          <a href="">Bagues</a>
-          <a href="">Bracelets</a>
-          <a href="">Collier</a>
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'boucles oreilles'])}}">Boucles d'oreilles</a>
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Anneau'])}}">Bagues</a>
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Bracelet'])}}">Bracelets</a>
+            <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Collier'])}}">Collier</a>
         </div>
       </div>
     
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">À propos</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-          <a href="">À propos de nous</a>
-          <a href="">Contact</a>
-          <a href="">Politique de confidentialité</a>
-          <a href="">FAQ</a>
+          <a href="{{ route('apropos')}}">À propos de nous</a>
         </div>
       </div>
     
@@ -128,7 +129,7 @@
         <p class="text-second text-xl py-2 font-playfair">Nos contacts</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
           <a href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
-          <a href="">+212611223344</a>
+          <a href="https://wa.me/212611223344">+212611223344</a>
         </div>
       </div>
     

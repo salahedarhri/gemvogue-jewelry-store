@@ -28,7 +28,7 @@
     
         </div>
 
-        <div class="p-4">
+        {{-- <div class="p-4">
 
             <h4 class="p-2">Articles achetées :</h4>
             <div class="max-w-4xl mx-auto grid grid-cols-2 max-md:grid-cols-1 gap-2">
@@ -43,7 +43,7 @@
 
             </div>
             
-        </div>
+        </div> --}}
 
         <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-4 max-sm:w-full justify-between p-8">
             <a href="{{ route('accueil') }}" class=><button class="py-2 px-4 bg-second text-white font-dmsans rounded shadow-lg ">Rediriger vers l'accueil</button></a>

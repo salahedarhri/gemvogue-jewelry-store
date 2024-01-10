@@ -3,6 +3,7 @@
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BijouController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,10 @@ Route::get('/apropos', function () { return view('apropos');     })
 Route::get('/', function(){ return view('accueil'); })->name('accueil');
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
+
+//Newsletter
+// Route::post('/newsletter', [NewsletterController::class, 'newsletter_email'])->name('Newsletter');
+
 
 //Sorting & Filter 
 Route::get('/boutique/byCategory',[ShopController::class,'sortCategory'])->name('shopCategoryFilter');
