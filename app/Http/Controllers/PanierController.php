@@ -14,7 +14,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PanierController extends Controller{
 
     public function index(){
-
         $cartItems = Cart::instance('cart')->content();
 
         if($cartItems->count() >= 3){
@@ -23,8 +22,7 @@ class PanierController extends Controller{
             $livraison = (float)45;
         }
 
-        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());
-        
+        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());  
         $total = $subtotal + $livraison;
 
         return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'));
@@ -54,7 +52,6 @@ class PanierController extends Controller{
     
         return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
     }
-    
 
     public function deleteItem($rowId){
 
@@ -102,7 +99,6 @@ class PanierController extends Controller{
         }
 
         $lineItems[] = [
-
             'price_data' => [
                 'currency' => 'mad',
                 'product_data' => [
@@ -117,7 +113,7 @@ class PanierController extends Controller{
                 'line_items' => $lineItems,
                 'mode' => 'payment',
                 'success_url' => route('success',[],true ) . "?session_id={CHECKOUT_SESSION_ID}",
-                'cancel_url' => route('cancel',[],true ),
+                'cancel_url' => route('cancel'),
             ]);
 
             // Créer la commande 
@@ -129,46 +125,54 @@ class PanierController extends Controller{
             $order->save();
     
             return redirect($session->url);
+    }
+        
+    public function success(Request $request){
+
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $sessionId = $request->get('session_id');
+
+        // Données de la session en fonction du session_id
+        $session = \Stripe\Checkout\Session::retrieve($sessionId);
+
+        //Détails du client ( address->country , email, name)
+        $client = $session->customer_details;
+
+        $produits = $session->allLineItems($sessionId,null,null);
+
+        $descriptions = collect($produits)->pluck('description')->unique()->toArray();
+
+        $order = Order::where('session_id', $sessionId)->first();
+
+        if ($order->status === 'Non payé') {
+            $order->status = 'Payé';
+            $order->save(); 
         }
+
+        Cart::instance('cart')->store($client->name);
+
+        Cart::instance('cart')->destroy();
+
+        return view('checkout.success',compact('order','client'));
+
+    }
         
-        public function success(Request $request){
-
-            Stripe::setApiKey(env('STRIPE_SECRET'));
-
-            $sessionId = $request->get('session_id');
-
-            // Données de la session en fonction du session_id
-            $session = \Stripe\Checkout\Session::retrieve($sessionId);
-
-            //Détails du client ( address->country , email, name)
-            $client = $session->customer_details;
-
-            $produits = $session->allLineItems($sessionId,null,null);
-
-            $descriptions = collect($produits)->pluck('description')->unique()->toArray();
-
-            $order = Order::where('session_id', $sessionId)->first();
-
-            if ($order->status === 'Non payé') {
-                $order->status = 'Payé';
-                $order->save(); 
-            }
-
-            Cart::instance('cart')->store($client->name);
-
-            Cart::instance('cart')->destroy();
-
-            return view('checkout.success',compact('order','client'));
-
-        }
-        
-        
-
     public function cancel(){
+        
+        $cartItems = Cart::instance('cart')->content();
 
-        $this->index();
+        if($cartItems->count() >= 3){
+            $livraison = (float)60;
+        }else{
+            $livraison = (float)45;
+        }
 
-        return view('panier')->with('error','Paiement échoué. Vérifiez vos données ou réessayez plus tard. Contactez le support en cas de problème persistant. Merci.');
+        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());  
+        $total = $subtotal + $livraison;
+
+        return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'))
+        ->with('error','Paiement échoué. Vérifiez vos données ou réessayez plus tard. Contactez le support en cas de problème persistant. Merci.');
     }
 
 

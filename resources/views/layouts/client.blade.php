@@ -24,13 +24,13 @@
     {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a href="{{ route('boutique') }}">
-      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 décembre 2023)</p>
+      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 Mars 2024)</p>
     </a>
   </div>
 
   <!-- Navbar -->
   <div class="w-full font-dmsans bg-third border-b border-second">
-    <nav class="cabin flex justify-between px-6 py-3 max-w-5xl mx-auto text-first">
+    <nav class="cabin flex justify-between px-6 py-3 max-w-6xl mx-auto text-first">
   
       <div class="flex gap-10 items-center max-md:hidden">
         <a href="{{ route('accueil') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Accueil</a>
@@ -91,7 +91,7 @@
   @yield('content')
   
   <!-- Footer -->
-  <footer class="w-full border-t border-second bg-third font-martel">
+  <footer class="w-full border-t-2 border-second bg-third font-martel">
     <div class="grid lg:grid-cols-5 md:grid-cols-2 max-md:grid-cols-1 max-lg:text-center max-w-7xl mx-auto max-md:p-3 md:gap-4 max-md:gap-2 md:p-6">
 
       <!-- Email -->

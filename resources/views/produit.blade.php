@@ -5,15 +5,15 @@
 
         <!-- Alerts succes ou refus -->
         @if(session('success'))
-          <div class="alert alert-success max-w-xl mx-auto">
+          <div class="alert alert-success sm:max-w-xl mx-auto max-sm:px-3">
               <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               <span>{{ session('success') }}</span>
           </div>
         @endif
         @if(session('error'))
-          <div class="alert alert-error max-w-xl mx-auto">
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>{{ session('error') }}</span>
+          <div class="alert alert-error sm:max-w-xl mx-auto max-sm:px-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>{{ session('error') }}</span>
           </div>
         @endif
 
@@ -31,7 +31,7 @@
           </div>
 
           {{-- Mobile screen --}}
-          <div class="carousel max-w-sm mx-auto aspect-square object-cover md:hidden max-md:visible shadow-lg">
+          <div class="carousel max-w-sm mx-auto aspect-square object-cover md:hidden max-md:visible shadow-lg pt-3">
 
             <div id="slide1" class="carousel-item relative w-full">
                 <img src="{{ asset('images/produits/' . $bijou->photo1) }}" class="w-full" />
@@ -48,7 +48,7 @@
           </div>
 
           {{-- Description et Ajout au panier --}}
-          <div class="flex flex-col font-playfair p-4 max-md:w-96 max-md:mx-auto max-md:items-center">
+          <div class="flex flex-col font-playfair p-4 max-md:w-fit max-md:border-b max-md:border-second max-md:mx-auto max-md:items-center">
 
             <h2 class="text-2xl font-bold ">{{ $bijou->nom }}</h2>
             <p class="font-dmsans font-semibold pt-4">{{ $bijou->prix }} DH</p>

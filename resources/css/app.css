@@ -30,3 +30,5 @@
   -webkit-appearance: textfield;
           appearance: textfield;
 }
+
+[x-cloak] { display: none !important; }
