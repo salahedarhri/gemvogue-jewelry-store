@@ -134,49 +134,6 @@
       </div>
     
     </div>
-    
-    {{-- <div class="grid lg:grid-cols-5 md:grid-cols-2 max-md:grid-cols-1 max-lg:text-center max-w-7xl mx-auto max-md:p-3 text-first md:gap-4 max-md:gap-2 md:p-6">
-  
-      <!-- Email -->
-      <div class="lg:col-span-2 max-lg:col-span-1 p-4">
-        <p class="text-xl font-semibold">Join our email list</p>
-        <p class="py-4">Subscribing to Jewels allows you to stay updated on the latest trends and designs in the jewelry industry.</p>
-        <div class="flex max-lg:justify-center">
-          <input type="email" name="" id="" placeholder="Email" class="rounded-l-full max-md:w-36 py-2 appearence-none">
-          <input type="submit" value="Send" class="rounded-r-full py-2 px-5 bg-second text-third">
-        </div>  
-      </div>
-  
-      <div class="flex flex-col">
-        <p class="text-second text-xl py-2">Shop</p>
-        <div class="flex flex-col justify-evenly">
-          <a href="">Collections</a>
-          <a href="">Rings</a>
-          <a href="">Bracelets</a>
-          <a href="">Chains</a>
-          <a href="">Wedding Rings</a>
-        </div>
-      </div>
-  
-      <div class="flex flex-col">
-        <p class="text-second text-xl py-2">About</p>
-        <div class="flex flex-col justify-evenly">
-          <a href="">About us</a>
-          <a href="">Contact</a>
-          <a href="">Privacy Policy</a>
-          <a href="">FAQ's</a>
-        </div>
-      </div>
-  
-      <div class="flex flex-col">
-        <p class="text-second text-xl py-2">Our Contacts</p>
-        <div class="flex flex-col justify-evenly">
-          <a href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
-          <a href="">+212611223344</a>
-        </div>
-      </div>
-  
-    </div> --}}
   </footer>
 
 </body>

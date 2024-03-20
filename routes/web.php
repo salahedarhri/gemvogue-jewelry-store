@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminBijouController;
 
+use App\Livewire\afficherBoutique;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,7 @@ Route::get('/apropos', function () { return view('apropos');     })
 //Display de bijoux
 Route::get('/', function(){ return view('accueil'); })->name('accueil');
 Route::get('/boutique', [BijouController::class, 'index'])->name('boutique');
+Route::get('/boutique_nv' , AfficherBoutique::class );
 Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 
 //Newsletter

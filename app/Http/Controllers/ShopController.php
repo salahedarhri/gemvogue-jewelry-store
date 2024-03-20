@@ -26,7 +26,8 @@ class ShopController extends Controller
 
          //Prix : selection + entrer fourchette 
          public function sortPrix(Request $request){
-                if($request->has('prixRange')){
+
+            if($request->has('prixRange')){
                 $prixRange = $request->prixRange;
 
                 switch ($prixRange) {
