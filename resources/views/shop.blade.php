@@ -5,7 +5,7 @@
 <div class="w-full font-dmsans font-swap bg-third">
 
   {{-- Banner --}}
-  <div class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center"
+  <div class="max-w-screen-2xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center"
     style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
     <div class="h-full w-full bg-amber-950 bg-opacity-30">
       <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
@@ -35,13 +35,13 @@
   @endif
 
 
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-4 md:grid-cols-3 justify-center gap-4 p-4">
+  <div class="max-w-screen-2xl mx-auto flex flex-row max-md:flex-col justify-center gap-2 p-4">
 
     {{-- Tri --}}
-    <div class="w-60 text-sm flex flex-col dm-sans p-2 max-md:mx-auto">
+    <div class="w-80 text-sm flex flex-col dm-sans p-2 mx-auto">
       <p class="text-2xl font-bold font-playfair mb-3 underline-offset-4 underline ">Affiner Par</p>
 
-      <div x-data="{open1:false}" class="py-1">
+      <div x-cloak x-data="{open1:false}" x-init=" open1=window.innerWidth > 768" class="py-1">
 
         <button @click="open1 =! open1" class="text-xl font-bold font-playfair">
           <div class="flex gap-2 justify-between">
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div x-data="{open2:false}" class="py-1">
+      <div x-cloak x-data="{open2:false}" x-init=" open2=window.innerWidth > 768" class="py-1">
 
         <button @click="open2 =! open2" class="text-xl font-bold font-playfair">
           <div class="flex gap-2">
@@ -81,7 +81,7 @@
 
       </div>
 
-      <div x-data="{open3:false}" class="py-1">
+      <div x-cloak x-data="{open3:false}" x-init=" open3=window.innerWidth > 768" class="py-1">
 
         <button @click="open3 =! open3" class="text-xl font-bold font-playfair">
           <div class="flex gap-2">
@@ -101,12 +101,12 @@
 
     </div>
 
-    <div class="lg:col-span-3 md:col-span-2">
+    <div class="w-fit">
 
       <div class="flex
        {{-- max-sm:flex-col max-sm:gap-2 --}}
         items-center p-3">
-        <p class=" font-bold">{{ $bijoux->total()}} Articles Trouvées</p>
+        <p class=" font-bold">{{ $bijoux->count()}} Articles Trouvées</p>
 
         {{-- <form action="shopOrder" method="post">
           <label for="order" class="text-sm">Trier par :</label>
@@ -127,9 +127,9 @@
         <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
 
           <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
-            <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database"
+            <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="eager"
               class="w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
-            <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover"
+            <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy"
               class="w-full h-auto aspect-square object-cover object-center rounded-t-xl">
             <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
               <p class="truncate font-semibold">{{ $bijou->nom }}</p>

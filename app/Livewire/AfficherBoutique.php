@@ -10,35 +10,58 @@ class AfficherBoutique extends Component
 {
     use WithPagination;
 
-    public $Categorie;
-    public $PrixFourchette;
+    public $bijoux;
+    public $nbArticles = 12;
+    public $categories = [];
+    public $metaux = [];
+    public $ordre='asc';
     public $prixMin;
     public $prixMax;
 
-    public $parPage = 12;
+    public function mount(){
+        $this->chargerBijoux();
+    }
 
     public function ChargerPlus(){
-        $this->parPage += 10;
+        $this->nbArticles += 12;
+        $this->chargerBijoux();
     }
 
-    public function filtrerCategorie(){
+    public function chargerBijoux(){
 
+        $query = Bijou::query();
+
+        if (!empty($this->categories)) {
+            $query->whereIn('type', $this->categories);
+        }
+
+        if (!empty($this->metaux)) {
+            $query->whereIn('type_metal', $this->metaux);
+        }
+
+        if($this->prixMin && $this->prixMax){
+            $query->whereBetween('prix', [$this->prixMin,$this->prixMax]);
+        }
+
+        if($this->ordre){
+            $query->orderBy('prix',$this->ordre);
+        }
+
+        $this->bijoux = $query->take($this->nbArticles)->get();
     }
 
-    public function filtrerPrixFourchette(){
-
+    public function rangerPrix( $prixMin, $prixMax ){
+        $this->prixMin = $prixMin;
+        $this->prixMax = $prixMax;
+        $this->chargerBijoux();
     }
 
-    public function filtrerPrix(){
+    public function render(){
 
-    }
-
-    public function render()
-    {
-        $bijoux = Bijou::paginate($this->parPage);
+        $this->chargerBijoux();
 
         return view('livewire.afficher-boutique',[
-            'bijoux' => $bijoux,
+            'bijoux' => $this->bijoux,
         ])->extends('layouts.client')->section('content');  
     }
 }

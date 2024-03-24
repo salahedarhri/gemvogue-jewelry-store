@@ -22,10 +22,10 @@
           {{-- Medium/Big screen --}}
           <div class="grid lg:col-span-2 max-md:col-span-1 lg:grid-cols-2 md:grid-cols-1 gap-3 max-md:hidden p-4">
             
-            <div><img src="{{ asset('images/produits/' . $bijou->photo1) }}" 
+            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo1) }}" 
               alt="Photo 1" class="w-full max-w-sm aspect-square object-cover shadow-lg">
             </div>
-            <div><img src="{{ asset('images/produits/' . $bijou->photo2) }}" 
+            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo2) }}" 
               alt="Photo 2" class="w-full max-w-sm aspect-square object-cover shadow-lg">
             </div>
           </div>

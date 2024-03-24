@@ -32,38 +32,56 @@
         @endif
 
         {{-- Filtres et Ordre Sticky --}}
-        <div class="max-w-7xl mx-auto flex flex-row px-2 py-4 justify-between text-sm">
-            <div class="flex flex-row gap-4">
-                <p>Filtre : </p>
-                <p>Catégorie &#11033;</p>
-                <p>Prix &#11033;</p>
-                <p>Métal &#11033;</p>
+        <div class="max-w-7xl mx-auto flex flex-col px-2 py-4 justify-center align-center place-items-center text-sm">
+            <div class="flex flex-col p-2 justify-center align-center">
+                <p class="px-2 font-bold">Catégorie</p>
+                <label for="Anneau"><input type="checkbox" wire:model.live="categories" value="Anneau">Anneau</label>
+                <label for="Bracelet"><input type="checkbox" wire:model.live="categories" value="Bracelet">Bracelet</label>
+                <label for="Collier"><input type="checkbox" wire:model.live="categories" value="Collier">Collier</label>
             </div>
-            <div class="flex flex-col gap-4">
-                <p>Trier par : </p>
 
+            <div class="flex flex-col p-2 justify-center align-center">
+                <p class="px-2 font-bold">Métal</p>
+                <label for="Or"><input type="checkbox" wire:model.live="metaux" value="Or">Or</label>
+                <label for="Platine"><input type="checkbox" wire:model.live="metaux" value="Platine">Platine</label>
+                <label for="Argent"><input type="checkbox" wire:model.live="metaux" value="Argent">Argent</label>
             </div>
+
+            <div class="flex flex-col p-2 justify-center align-center">
+                <p class="px-2 font-bold">Prix</p>
+                <button wire:click="rangerPrix(1,500)">1 - 500</button>
+                <button wire:click="rangerPrix(500,1000)">500 - 1000</button>
+                <button wire:click="rangerPrix(1000,2000)">1000 - 2000</button>
+            </div>
+
+            <div class="flex flex-col p-2 justify-center align-center">
+                <p class="px-2 font-bold">Trier par</p>
+                <select wire:model.live="ordre">
+                    <option value="desc">Prix Décroissant</option>
+                    <option value="asc">Prix Croissant</option>
+                </select>
+            </div>
+
+
         </div>
         
+        {{-- Produits --}}
         <div class="max-w-7xl mx-auto justify-center ">
-        
-            {{-- Produits --}}
             <div class="grid lg:grid-cols-4 md:grid-cols-3 max-md:grid-cols-2 items-center gap-2 p-3">
         
                 @foreach ($bijoux as $bijou)
                     <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}">
-            
-                    <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
-                        <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database"
-                            class="w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
-                        <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover"
-                            class="w-full h-auto aspect-square object-cover object-center rounded-t-xl">
-                        <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
-                            <p class="truncate font-semibold">{{ $bijou->nom }}</p>
-                            <p class="text-xs"> {{ $bijou->type_metal }}</p>
-                            <p class="font-semibold text-amber-800">{{ $bijou->prix }} DH</p>
+                        <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
+                            <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="lazy" alt="img bijou database"
+                                class="w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
+                            <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy" alt="img bijou hover"
+                                class="w-full h-auto aspect-square object-cover object-center rounded-t-xl">
+                            <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
+                                <p class="truncate font-semibold">{{ $bijou->nom }}</p>
+                                <p class="text-xs"> {{ $bijou->type_metal }}</p>
+                                <p class="font-semibold text-amber-800">{{ $bijou->prix }} DH</p>
+                            </div>
                         </div>
-                    </div>
                     </a>
                 @endforeach
             </div>
@@ -71,11 +89,10 @@
             <div class="w-full mx-auto flex justify-center align-center md:p-4 max-md:p-2">
 
                 <button wire:click="ChargerPlus" wire:loading.attr="disabled"
-                    class="px-4 py-2 bg-second text-white w-52">
-                    <p wire:loading.remove>Charger Plus</p>
+                    class=" bg-second text-third w-52 flex justify-center align-center px-4 py-2 rounded shadow hover:bg-third border-2 border-transparent hover:border-second hover:text-second transition-all">
+                    <p wire:loading.remove class="max-sm:text-sm">Charger Plus</p>
                     <span wire:loading class="loading loading-dots loading-md"></span>
                 </button>
-                {{-- {{$bijoux->withQueryString()->links()}} --}}
             </div>
         
         </div>
