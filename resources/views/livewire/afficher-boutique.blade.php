@@ -39,21 +39,22 @@
                 <label for="Bracelet"><input type="checkbox" wire:model.live="categories" value="Bracelet">Bracelet</label>
                 <label for="Collier"><input type="checkbox" wire:model.live="categories" value="Collier">Collier</label>
             </div>
-
             <div class="flex flex-col p-2 justify-center align-center">
                 <p class="px-2 font-bold">Métal</p>
                 <label for="Or"><input type="checkbox" wire:model.live="metaux" value="Or">Or</label>
                 <label for="Platine"><input type="checkbox" wire:model.live="metaux" value="Platine">Platine</label>
                 <label for="Argent"><input type="checkbox" wire:model.live="metaux" value="Argent">Argent</label>
             </div>
-
             <div class="flex flex-col p-2 justify-center align-center">
                 <p class="px-2 font-bold">Prix</p>
-                <button wire:click="rangerPrix(1,500)">1 - 500</button>
-                <button wire:click="rangerPrix(500,1000)">500 - 1000</button>
-                <button wire:click="rangerPrix(1000,2000)">1000 - 2000</button>
+                <label for="prix" class="flex flex-col">
+                    <input type="radio" wire:model.live="fourchette" name="fourchette" value="">Toutes les prix
+                    <input type="radio" wire:model.live="fourchette" name="fourchette" value="1 - 500">1 - 500
+                    <input type="radio" wire:model.live="fourchette" name="fourchette" value="500 - 1000">500 - 1000
+                    <input type="radio" wire:model.live="fourchette" name="fourchette" value="1000 - 2000">1000 - 2000
+                    <input type="radio" wire:model.live="fourchette" name="fourchette" value="2000 - 4000">2000 - 4000
+                </label>
             </div>
-
             <div class="flex flex-col p-2 justify-center align-center">
                 <p class="px-2 font-bold">Trier par</p>
                 <select wire:model.live="ordre">
@@ -61,8 +62,25 @@
                     <option value="asc">Prix Croissant</option>
                 </select>
             </div>
-
-
+            <div class="">
+                <p>Filtres</p>
+                @foreach ($categories as $categorie)
+                    <button wire:click="effacerCategorie('{{ $categorie }}')">
+                        {{ $categorie }} <span>&times;</span>
+                    </button>
+                @endforeach
+                @foreach ($metaux as $metal)
+                    <button wire:click="effacerMetal('{{ $metal }}')">
+                        {{ $metal }} <span>&times;</span>
+                    </button>
+                @endforeach
+                @if ($fourchette)
+                    <button wire:click="effacerFourchette()">
+                        {{ $fourchette }} <span>&times;</span>
+                    </button>
+                @endif
+            </div>
+            
         </div>
         
         {{-- Produits --}}
@@ -87,12 +105,14 @@
             </div>
     
             <div class="w-full mx-auto flex justify-center align-center md:p-4 max-md:p-2">
+                @if($charger == true)
+                    <button wire:click="ChargerPlus" wire:loading.attr="disabled"
+                        class=" bg-second text-third w-52 flex justify-center align-center px-4 py-2 rounded shadow hover:bg-third border-2 border-transparent hover:border-second hover:text-second transition-all">
+                        <p wire:loading.remove class="max-sm:text-sm">Charger Plus</p>
+                        <span wire:loading class="loading loading-dots loading-md"></span>
+                    </button>
+                @endif
 
-                <button wire:click="ChargerPlus" wire:loading.attr="disabled"
-                    class=" bg-second text-third w-52 flex justify-center align-center px-4 py-2 rounded shadow hover:bg-third border-2 border-transparent hover:border-second hover:text-second transition-all">
-                    <p wire:loading.remove class="max-sm:text-sm">Charger Plus</p>
-                    <span wire:loading class="loading loading-dots loading-md"></span>
-                </button>
             </div>
         
         </div>

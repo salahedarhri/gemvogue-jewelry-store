@@ -14,9 +14,11 @@ class AfficherBoutique extends Component
     public $nbArticles = 12;
     public $categories = [];
     public $metaux = [];
+    public $fourchette;
     public $ordre='asc';
     public $prixMin;
     public $prixMax;
+    public $charger = true;
 
     public function mount(){
         $this->chargerBijoux();
@@ -39,8 +41,9 @@ class AfficherBoutique extends Component
             $query->whereIn('type_metal', $this->metaux);
         }
 
-        if($this->prixMin && $this->prixMax){
-            $query->whereBetween('prix', [$this->prixMin,$this->prixMax]);
+        if(!empty($this->fourchette)){
+            [$min, $max] = explode('-', $this->fourchette);
+            $query->orWhereBetween('prix', [$min, $max]);
         }
 
         if($this->ordre){
@@ -48,13 +51,27 @@ class AfficherBoutique extends Component
         }
 
         $this->bijoux = $query->take($this->nbArticles)->get();
+
+        if( count($this->bijoux) < $this->nbArticles ){
+            $this->charger = false;
+        }
     }
 
-    public function rangerPrix( $prixMin, $prixMax ){
-        $this->prixMin = $prixMin;
-        $this->prixMax = $prixMax;
+    public function effacerCategorie($categorie){
+        $this->categories = array_diff($this->categories, [$categorie]);
         $this->chargerBijoux();
     }
+
+    public function effacerMetal($metal){
+        $this->metaux = array_diff($this->metaux, [$metal]);
+        $this->chargerBijoux();
+    }
+
+    public function effacerFourchette(){
+        $this->fourchette = null;
+        $this->chargerBijoux();
+    }
+
 
     public function render(){
 
@@ -62,6 +79,8 @@ class AfficherBoutique extends Component
 
         return view('livewire.afficher-boutique',[
             'bijoux' => $this->bijoux,
+            'charger' => $this->charger,
+            'fourchette' => $this->fourchette,
         ])->extends('layouts.client')->section('content');  
     }
 }
