@@ -16,8 +16,6 @@ class AfficherBoutique extends Component
     public $metaux = [];
     public $fourchette;
     public $ordre='asc';
-    public $prixMin;
-    public $prixMax;
     public $charger = true;
 
     public function mount(){
@@ -43,7 +41,7 @@ class AfficherBoutique extends Component
 
         if(!empty($this->fourchette)){
             [$min, $max] = explode('-', $this->fourchette);
-            $query->orWhereBetween('prix', [$min, $max]);
+            $query->whereBetween('prix', [$min, $max]);
         }
 
         if($this->ordre){
@@ -58,20 +56,22 @@ class AfficherBoutique extends Component
     }
 
     public function effacerCategorie($categorie){
+        $this->nbArticles = 12;
         $this->categories = array_diff($this->categories, [$categorie]);
         $this->chargerBijoux();
     }
 
     public function effacerMetal($metal){
+        $this->nbArticles = 12;
         $this->metaux = array_diff($this->metaux, [$metal]);
         $this->chargerBijoux();
     }
 
     public function effacerFourchette(){
+        $this->nbArticles = 12;
         $this->fourchette = null;
         $this->chargerBijoux();
     }
-
 
     public function render(){
 
