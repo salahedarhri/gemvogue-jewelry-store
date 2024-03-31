@@ -33,4 +33,6 @@
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%;  }
+  z-index:30;
+  width: 100%;
+  animation: fadeIn 0.3s ease; }

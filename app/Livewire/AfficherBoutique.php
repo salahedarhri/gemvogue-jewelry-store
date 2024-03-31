@@ -16,15 +16,10 @@ class AfficherBoutique extends Component
     public $metaux = [];
     public $fourchette;
     public $ordre='asc';
-    public $charger = true;
-
-    public function mount(){
-        $this->chargerBijoux();
-    }
+    // public $charger = true;
 
     public function ChargerPlus(){
         $this->nbArticles += 12;
-        $this->chargerBijoux();
     }
 
     public function chargerBijoux(){
@@ -39,7 +34,7 @@ class AfficherBoutique extends Component
             $query->whereIn('type_metal', $this->metaux);
         }
 
-        if(!empty($this->fourchette)){
+        if(!empty($this->fourchette) && $this->fourchette !== 'all'){
             [$min, $max] = explode('-', $this->fourchette);
             $query->whereBetween('prix', [$min, $max]);
         }
@@ -49,28 +44,6 @@ class AfficherBoutique extends Component
         }
 
         $this->bijoux = $query->take($this->nbArticles)->get();
-
-        if( count($this->bijoux) < $this->nbArticles ){
-            $this->charger = false;
-        }
-    }
-
-    public function effacerCategorie($categorie){
-        $this->nbArticles = 12;
-        $this->categories = array_diff($this->categories, [$categorie]);
-        $this->chargerBijoux();
-    }
-
-    public function effacerMetal($metal){
-        $this->nbArticles = 12;
-        $this->metaux = array_diff($this->metaux, [$metal]);
-        $this->chargerBijoux();
-    }
-
-    public function effacerFourchette(){
-        $this->nbArticles = 12;
-        $this->fourchette = null;
-        $this->chargerBijoux();
     }
 
     public function render(){
@@ -79,8 +52,26 @@ class AfficherBoutique extends Component
 
         return view('livewire.afficher-boutique',[
             'bijoux' => $this->bijoux,
-            'charger' => $this->charger,
             'fourchette' => $this->fourchette,
         ])->extends('layouts.client')->section('content');  
     }
 }
+
+
+    // public function effacerCategorie($categorie){
+    //     $this->nbArticles = 12;
+    //     $this->categories = array_diff($this->categories, [$categorie]);
+    //     $this->chargerBijoux();
+    // }
+
+    // public function effacerMetal($metal){
+    //     $this->nbArticles = 12;
+    //     $this->metaux = array_diff($this->metaux, [$metal]);
+    //     $this->chargerBijoux();
+    // }
+
+    // public function effacerFourchette(){
+    //     $this->nbArticles = 12;
+    //     $this->fourchette = null;
+    //     $this->chargerBijoux();
+    // }
