@@ -41,12 +41,10 @@ Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 //Newsletter
 // Route::post('/newsletter', [NewsletterController::class, 'newsletter_email'])->name('Newsletter');
 
-
 //Sorting & Filter 
-Route::get('/boutique/byCategory',[ShopController::class,'sortCategory'])->name('shopCategoryFilter');
-Route::get('/boutique/byPrix',[ShopController::class,'sortPrix'])->name('shopPrixFilter');
-Route::get('/boutique/byPrixRange',[ShopController::class,'sortPrixRange'])->name('shopPrixRangeFilter');
-Route::get('/boutique/Order',[ShopController::class,''])->name('shopSortingOrder');
+Route::get('/boutique/{categorie}', AfficherBoutique::class )->name('boutiqueCategorie');
+Route::get('/boutique/{metal}', AfficherBoutique::class )->name('boutiqueMetal');
+Route::get('/boutique/{prix}', AfficherBoutique::class )->name('boutiquePrix');
 
 //Panier
 Route::get('/panier',[PanierController::class,'index'])->name('panier');

@@ -2,7 +2,7 @@
     <div x-init="openModal2=window.innerWidth > 768" x-data="{ openModal2:false }" class="w-full font-dmsans font-swap bg-third ">
 
       {{-- Banner --}}
-      <div class="max-w-screen-2xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center"
+      <div class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center"
           style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
           <div class="h-full w-full bg-amber-950 bg-opacity-30">
           <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
@@ -10,9 +10,6 @@
           </div>
           </div>
       </div>
-
-      {{-- Chargement --}}
-
       
       {{-- Alerts succes ou refus --}}
       @if(session('success'))
@@ -35,7 +32,7 @@
       @endif
 
       {{-- Format Mobile : Tri et Filtres --}}
-      <div id="filtres2" class="w-full grid grid-cols-2 justify-center gap-2 align-center bg-third z-30 md:hidden p-3">
+      <div id="filtres" class="w-full grid grid-cols-2 justify-center gap-2 align-center bg-third z-30 md:hidden p-3 max-md:shadow-lg">
         <select wire:model.live="ordre" class="w-full focus:ring-second text-sm border-transparent focus:border-second rounded-lg shadow">
           <option class="font-dmsans" value="desc">Prix Décroissant</option>
           <option class="font-dmsans" value="asc">Prix Croissant</option>
@@ -71,16 +68,16 @@
                   <div class="flex flex-col gap-3 px-2 py-4 border-b border-amber-700 border-opacity-20 w-56">
                     <label for="Anneau">
                         <input  class="focus:ring-second text-second mr-3 rounded border-transparent shadow p-2"
-                         type="checkbox" wire:model.change="categories" value="Anneau" {{ (in_array('Anneau',$categories))?'checked':'' }}>Anneau</label>
+                         type="checkbox" wire:model.live="categories" value="Anneau" {{ (in_array('Anneau',$categories))?'checked':'' }}>Bagues</label>
                     <label for="Bracelet">
                         <input  class="focus:ring-second text-second mr-3 rounded border-transparent shadow p-2"
-                         type="checkbox" wire:model.change="categories" value="Bracelet" {{(in_array('Bracelet',$categories))?'checked':''}}>Bracelet</label>
+                         type="checkbox" wire:model.live="categories" value="Bracelet" {{(in_array('Bracelet',$categories))?'checked':''}}>Bracelet</label>
                     <label for="Collier">
                         <input  class="focus:ring-second text-second mr-3 rounded border-transparent shadow p-2"
-                         type="checkbox" wire:model.change="categories" value="Collier" {{(in_array('Collier',$categories))?'checked':''}}>Collier</label>
+                         type="checkbox" wire:model.live="categories" value="Collier" {{(in_array('Collier',$categories))?'checked':''}}>Collier</label>
                     <label for="Boucles">
                       <input  class="focus:ring-second text-second mr-3 rounded border-transparent shadow p-2"
-                        type="checkbox" wire:model.change="categories" value="Boucles oreilles" {{ (in_array('boucles oreilles',$categories))?'checked':'' }}>Boucles d'oreilles</label>
+                        type="checkbox" wire:model.live="categories" value="boucles oreilles" {{ (in_array('boucles oreilles',$categories))?'checked':'' }}>Boucles d'oreilles</label>
                   </div>
                 </div>
               </div>
@@ -159,10 +156,10 @@
   
             </div>
 
-            <div class="w-full flex justify-between self-end md:hidden">
+            <div class="w-full flex justify-between self-end md:hidden pb-3">
               <button @click="openModal2 = !openModal2" 
               {{-- wire:click="chargerBijoux()" --}}
-               class="w-full p-2 bg-second text-white">Appliquer</button>
+               class="w-full p-2 bg-second focus:bg-secondDarker text-white rounded shadow-lg">Appliquer</button>
             </div>
     
           </div>
@@ -170,7 +167,7 @@
         </div>
 
         {{-- Bijoux & Tri --}}
-        <div class="w-fit">
+        <div class="w-fit py-2">
           <div class="flex max-md:gap-2 justify-between align-center items-center p-3 max-md:px-0 max-md:hidden">
             <p class="font-bold max-md:text-sm">{{ $bijoux->count()}} Articles Affichées</p>
 

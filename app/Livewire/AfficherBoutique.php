@@ -16,7 +16,12 @@ class AfficherBoutique extends Component
     public $metaux = [];
     public $fourchette;
     public $ordre='asc';
-    // public $charger = true;
+
+    public function mount($categorie = null){
+    
+        if($categorie){
+            $this->categories[] = $categorie;   }
+    }
 
     public function ChargerPlus(){
         $this->nbArticles += 12;
@@ -51,6 +56,7 @@ class AfficherBoutique extends Component
         $this->chargerBijoux();
 
         return view('livewire.afficher-boutique',[
+            'categories' =>$this->categories,
             'bijoux' => $this->bijoux,
             'fourchette' => $this->fourchette,
         ])->extends('layouts.client')->section('content');  

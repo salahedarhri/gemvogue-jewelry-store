@@ -131,7 +131,7 @@
         style="background-image:url({{ asset('images/produits/ring2.jpg') }})">
 
         <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Anneau'])}}" class="h-full w-full absolute"></a>
+          <a href="{{ route('boutiqueCategorie',['categorie'=>'Anneau'])}}" class="h-full w-full absolute"></a>
         </div>
         <p class="absolute top-3/4 w-full text-center text-white">Anneaux</p>
       </div>
@@ -141,7 +141,7 @@
         style="background-image:url({{ asset('images/produits/necklace2.jpg') }})">
 
         <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Collier'])}}" class="h-full w-full absolute"></a>
+          <a href="{{ route('boutiqueCategorie',['categorie'=>'Collier'])}}" class="h-full w-full absolute"></a>
         </div>
         <p class="absolute top-3/4 w-full text-center text-white">Colliers</p>
       </div>
@@ -151,7 +151,7 @@
         style="background-image:url({{ asset('images/produits/bracelet2.jpg') }})">
 
         <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Bracelet'])}}" class="h-full w-full absolute"></a>
+          <a href="{{ route('boutiqueCategorie',['categorie'=>'Bracelet'])}}" class="h-full w-full absolute"></a>
         </div>
         <p class="absolute top-3/4 w-full text-center text-white">Bracelets</p>
       </div>
@@ -161,7 +161,7 @@
         style="background-image:url({{ asset('images/produits/boucles2.jpg') }})">
 
         <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
-          <a href="{{ route('shopCategoryFilter',['typeBijou' =>'Boucles oreilles'])}}"
+          <a href="{{ route('boutiqueCategorie',['categorie'=>'Boucles oreilles'])}}"
             class="h-full w-full absolute"></a>
         </div>
         <p class="absolute top-3/4 w-full text-center text-white">Boucles d'oreilles</p>
