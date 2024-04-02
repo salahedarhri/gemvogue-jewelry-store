@@ -62,22 +62,3 @@ class AfficherBoutique extends Component
         ])->extends('layouts.client')->section('content');  
     }
 }
-
-
-    // public function effacerCategorie($categorie){
-    //     $this->nbArticles = 12;
-    //     $this->categories = array_diff($this->categories, [$categorie]);
-    //     $this->chargerBijoux();
-    // }
-
-    // public function effacerMetal($metal){
-    //     $this->nbArticles = 12;
-    //     $this->metaux = array_diff($this->metaux, [$metal]);
-    //     $this->chargerBijoux();
-    // }
-
-    // public function effacerFourchette(){
-    //     $this->nbArticles = 12;
-    //     $this->fourchette = null;
-    //     $this->chargerBijoux();
-    // }
