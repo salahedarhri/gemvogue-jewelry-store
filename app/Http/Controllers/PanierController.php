@@ -13,58 +13,14 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PanierController extends Controller{
 
-    public function index(){
-        $cartItems = Cart::instance('cart')->content();
-
-        if($cartItems->count() >= 3){
-            $livraison = (float)60;
-        }else{
-            $livraison = (float)45;
-        }
-
-        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());  
-        $total = $subtotal + $livraison;
-
-        return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'));
-    }
-
     public function addToCart(Request $request){
 
         $product = Bijou::find($request->id);
-        Cart::instance('cart')->add($product->id,$product->nom,1 ,$product->prix)->associate('App\Models\Bijou');
+        Cart::instance('cart')->add($product->id,$product->nom,1 ,$product->prix)
+                              ->associate('App\Models\Bijou');
 
         return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
     }
-
-    public function updateCart(Request $request, $rowId){
-
-        $cart = Cart::instance('cart');
-        $item = $cart->get($rowId);
-    
-        if ($item) {
-            $rowId = $item->rowId;
-            $quantity = (int)$request->input('quantity');
-            
-            $cart->update($rowId, $quantity);
-
-            return redirect()->route('panier')->with('success', 'Quantité mise à jour avec succès !');
-        }
-    
-        return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
-    }
-
-    public function deleteItem($rowId){
-
-        $cart = Cart::instance('cart');
-        $item = $cart->get($rowId);
-
-        if ($item) {
-        Cart::remove($rowId);
-        return redirect()->route('panier')->with('success', 'Bijou retirée du panier avec succès !');
-        }
-
-        return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
-    }   
 
     public function checkout(){
 
@@ -73,12 +29,14 @@ class PanierController extends Controller{
         $produitsPanier = Cart::instance('cart')->content();
 
         $prixTotal = 0;
+        $qteTotal = 0;
 
         $lineItems =[];
 
         foreach($produitsPanier as $produit){
 
             $prixTotal += $produit->price;
+            $qteTotal += $produit->qty;
 
             $lineItems[] = [
                 'price_data' => [
@@ -92,7 +50,7 @@ class PanierController extends Controller{
             ];
         }
 
-        if(count($produitsPanier) >= 3){
+        if($qteTotal >= 3){
             $livraison = 60;
         }else{
             $livraison = 45;
@@ -175,8 +133,50 @@ class PanierController extends Controller{
         ->with('error','Paiement échoué. Vérifiez vos données ou réessayez plus tard. Contactez le support en cas de problème persistant. Merci.');
     }
 
+        // public function index(){
+    //     $cartItems = Cart::instance('cart')->content();
 
+    //     if($cartItems->count() >= 3){
+    //         $livraison = (float)60;
+    //     }else{
+    //         $livraison = (float)45;
+    //     }
 
+    //     $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());  
+    //     $total = $subtotal + $livraison;
+
+    //     return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'));
+    // }
+
+    // public function updateCart(Request $request, $rowId){
+
+    //     $cart = Cart::instance('cart');
+    //     $item = $cart->get($rowId);
+    
+    //     if ($item) {
+    //         $rowId = $item->rowId;
+    //         $quantity = (int)$request->input('quantity');
+            
+    //         $cart->update($rowId, $quantity);
+
+    //         return redirect()->route('panier')->with('success', 'Quantité mise à jour avec succès !');
+    //     }
+    
+    //     return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
+    // }
+
+    // public function deleteItem($rowId){
+
+    //     $cart = Cart::instance('cart');
+    //     $item = $cart->get($rowId);
+
+    //     if ($item) {
+    //     Cart::remove($rowId);
+    //     return redirect()->route('panier')->with('success', 'Bijou retirée du panier avec succès !');
+    //     }
+
+    //     return redirect()->route('panier')->with('error', 'Article introuvable dans le panier.');
+    // }   
 
     // public function success(Request $request){
         

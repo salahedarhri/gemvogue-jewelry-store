@@ -3,10 +3,10 @@
 @section('content')
 <div class="w-full bg-third">
 
-  <div class="h-72 max-sm:h-60 max-w-7xl mx-auto bg-cover bg-center"
+  <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center"
     style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
-    <div class="h-full w-full bg-gray-950 bg-opacity-60">
-      <div class="flex items-center justify-center h-full pt-36">
+    <div class="h-full w-full bg-gray-950 bg-opacity-40">
+      <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
         <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
       </div>
     </div>

@@ -46,7 +46,7 @@
       <div class="max-w-screen-2xl mx-auto flex flex-row max-md:flex-col justify-center gap-2 p-4 max-md:pt-0">
 
         {{-- Filtres --}}
-        <div x-show="openModal" class="w-80 text-sm flex flex-col dm-sans mx-auto max-md:w-full max-md:h-full z-30 max-md:fixed max-md:inset-0 max-md:bg-third max-md:p-2 max-md:border-second">
+        <div x-cloak x-show="openModal" class="w-80 text-sm flex flex-col dm-sans mx-auto max-md:w-full max-md:h-full z-30 max-md:fixed max-md:inset-0 max-md:bg-third max-md:p-2 max-md:border-second">
           
           <div class="text-sm flex flex-col justify-between pt-4 w-full h-full">
             <div>

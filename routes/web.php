@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\BijouController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 //Admin
@@ -12,6 +10,8 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminBijouController;
 
 use App\Livewire\afficherBoutique;
+use App\Livewire\PanierComponent;
+use App\Livewire\ProduitComponent;
 
 
 /*
@@ -25,9 +25,6 @@ use App\Livewire\afficherBoutique;
 |
 */
 
-
-
-
 Route::get('/welcome', function () { return view('welcome');     })
     ->name('welcome');
 Route::get('/apropos', function () { return view('apropos');     })
@@ -36,7 +33,8 @@ Route::get('/apropos', function () { return view('apropos');     })
 //Display de bijoux
 Route::get('/', function(){ return view('accueil'); })->name('accueil');
 Route::get('/boutique', AfficherBoutique::class )->name('boutique');
-Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
+Route::get('/panier', PanierComponent::class)->name('panier');
+Route::get('/bijoux/{slug}', ProduitComponent::class)->name('bijou');
 
 //Newsletter
 // Route::post('/newsletter', [NewsletterController::class, 'newsletter_email'])->name('Newsletter');
@@ -45,12 +43,6 @@ Route::get('/bijoux/{slug}', [BijouController::class,'show'])->name('bijou');
 Route::get('/boutique/{categorie}', AfficherBoutique::class )->name('boutiqueCategorie');
 Route::get('/boutique/{metal}', AfficherBoutique::class )->name('boutiqueMetal');
 Route::get('/boutique/{prix}', AfficherBoutique::class )->name('boutiquePrix');
-
-//Panier
-Route::get('/panier',[PanierController::class,'index'])->name('panier');
-Route::post('/panier-add',[PanierController::class,'addToCart'])->name('ajouterProduitPanier');
-Route::put('/panier-update/{rowId}',[PanierController::class,'updateCart'])->name('updatePanier');
-Route::delete('/panier-delete/{rowId}',[PanierController::class,'deleteItem'])->name('retirerPanier');
 
 //Paiement 
 Route::post('/checkout',[PanierController::class,'checkout'])->name('checkout');
