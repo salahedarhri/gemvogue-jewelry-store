@@ -12,7 +12,7 @@
   
     {{-- Alertes Succès ou Refus --}}
     @if(session('success'))
-      <div class="alert alert-success max-w-xl mx-auto my-4">
+      <div class="alert alert-success max-sm:fixed inset-0 max-sm:mt-24 sm:max-w-xl max-sm:w-fit h-fit z-30 mx-auto max-sm:px-3 flex max-w-xl my-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -21,7 +21,7 @@
       </div>
     @endif
     @if(session('error'))
-      <div class="alert alert-error max-w-xl mx-auto my-4">
+      <div class="alert alert-error max-sm:fixed inset-0 max-sm:mt-24 sm:max-w-xl max-sm:w-fit h-fit z-30 mx-auto max-sm:px-3 flex max-w-xl my-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -39,31 +39,39 @@
         <p class="text-xl font-semibold p-4">Votre panier ({{ $qte_total }})</p>
   
         @foreach ($produits as $item)
-        <div
-          class="flex flex-row max-sm:flex-col items-center p-1 border-b border-second border-opacity-40 max-sm:gap-3 max-sm:mx-12">
-          {{-- Photo --}}
-          <div class="sm:w-1/4">
-            <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
-              class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow border border-amber-800 border-opacity-40">
-          </div>
-          {{-- Infos du Produit --}}
-          <div class="sm:w-3/4 max-sm:text-center sm:p-2 max-sm:py-2 items-center">
-            <p class="text-lg font-semibold">{{ $item->name }}</p>
-            <p class="text-sm mt-2 italic text-second pl-1">Prix : {{ $item->price }} Dh</p>
-            <p class="text-sm mb-2 italic text-second pl-1">Qte : {{ $item->qty}}</p>
-            <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
-  
-            {{-- Options --}}
-            <div class="w-fit mx-auto flex flex-row gap-3 items-center pt-3">
-                <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="p-2 text-white bg-second rounded">-</button>
-                <p>{{ $item->qty }}</p>
-                <button wire:click="incrementerProduit('{{ $item->rowId }}')" class="p-2 text-white bg-second rounded">+</button>
-                <button wire:click="retirerProduit('{{ $item->rowId }}')" class="p-2 text-white bg-second rounded">x</button>
+          <div
+            class="flex flex-row max-sm:flex-col items-center p-1 border-b border-second border-opacity-40 max-sm:gap-3 max-sm:mx-12">
+            {{-- Photo --}}
+            <div class="sm:w-1/4">
+              <a wire:navigate href="{{ route('bijou',[ 'slug' => $item->model->slug]) }}" wire:key="{{ $item->id }}">
+                <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
+                  class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow border border-amber-800 border-opacity-40">
+              </a>
             </div>
-  
+            {{-- Infos du Produit --}}
+            <div class="sm:w-3/4 max-sm:text-center sm:p-2 max-sm:py-2 items-center">
+              <p class="text-lg font-semibold">{{ $item->name }}</p>
+              <p class="text-sm mt-2 italic text-second pl-1">Prix : {{ $item->price }} Dh</p>
+              <p class="text-sm mb-2 italic text-second pl-1">Qte : {{ $item->qty}}</p>
+              <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
+    
+              {{-- Options --}}
+              <div class="w-40 h-fit mx-auto grid grid-cols-4 items-center justify-between border border-second rounded bg-second">
+                <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="flex items-center justify-center">
+                    <img src="{{ asset('images/composants/logo/moins.png')}}" alt="plus.png" class="w-4 h-4 object-contain invert">
+                </button>
+                <p class="text-center px-4 border-x border-second text-lg font-semibold bg-white text-black">{{ $item->qty }}</p>
+                <button wire:click="incrementerProduit('{{ $item->rowId }}')" class="flex items-center justify-center">
+                    <img src="{{ asset('images/composants/logo/plus.png')}}" alt="moins.png" class="w-4 h-4 object-contain invert">
+                </button>
+                <button wire:click="retirerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center bg-red-500">
+                    <img src="{{ asset('images/composants/logo/delete.png')}}" alt="delete.png" class="w-5 h-5 object-contain invert">
+                </button>
+            </div>
+            
+            </div>
+    
           </div>
-  
-        </div>
         @endforeach
       </div>
   

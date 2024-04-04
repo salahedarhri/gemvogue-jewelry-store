@@ -26,8 +26,4 @@
   background-color: #f7eae6;
 }
 
-.\[appearance\:textfield\] {
-  -webkit-appearance: textfield;
-          appearance: textfield;  }
-
 [x-cloak] { display: none !important; }
