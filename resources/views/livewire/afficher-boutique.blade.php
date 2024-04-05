@@ -4,9 +4,9 @@
     <div  class="w-full font-dmsans font-swap bg-third ">
 
       {{-- Banner --}}
-      <div  class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center"
+      <div  class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center rounded-b-xl"
             style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
-          <div class="h-full w-full bg-amber-950 bg-opacity-30">
+          <div class="h-full w-full bg-amber-950 bg-opacity-30 rounded-b-xl">
           <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
               <p class="md:text-4xl max-md:text-3xl text-third font-playfair font-semibold">Boutique</p>
           </div>
@@ -195,9 +195,9 @@
               <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}" wire:key="{{ $bijou->id }}">
       
                 <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
-                  <img src="{{ asset('images/produits/'. $bijou->photo1 )}}" loading="eager"
+                  <img src="{{ asset('images/produits/compressed/'. $bijou->photo1 )}}" loading="eager"
                     class="z-20 w-full h-auto aspect-square object-cover object-center rounded-t-xl absolute hover:opacity-0 transition-all">
-                  <img src="{{ asset('images/produits/'. $bijou->photo2 )}}" loading="lazy"
+                  <img src="{{ asset('images/produits/compressed/'. $bijou->photo2 )}}" loading="lazy"
                     class="z-10 w-full h-auto aspect-square object-cover object-center rounded-t-xl">
                   <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
                     <p class="truncate font-semibold">{{ $bijou->nom }}</p>

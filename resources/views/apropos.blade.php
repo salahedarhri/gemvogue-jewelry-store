@@ -4,34 +4,33 @@
 
 <div class="antialiased w-full bg-third pb-8">
 
-    <div class="h-72 max-sm:h-60 max-w-7xl mx-auto bg-cover bg-center shadow-xl" style="background-image:url({{asset('images/composants/landing-md.jpg')}});">
-        <div class="h-full w-full bg-slate-950 bg-opacity-30">
+    <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center shadow-xl rounded-b-xl" style="background-image:url({{asset('images/composants/landing-md.jpg')}});">
+        <div class="h-full w-full bg-slate-950 bg-opacity-30 rounded-b-xl">
           <div class="flex items-center justify-center h-full pt-36">
             <p class="text-3xl text-third font-playfair font-semibold">Notre Histoire</p>
           </div>
         </div>
     </div>
 
-        <!-- Alerts succes ou refus -->
-        @if(session('success'))
+     {{-- Alerts succes ou refus --}}
+    @if(session('success'))
         <div class="alert alert-success max-w-xl mx-auto my-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span>{{ session('success') }}</span>
         </div>
-        @endif
-    
-        @if(session('error'))
+    @endif
+    @if(session('error'))
         <div class="alert alert-error max-w-xl mx-auto my-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span>{{ session('error') }}</span>
         </div>
-        @endif
+    @endif
 
     {{-- 1er section --}}
     <div class="w-full">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
-                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-second shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
+                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-second/50 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
@@ -45,7 +44,7 @@
     </div>
 
     {{-- 2e section --}}
-    <div class="w-full bg-gradient-to-r from-second to-secondDarker shadow-xl">
+    <div class="w-full bg-gradient-to-r from-second/80 to-secondDarker/80 shadow-xl">
         <div class="max-w-6xl mx-auto grid grid-cols-3 max-md:grid-cols-1 place-items-center">
 
             <div class="flex flex-col gap-4 justify-center max-md:text-center  md:col-span-2 text-third font-dmsans md:px-12 max-md:p-4 max-md:h-72">
@@ -65,7 +64,7 @@
     <div class="w-full">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
-                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-secondDarker shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (2).jpg')}}" alt="shop(1)">
+                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-secondDarker/60 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (2).jpg')}}" alt="shop(1)">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
@@ -81,7 +80,7 @@
     </div>
 
     {{-- 4e section --}}
-    <div class="w-full bg-gradient-to-r from-fourth to-fourthDarker shadow-xl">
+    <div class="w-full bg-gradient-to-r from-fourth/80 to-fourthDarker/80 shadow-xl">
         <div class="max-w-6xl mx-auto grid grid-cols-3 max-md:grid-cols-1 place-items-center">
 
             <div class="flex flex-col justify-center gap-5 max-md:text-center md:col-span-2 text-third font-dmsans md:px-12 max-md:px-4 max-md:py-6">
@@ -100,6 +99,17 @@
 
         </div>
     </div>
+
+    {{-- Section Contact --}}
+    <div class="w-ful">
+        <div class="max-w-7xl mx-auto max-md:p-4 md:p-6">
+          <p class="text-sm font-dmsans font-semibold text-center py-1 text-fourth">GemVogue</p>
+          <p class="text-3xl font-dmsans font-semibold text-center py-1 ">Nos Contacts</p>
+    
+          @livewire('SectionContact')
+    
+        </div>
+      </div>
 
 </div>
 

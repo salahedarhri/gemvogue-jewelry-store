@@ -1,9 +1,9 @@
 <div class="w-full bg-third">
 
     {{-- Banner --}}
-    <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center"
+    <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center rounded-b-xl"
       style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
-      <div class="h-full w-full bg-gray-950 bg-opacity-40">
+      <div class="h-full w-full bg-gray-950 bg-opacity-40 rounded-b-xl">
         <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
           <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
         </div>
