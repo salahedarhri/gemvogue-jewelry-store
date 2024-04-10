@@ -5,7 +5,7 @@
 
       {{-- Banner --}}
       <div  class="max-w-7xl mx-auto md:h-60 max-md:h-48 bg-cover bg-center rounded-b-xl"
-            style="background-image:url({{ asset('images/composants/bg-hero.jpg')}});">
+            style="background-image:url({{ asset('images/composants/compressed/bg-hero.jpg')}});">
           <div class="h-full w-full bg-amber-950 bg-opacity-30 rounded-b-xl">
           <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
               <p class="md:text-4xl max-md:text-3xl text-third font-playfair font-semibold">Boutique</p>

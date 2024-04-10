@@ -21,10 +21,10 @@
           {{-- Medium/Big screen --}}
           <div class="grid lg:col-span-2 max-md:col-span-1 lg:grid-cols-2 md:grid-cols-1 gap-3 max-md:hidden p-4">
             
-            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo1) }}" 
+            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo1) }}" loading="lazy"
               alt="Photo 1" class="w-full max-w-sm aspect-square object-cover shadow-lg">
             </div>
-            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo2) }}" 
+            <div><img src="{{ asset('images/produits/notcompressed/' . $bijou->photo2) }}" loading="lazy"
               alt="Photo 2" class="w-full max-w-sm aspect-square object-cover shadow-lg">
             </div>
           </div>
@@ -33,13 +33,13 @@
           <div class="carousel max-w-sm mx-auto aspect-square object-cover md:hidden max-md:visible shadow-lg pt-3">
 
             <div id="slide1" class="carousel-item relative w-full">
-                <img src="{{ asset('images/produits/' . $bijou->photo1) }}" class="w-full" />
+                <img src="{{ asset('images/produits/' . $bijou->photo1) }}" class="w-full" loading="lazy"/>
                 <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
                     <a href="#slide2" class="btn btn-circle">❯</a>
                 </div>
               </div> 
               <div id="slide2" class="carousel-item relative w-full">
-                <img src="{{ asset('images/produits/' . $bijou->photo2) }}" class="w-full" />
+                <img src="{{ asset('images/produits/' . $bijou->photo2) }}" class="w-full" loading="lazy"/>
                   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 top-1/2">
                       <a href="#slide1" class="btn btn-circle">❮</a> 
                   </div>
@@ -77,8 +77,8 @@
             <a wire:navigate href="{{ route('bijou',[ 'slug' => $bijouSimilaire->slug]) }}">
               
               <div class="flex flex-col place-items-center relative shadow border border-second rounded">
-                <img src="{{ asset('images/produits/'. $bijouSimilaire->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center absolute hover:opacity-0 transition-all rounded">
-                <img src="{{ asset('images/produits/'. $bijouSimilaire->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center rounded">
+                <img src="{{ asset('images/produits/compressed/'. $bijouSimilaire->photo1 )}}" loading="lazy" alt="img bijou database" class="w-full h-auto aspect-square object-cover object-center absolute hover:opacity-0 transition-all rounded">
+                <img src="{{ asset('images/produits/compressed/'. $bijouSimilaire->photo2 )}}" loading="lazy" alt="img bijou hover" class="w-full h-auto aspect-square object-cover object-center rounded">
                 <div class="flex flex-col sm:text-sm max-sm:text-xs text-center border-t border-second w-full p-1">
                   <p class="truncate font-semibold">{{ $bijouSimilaire->nom }}</p>
                   <p class="text-xs"> {{ $bijouSimilaire->type_metal }}</p> 

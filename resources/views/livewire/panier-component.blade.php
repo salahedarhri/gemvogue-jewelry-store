@@ -2,7 +2,7 @@
 
     {{-- Banner --}}
     <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center rounded-b-xl"
-      style="background-image:url({{asset('images/composants/bijoux-panier.jpg')}});">
+      style="background-image:url({{asset('images/composants/compressed/bijoux-panier.jpg')}});">
       <div class="h-full w-full bg-gray-950 bg-opacity-40 rounded-b-xl">
         <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
           <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
@@ -44,7 +44,7 @@
             {{-- Photo --}}
             <div class="sm:w-1/4">
               <a wire:navigate href="{{ route('bijou',[ 'slug' => $item->model->slug]) }}" wire:key="{{ $item->id }}">
-                <img src="{{ asset('images/produits/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
+                <img src="{{ asset('images/produits/compressed/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
                   class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow border border-amber-800 border-opacity-40">
               </a>
             </div>
@@ -118,7 +118,7 @@
   
         {{-- Onglet Anneaux --}}
         <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4"
-          style="background-image:url({{ asset('images/produits/ring2.jpg') }})">
+          style="background-image:url({{ asset('images/produits/compressed/ring2.jpg') }})">
   
           <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
             <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Anneau'])}}" class="h-full w-full absolute"></a>
@@ -128,7 +128,7 @@
   
         {{-- Onglet Colliers --}}
         <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4"
-          style="background-image:url({{ asset('images/produits/necklace2.jpg') }})">
+          style="background-image:url({{ asset('images/produits/compressed/necklace2.jpg') }})">
   
           <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
             <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Collier'])}}" class="h-full w-full absolute"></a>
@@ -138,7 +138,7 @@
   
         {{-- Onglet Bracelets --}}
         <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4"
-          style="background-image:url({{ asset('images/produits/bracelet2.jpg') }})">
+          style="background-image:url({{ asset('images/produits/compressed/bracelet2.jpg') }})">
   
           <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
             <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Bracelet'])}}" class="h-full w-full absolute"></a>
@@ -148,7 +148,7 @@
   
         {{-- Onglet Boucles oreilles --}}
         <div class="relative w-1/3 flex flex-col bg-cover bg-center h-full aspect-square max-md:w-3/4"
-          style="background-image:url({{ asset('images/produits/boucles2.jpg') }})">
+          style="background-image:url({{ asset('images/produits/compressed/boucles2.jpg') }})">
   
           <div class="w-full h-full bg-stone-800 bg-opacity-40 hover:bg-opacity-10 transition">
             <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Boucles oreilles'])}}"
