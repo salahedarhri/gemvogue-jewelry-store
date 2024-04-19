@@ -21,14 +21,14 @@
 </head>
 <body class="overflow-x-hidden antialiased font-swap">
 
-    {{-- Banner --}}
+  {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a href="{{ route('boutique') }}">
       <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 Mars 2024)</p>
     </a>
   </div>
 
-  <!-- Navbar -->
+  {{-- Navbar  --}}
   <div class="w-full font-dmsans bg-third border-b border-second">
     <nav class="cabin flex justify-between px-6 py-3 max-w-6xl mx-auto text-first">
   
@@ -87,7 +87,7 @@
     </nav>
   </div>
 
-  <!-- Contenu -->
+  {{-- Contenu  --}}
   @yield('content')
   
   <!-- Footer -->

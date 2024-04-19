@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-third">
+    <body class="antialiased">
+        <div class="min-h-screen bg-gradient-to-b from-third to-second font-dmsans">
             @include('layouts.navigation')
 
             {{-- <!-- Page Heading -->
