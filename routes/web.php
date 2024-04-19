@@ -6,12 +6,14 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 //Admin
-use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\Admin\AdminBijouController;
+use App\Livewire\UserManagement;
+use App\Livewire\AdminDashboard;
 
 use App\Livewire\afficherBoutique;
 use App\Livewire\PanierComponent;
 use App\Livewire\ProduitComponent;
+
+
 
 
 /*
@@ -56,24 +58,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Espace Admin (à revoir ) 
-Route::middleware('admin.check')->group(function () {
-      Route::get('/admin/dashboard', function () {
-          return view('admin.dashboard');
-      })->name('admin.dashboard');
-  });
-
-Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
 
 //Administration
-Route::group(['prefix'=>'admin','middleware'=>'admin.check'],function(){
-    Route::resource('utilisateurs', AdminUserController::class);
-    Route::resource('bijoux', AdminBijouController::class);
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
+    Route::resource('utilisateurs', UserManagement::class);
+    Route::resource('dashboard', AdminDashboard::class);
 });
 
-Route::prefix('admin')->group(  function(){
-    Route::get('utilisateurs',[ AdminUserController::class,'index'])->name('admin.utilisateurs.index');
-    Route::get('bijoux',[ AdminBijouController::class,'index'])->name('admin.bijoux.index');
+Route::middleware('admin')->group(  function(){
+    Route::get('utilisateurs', UserManagement::class)->name('adminUsers');
+    Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
 });
 
 require __DIR__.'/auth.php';

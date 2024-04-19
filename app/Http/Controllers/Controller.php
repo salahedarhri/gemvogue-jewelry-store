@@ -14,16 +14,17 @@ class Controller extends BaseController
 
     public function dashboard(){
 
-        //Utilisateur et ses commands 
-        $user = auth()->user();
-
-        //Séparer chemin selon le role 
-        if (auth()->user()->is_admin) {
-            
-            return view('admin.dashboard',compact('user'));
+        if (auth()->check()) {
+            $user = auth()->user();
+    
+            if ($user->is_admin) {
+                return redirect()->route('adminPanel');
+            } else {
+                return view('dashboard', compact('user'));
+            }
         } else {
-            
-            return view('dashboard',compact('user'));}
+            return redirect()->route('login');
+        }
     }
 
 
