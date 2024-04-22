@@ -19,7 +19,7 @@ class Controller extends BaseController
     
             if ($user->is_admin) {
                 return redirect()->route('adminPanel');
-            } else {
+            }else{
                 return view('dashboard', compact('user'));
             }
         } else {

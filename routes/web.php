@@ -5,13 +5,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-//Admin
-use App\Livewire\UserManagement;
-use App\Livewire\AdminDashboard;
-
+//Livewire
 use App\Livewire\afficherBoutique;
 use App\Livewire\PanierComponent;
 use App\Livewire\ProduitComponent;
+//Admin
+use App\Livewire\UserManagement;
+use App\Livewire\ModifierUtilisateur;
+use App\Livewire\AdminDashboard;
 
 
 
@@ -51,7 +52,7 @@ Route::post('/checkout',[PanierController::class,'checkout'])->name('checkout');
 Route::get('/success',[PanierController::class,'success'])->name('success');
 Route::get('/cancel',[PanierController::class,'cancel'])->name('cancel');
 
-//Profil :
+//Profil
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -61,13 +62,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
 
 //Administration
-Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
-    Route::resource('utilisateurs', UserManagement::class);
-    Route::resource('dashboard', AdminDashboard::class);
-});
-
-Route::middleware('admin')->group(  function(){
+Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::get('utilisateurs', UserManagement::class)->name('adminUsers');
+    Route::get('utilisateur/{id}', ModifierUtilisateur::class)->name('manageUser');
     Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
 });
 

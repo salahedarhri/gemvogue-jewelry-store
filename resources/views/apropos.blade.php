@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="antialiased w-full bg-third pb-8">
+<div class="antialiased w-full bg-third md:pb-8">
 
     <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center shadow-xl rounded-b-xl" style="background-image:url({{asset('images/composants/landing-md.jpg')}});">
         <div class="h-full w-full bg-slate-950 bg-opacity-30 rounded-b-xl">
@@ -27,14 +27,14 @@
     @endif
 
     {{-- 1er section --}}
-    <div class="w-full">
+    <div class="w-full max-md:pt-4">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
-                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-second/50 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
+                <img class="w-80 h-auto object-center object-cover aspect-square border-2 border-second/50 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
-                <p class="text-2xl max-md:text-xl font-bold font-playfair">Qui sommes-nous ?</p>
+                <p class="text-2xl max-md:text-xl font-bold font-playfair text-second">Qui sommes-nous ?</p>
                 <p class="text-lg max-md:text-md">Nous sommes une entreprise de bijouterie basée à Agadir, au Maroc, spécialisée dans la création et la vente de bijoux uniques depuis plus de 10 ans.
                     Notre passion pour l'art de la bijouterie nous a conduit à développer des collections exceptionnelles qui captivent nos clients à travers le monde.
                 </p>
@@ -61,14 +61,14 @@
     </div>
 
     {{-- 3e section --}}
-    <div class="w-full">
+    <div class="w-full ">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
                 <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-secondDarker/60 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (2).jpg')}}" alt="shop(1)">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
-                <p class="text-2xl max-md:text-xl font-bold font-playfair">Notre engagement</p>
+                <p class="text-2xl max-md:text-xl font-bold font-playfair text-fourth">Notre engagement</p>
                 <p class="text-lg max-md:text-md">Notre engagement envers l'éthique et la durabilité guide toutes nos initiatives.
                         Des matériaux de la plus haute qualité, des métaux précieux aux pierres exceptionnelles,
                         sont soigneusement sélectionnés pour garantir à nos clients des bijoux esthétiques et durables.

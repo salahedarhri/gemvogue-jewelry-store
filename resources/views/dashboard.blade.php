@@ -6,15 +6,15 @@
                 <p class="text-3xl font-bold py-6 text-transparent bg-clip-text bg-gradient-to-r from-fourthDarker to-red-400">Bienvenue, {{ $user->name }}</p>
 
                 @if( isset( $commande ))
-
+                    
                 @else
                     @auth
-                        <p class="md:text-lg max-md:text-base">Vous avez aucune commande pour le moment.<br>
+                        <p class="text-base">Vous avez aucune commande pour le moment.<br>
                         Veuillez visiter nos fines sélections de bijouteries ici .<br></p>
                     @endauth
                 @endif
 
-                <div class="w-full grid lg:grid-cols-4 md:grid-cols-2 max-md:grid-cols-1 place-items-center gap-4 px-6 py-12 text-xl font-playfair">
+                <div class="max-w-4xl mx-auto grid lg:grid-cols-4 md:grid-cols-2 max-md:grid-cols-1 place-items-center gap-4 px-6 py-12 text-xl font-playfair">
   
                     {{-- Onglet Anneaux --}}
                     <div class="relative w-full flex flex-col rounded-lg bg-cover bg-center h-full hover:transform hover:scale-105 transition aspect-square"

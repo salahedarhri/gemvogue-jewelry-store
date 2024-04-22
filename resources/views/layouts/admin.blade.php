@@ -79,10 +79,14 @@
               <i class="ri-account-circle-fill text-4xl text-darkShade"></i>
             </label>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-white">
-              <li class="hover:bg-red-100"><a class="hover:text-black ">Profil</a></li>
-              <li class="hover:bg-red-100">
-                <form method="POST" action="{{ route('logout') }}" class="hover:text-black ">
-                @csrf <input type="submit" value="Se déconnecter" ></form>
+              <li class="hover:bg-red-100 rounded-box">
+                <a href="{{ route('profile.edit') }}" class="hover:text-black">Profil</a>
+              </li>
+              <li class="hover:bg-red-100 rounded-box">
+                <form method="POST" action="{{ route('logout') }}" class="hover:text-black">
+                  @csrf 
+                  <input type="submit" value="Se déconnecter">
+                </form>
               </li>
             </ul>
           </div>
