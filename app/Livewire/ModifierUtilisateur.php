@@ -22,14 +22,18 @@ class ModifierUtilisateur extends Component
         'nomUtilisateur' => 'string|max:255',
         'emailUtilisateur' => 'string|email|max:255',
     ];
-
     protected $messageNameEmail = [
         'required' => 'Ce champ est obligatoire.',
         'email' => 'L\'email doit être un email valide.',
+        'max' => 'La valeur ne doit pas dépasser :max caractères.',
+        'string' => 'La valeur doit être une chaîne de caractères.',
     ];
-
     protected $rulesPassword = [
         'mdpUtilisateur' => 'min:6|confirmed',
+    ];
+    protected $messagePassword = [
+        'min' => 'La valeur doit contenir au moins :min caractères.',
+        'confirmed' => 'La confirmation ne correspond pas.',
     ];
 
     public function mount($id){
@@ -55,7 +59,7 @@ class ModifierUtilisateur extends Component
     }
  
     public function ModifierPassword(){
-        $this->validate($this->rulesPassword);
+        $this->validate($this->rulesPassword, $this->messagePassword);
 
         try{
             $utilisateur = User::find($this->idUtilisateur);

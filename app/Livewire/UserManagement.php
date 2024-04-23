@@ -15,39 +15,33 @@ class UserManagement extends Component
     #[Layout('layouts.admin')] 
 
     //For Adding User
-    public $nomAdd = '';
-    public $emailAdd = '';
-    public $motdepasseAdd = '';
+    public $nom = '';
+    public $email = '';
+    public $motdepasse = '';
+    public $motdepasse_confirmation = '';
 
-    //For Editing User
-    public $userIdModify = '';
-    public $nomModify = '';
-    public $emailModify = '';
-    public $motdepasseModify = '';
-
-    protected $rulesAdd = [
-        'nomAdd' => 'required|string|max:255',
-        'emailAdd' => 'required|string|email|max:255',
-        'motdepasseAdd' => 'required',
-    ];
-
-    protected $rulesModify = [
-        'nomModify' => 'string|max:255',
-        'emailModify' => 'string|email|max:255',
+    protected $rules = [
+        'nom' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'motdepasse' => 'required|confirmed|min:6',
     ];
 
     protected $message = [
         'required' => 'Ce champ est obligatoire.',
         'email' => 'L\'email doit être un email valide.',
+        'max' => 'La valeur ne doit pas dépasser :max caractères.',
+        'string' => 'La valeur doit être une chaîne de caractères.',
+        'min' => 'La valeur doit contenir au moins :min caractères.',
+        'confirmed' => 'La confirmation ne correspond pas.',
     ];
 
     public function AjouterUser(){
-        $this->validate($this->rulesAdd, $this->message);
+        $this->validate($this->rules, $this->message);
         try{
             $utilisateur = new User;
-            $utilisateur->name = trim($this->nomAdd);
-            $utilisateur->email = trim($this->emailAdd);
-            $utilisateur->password = Hash::make(trim($this->motdepasseAdd));
+            $utilisateur->name = trim($this->nom);
+            $utilisateur->email = trim($this->email);
+            $utilisateur->password = Hash::make(trim($this->motdepasse));
             $utilisateur->save();
 
             session()->flash('success','Utilisateur créé avec succès !');
@@ -58,55 +52,19 @@ class UserManagement extends Component
         }
     }
 
-    public function MontrerUser($id){
-        $this->userIdModify = $id;
-        $utilisateur = User::find($id);
-        $this->nomModify = $utilisateur->name;
-        $this->emailModify = $utilisateur->email;
-    }
-
-    public function ModifierUser(){
-        $this->validate($this->rulesModify, $this->message);
-
-        try{
-            $utilisateur = User::find($this->userIdModify);
-            $utilisateur->name = trim($this->nomModify);
-            $utilisateur->email = trim($this->emailModify);
-            
-            if(!empty($this->motdepasseModify)){
-                $utilisateur->password = Hash::make(trim($this->motdepasseModify));
-            }
-            
-            $utilisateur->save();
-
-            session()->flash('success','Utilisateur modifié avec succès !');
-            $this->resetModify();
-
-        }catch(\Exception $e){
-            session()->flash('error', $e->getMessage());
-        }
-    }
-
     public function SupprimerUser($id){
-        
         try{
             User::find($id)->delete();
             session()->flash('success','Utilisateur supprimé avec succès !');
+
         }catch(\Exception $e){
             session()->flash('error',$e->getMessage());
         }
     }
-
     private function resetAdd(){
-        $this->nomAdd = '';
-        $this->emailAdd = '';
-        $this->motdepasseAdd = '';
-    }
-
-    private function resetModify(){
-        $this->nomModify = '';
-        $this->emailModify = '';
-        $this->motdepasseModify = '';
+        $this->nom = '';
+        $this->email = '';
+        $this->motdepasse = '';
     }
 
     public function render()
