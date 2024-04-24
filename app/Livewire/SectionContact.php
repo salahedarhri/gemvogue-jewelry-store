@@ -39,8 +39,17 @@ class SectionContact extends Component
         }
 
         $message->save();
+        $this->resetMessage();
         
         session()->flash('message', 'Votre message a été envoyé avec succès!');
+    }
+
+    public function resetMessage(){
+        $this->nomContact = '';
+        $this->prenomContact = '';
+        $this->emailContact = '';
+        $this->msgContact = '';
+        $this->numTelContact = '';
     }
 
     public function render()

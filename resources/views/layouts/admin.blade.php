@@ -34,16 +34,16 @@
       {{-- <li>
         <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-vip-diamond-line mr-3 text-xl"></i>
-          <span>Produits</span></a></li>
-      <li>
+          <span>Produits</span></a></li> --}}
+      {{-- <li>
         <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-shopping-bag-2-line mr-3 text-xl"></i>
-          <span>Commandes</span></a></li>
+          <span>Commandes</span></a></li> --}}
       <li>
-        <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminMessages')}}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-chat-1-line mr-3 text-xl"></i>
           <span>Messages</span></a></li>
-      <li>
+      {{-- <li>
         <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-mail-line mr-3 text-xl"></i>
           <span>Newsletter</span></a></li> --}}

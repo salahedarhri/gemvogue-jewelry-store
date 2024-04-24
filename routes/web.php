@@ -12,6 +12,8 @@ use App\Livewire\ProduitComponent;
 //Admin
 use App\Livewire\UserManagement;
 use App\Livewire\ModifierUtilisateur;
+use App\Livewire\MessageManagement;
+use App\Livewire\AfficherMessage;
 use App\Livewire\AdminDashboard;
 
 
@@ -63,8 +65,13 @@ Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth','v
 
 //Administration
 Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
+    //Utilisateurs
     Route::get('utilisateurs', UserManagement::class)->name('adminUsers');
     Route::get('utilisateur/{id}', ModifierUtilisateur::class)->name('manageUser');
+    //Messages
+    Route::get('messages', MessageManagement::class)->name('adminMessages');
+    Route::get('message/{id}', AfficherMessage::class)->name('manageMessage');
+
     Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
 });
 
