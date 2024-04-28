@@ -31,10 +31,10 @@
           <i class="ri-user-line mr-3 text-xl"></i>
           <span>Utilisateurs</span></a>
       </li>
-      {{-- <li>
-        <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+      <li>
+        <a wire:navigate href="{{ route('adminBijoux') }}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-vip-diamond-line mr-3 text-xl"></i>
-          <span>Produits</span></a></li> --}}
+          <span>Produits</span></a></li>
       {{-- <li>
         <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-shopping-bag-2-line mr-3 text-xl"></i>

@@ -16,15 +16,12 @@ return new class extends Migration
             $table->string('nom');
             $table->decimal('prix', 10, 2);
             $table->string('slug')->unique();
-
             $table->string('type');
             $table->text('description');
-            $table->string('photo1');
-            $table->string('photo2');
+            $table->string('photo1')->nullable();
+            $table->string('photo2')->nullable();
             $table->string('collection');
-
             $table->unsignedInteger('qte_stock');
-            
             $table->string('type_metal');
             $table->timestamps();
         });
