@@ -33,13 +33,13 @@
           <div class="carousel max-w-sm mx-auto aspect-square object-cover md:hidden max-md:visible shadow-lg pt-3">
 
             <div id="slide1" class="carousel-item relative w-full">
-                <img src="{{ asset('images/produits/' . $bijou->photo1) }}" class="w-full" loading="lazy"/>
+                <img src="{{ asset('images/produits/compressed/' . $bijou->photo1) }}" class="w-full aspect-square object-center object-cover" loading="lazy"/>
                 <div class="absolute flex justify-between transform -translate-y-1/2 right-5 top-1/2">
                     <a href="#slide2" class="btn btn-circle">❯</a>
                 </div>
               </div> 
               <div id="slide2" class="carousel-item relative w-full">
-                <img src="{{ asset('images/produits/' . $bijou->photo2) }}" class="w-full" loading="lazy"/>
+                <img src="{{ asset('images/produits/compressed/' . $bijou->photo2) }}" class="w-full aspect-square object-center object-cover" loading="lazy"/>
                   <div class="absolute flex justify-between transform -translate-y-1/2 left-5 top-1/2">
                       <a href="#slide1" class="btn btn-circle">❮</a> 
                   </div>
@@ -52,13 +52,10 @@
             <h2 class="text-2xl font-bold ">{{ $bijou->nom }}</h2>
             <p class="font-dmsans font-semibold pt-4">{{ $bijou->prix }} DH</p>
 
-            <div class="bg-second hover:bg-amber-800 transition text-white w-fit flex items-center font-dmsans text-center rounded-lg shadow-lg my-4">
-
-                  <button wire:click="ajouterProduit({{ $bijou->id }})" class="py-2 px-5 text-lg flex align-center justify-center">
-                    <i class="ri-shopping-bag-fill mr-3 text-xl"></i>
-                    Ajouter au panier</button>
-                </form>
-            </div>
+            <button wire:click="ajouterProduit({{ $bijou->id }})"
+                class="py-2 px-5 text-lg flex align-center justify-center my-4 bg-gradient-to-r from-second to-fourth hover:saturate-150 transition text-white w-fit font-dmsans text-center rounded-lg shadow-lg">
+              <i class="ri-shopping-bag-fill mr-3 text-xl"></i>Ajouter au panier
+            </button>
 
             <p class="text-xl font-bold p-4">Description</p>
             <p class="font-dmsans">Collection : {{ $bijou->collection }}</p>

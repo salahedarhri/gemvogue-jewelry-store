@@ -45,9 +45,10 @@
             <div class="sm:w-1/4">
               <a wire:navigate href="{{ route('bijou',[ 'slug' => $item->model->slug]) }}" wire:key="{{ $item->id }}">
                 <img src="{{ asset('images/produits/compressed/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
-                  class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow border border-amber-800 border-opacity-40">
+                  class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow-lg rounded-sm border-opacity-40">
               </a>
             </div>
+            
             {{-- Infos du Produit --}}
             <div class="sm:w-3/4 max-sm:text-center sm:p-2 max-sm:py-2 items-center">
               <p class="text-lg font-semibold">{{ $item->name }}</p>
@@ -56,18 +57,18 @@
               <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
     
               {{-- Options --}}
-              <div class="w-40 h-fit mx-auto grid grid-cols-4 items-center justify-between border border-second rounded bg-second">
-                <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="flex items-center justify-center">
+              <div class="w-40 h-fit ml-auto grid grid-cols-3 items-center justify-between rounded-lg shadow-xl bg-gradient-to-r from-second to-fourth max-sm:mt-4">
+                <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center rounded-l-lg hover:bg-secondDarker transition-all">
                     <img src="{{ asset('images/composants/logo/moins.png')}}" alt="plus.png" class="w-4 h-4 object-contain invert">
                 </button>
-                <p class="text-center px-4 border-x border-second text-lg font-semibold bg-white text-black">{{ $item->qty }}</p>
-                <button wire:click="incrementerProduit('{{ $item->rowId }}')" class="flex items-center justify-center">
+                <p class="text-center h-full w-full px-4 border-x border-second text-lg font-semibold bg-white text-black">{{ $item->qty }}</p>
+                <button wire:click="incrementerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center rounded-r-lg hover:bg-fourthDarker transition-all">
                     <img src="{{ asset('images/composants/logo/plus.png')}}" alt="moins.png" class="w-4 h-4 object-contain invert">
                 </button>
-                <button wire:click="retirerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center bg-red-500">
+                {{-- <button wire:click="retirerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center bg-slate-400 rounded-r-lg">
                     <img src="{{ asset('images/composants/logo/delete.png')}}" alt="delete.png" class="w-5 h-5 object-contain invert">
-                </button>
-            </div>
+                </button> --}}
+              </div>
             
             </div>
     
@@ -85,8 +86,8 @@
           <div class="grid grid-cols-2">
   
             @foreach ($produits as $item)
-            <p class="text-left">{{ $item->model->type }} x {{ $item->qty }}</p>
-            <p class="text-right text-second">{{ $item->price }} DH x {{ $item->qty }}</p>
+              <p class="text-left">{{ $item->model->type }} x {{ $item->qty }}</p>
+              <p class="text-right text-second">{{ $item->price }} DH x {{ $item->qty }}</p>
             @endforeach
   
             <p class="text-left mt-3"> Livraison<i class="text-sm text-second"> / Pays : Maroc</i> </p>
@@ -99,8 +100,8 @@
           <form action="{{route('checkout')}}" method="POST">
             @csrf
             <button
-              class="w-full mx-auto px-4 py-2 text-center bg-softGreen hover:bg-softGreenDarker transition shadow-lg rounded-lg text-white">Payer
-              en ligne (via Stripe)</button>
+              class="w-full mx-auto px-4 py-2 text-center bg-gradient-to-r from-indigo-500 to-purple-700 hover:saturate-150 transition-all shadow-md hover:shadow-indigo-950 rounded-lg text-white">Payer
+              en ligne via Stripe</button>
           </form>
         </div>
       </div>

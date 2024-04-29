@@ -117,20 +117,8 @@ class PanierController extends Controller{
     }
         
     public function cancel(){
-        
-        $cartItems = Cart::instance('cart')->content();
 
-        if($cartItems->count() >= 3){
-            $livraison = (float)60;
-        }else{
-            $livraison = (float)45;
-        }
-
-        $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());  
-        $total = $subtotal + $livraison;
-
-        return view('panier',['cartItems'=>$cartItems ],compact('livraison','total'))
-        ->with('error','Paiement échoué. Vérifiez vos données ou réessayez plus tard. Contactez le support en cas de problème persistant. Merci.');
+        return redirect()->route('panier')->with('error','Paiement annulé.');
     }
 
         // public function index(){

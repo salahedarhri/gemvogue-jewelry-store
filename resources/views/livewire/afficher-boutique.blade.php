@@ -37,7 +37,7 @@
       <div x-ref="filtres" x-bind:class="filtresMobile?'fixed top-0':''" class="w-full grid grid-cols-2 justify-center gap-2 align-center bg-third z-30 md:hidden p-3 max-md:shadow-lg">
         <select wire:model.live="ordre" class="w-full focus:ring-second text-sm border-transparent focus:border-second rounded-lg shadow">
           <option class="font-dmsans" value="desc">Prix Décroissant</option>
-          <option class="font-dmsans" value="asc">Prix Croissant</option>
+          <option class="font-dmsans" value="asc" selected>Prix Croissant</option>
         </select>
         <button @click="openModal=!openModal"
                 class="w-full bg-second text-white rounded shadow-xl border-2 border-transparent">Afficher les filtres</button>
@@ -212,19 +212,10 @@
 
           <div x-intersect="$wire.ChargerPlus()" class="w-full mx-auto flex justify-center align-center p-4">
           </div>
-
-    
+          
         </div>
     
       </div>
     </div>
 </div>
-
-{{-- @if($charger == true) --}}
-    {{-- <button wire:click="ChargerPlus" wire:loading.attr="disabled"
-        class=" bg-second text-white w-52 flex justify-center align-center px-4 py-2 rounded shadow-lg hover:bg-third border-2 border-transparent hover:border-second hover:text-second transition-all">
-        <p wire:loading.remove class="max-sm:text-sm">Charger Plus</p>
-        <span wire:loading class="loading loading-dots loading-md"></span>
-    </button> --}}
-{{-- @endif --}}
 

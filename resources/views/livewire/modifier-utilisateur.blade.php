@@ -5,10 +5,8 @@
     <div class="max-w-2xl mx-auto p-3 font-dmsans antialiased">
 
         <div class="w-full flex justify-start py-2">
-            <a wire:navigate href="{{ route('adminUsers')}}" class="py-2 px-4 rounded-full bg-gradient-to-r from-second to-fourth shadow-lg text-white font-semibold"><i class="ri-arrow-left-line mr-3"></i>Retour</a>
+            <a wire:navigate href="{{ route('adminUsers')}}" class="py-2 px-4 rounded-full bg-gradient-to-r from-second to-fourth hover:saturate-150 transition shadow-lg text-white font-semibold"><i class="ri-arrow-left-line mr-3"></i>Retour</a>
         </div>
-
-
         
         <div class="w-full bg-white border-second border border-opacity-50 rounded-lg shadow-xl p-4 mb-6">
 
@@ -116,8 +114,6 @@
                 </form>
             </div>
         </div>
-
-
 
     </div>
 </div>
