@@ -13,12 +13,11 @@ class UserManagement extends Component
 {
     use WithPagination;
     #[Layout('layouts.admin')] 
-
-    //For Adding User
     public $nom = '';
     public $email = '';
     public $motdepasse = '';
     public $motdepasse_confirmation = '';
+    public $search = '';
 
     protected $rules = [
         'nom' => 'required|string|max:255',
@@ -48,7 +47,7 @@ class UserManagement extends Component
             $this->resetAdd();
 
         }catch(\Exception $e){
-            session()->flash('error',$e->getMessage());
+            session()->flash('error',$e->getMessage()); 
         }
     }
 
@@ -69,7 +68,9 @@ class UserManagement extends Component
 
     public function render()
     {
-        $utilisateurs = User::paginate(10);
+        $utilisateurs = User::where('name', 'like', '%'.$this->search.'%')
+                        ->orWhere('email', 'like', '%'.$this->search.'%')
+                        ->paginate(10);
 
         return view('livewire.user-management',[
             'utilisateurs' => $utilisateurs,

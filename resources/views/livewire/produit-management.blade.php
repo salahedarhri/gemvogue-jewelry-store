@@ -1,7 +1,9 @@
 <div x-data="{ openModal:false, openDisplay:false, imageChoisi:'' }">
 
+  <p class="text-lg max-md:text-md text-fourth p-3 mt-3">Liste des bijoux</p>
+
   <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-3 justify-between place-items-center p-3 mt-2 font-dmsans">
-    <p class="text-lg max-md:text-md text-fourth">Liste des bijoux</p>
+    <input type="text" wire:model.live.debounce.300ms="search" placeholder="Rechercher par nom.." class="rounded-xl shadow-sm focus:ring-fourth  focus:border-fourth border border-second  placeholder-slate-400 transition">
     <button @click="openModal=!openModal" class="text-white bg-fourth hover:saturate-150 transition rounded py-1 px-3 flex flex-row place-items-center gap-2">
       <i class="ri-add-circle-line text-2xl"></i>
       <p>Ajouter un bijou</p>
@@ -31,28 +33,28 @@
   @endif
 
   <div x-cloak x-show="openModal">
-    {{-- Modal associé au Bijou --}}
+    {{-- Modal associé au création du Bijou --}}
     @include('admin.modalBijouAdd')
   </div>
 
   <div x-cloak x-show="openDisplay">
-    {{-- Modal associé au Bijou --}}
+    {{-- Modal associé au photos du Bijou --}}
     @include('admin.modalBijouDisplay')
   </div>
     
   {{-- Tableau --}}
   <div class="overflow-x-auto border border-second rounded-lg py-1 m-2">
-    <table class="table md:table-sm max-md:table-xs md:px-1 font-roboto">
+    <table wire:loading.class="opacity-50" class="table md:table-sm max-md:table-xs md:px-1 font-roboto">
       <thead class="text-lightBlue">
         <tr class="border-b-third text-fourth">
             <th class="max-lg:hidden">Photo</th>
-            <th>Nom</th>
-            <th>type</th>
-            <th>Prix</th>
+            <th class="cursor-pointer" wire:click="sortBy('nom')">Nom @if($ordreVariable =='nom' && $ordre == 'asc') &#11205; @elseif($ordreVariable == 'nom' && $ordre == 'desc') &#11206; @else &#11032; @endif</th>
+            <th class="cursor-pointer" wire:click="sortBy('type')">type @if($ordreVariable =='type' && $ordre == 'asc') &#11205; @elseif($ordreVariable == 'type' && $ordre == 'desc') &#11206; @else &#11032; @endif</th>
+            <th class="cursor-pointer" wire:click="sortBy('prix')">Prix @if($ordreVariable =='prix' && $ordre == 'asc') &#11205; @elseif($ordreVariable == 'prix' && $ordre == 'desc') &#11206; @else &#11032; @endif</th>
             <th class="max-lg:hidden">Description</th>
             <th class="max-lg:hidden">Collection</th>
             <th class="max-lg:hidden">Métal</th>
-            <th class="max-lg:hidden">Qte</th>
+            <th class="max-lg:hidden cursor-pointer" wire:click="sortBy('qte_stock')">Qte @if($ordreVariable =='qte_stock' && $ordre == 'asc')&#11205; @elseif($ordreVariable == 'qte_stock' && $ordre == 'desc')&#11206; @else &#11032; @endif</th>
             <th class="text-center hover:text-fourth transition">Action</th>
         </tr>
       </thead>
@@ -78,7 +80,7 @@
             <td class="max-lg:hidden">{{ $bijou->collection }}</td>
             <td class="max-lg:hidden">{{ $bijou->type_metal }}</td>
             <td class="max-lg:hidden">{{ $bijou->qte_stock }}</td>
-            <td class="flex flex-row max-sm:flex-col justify-center align-center place-items-center text-center gap-6 max-sm:gap-4 max-sm:py-2"> 
+            <td class="flex flex-row max-sm:flex-col justify-center align-center place-items-center text-center gap-6 max-sm:gap-2 max-sm:py-2"> 
               <a wire:navigate href="{{ route('manageBijou',[ 'id' => $bijou->id ])}}">
                 <i class="ri-edit-line text-white bg-second hover:saturate-150 transition text-2xl p-1 rounded shadow"></i>
               </a>

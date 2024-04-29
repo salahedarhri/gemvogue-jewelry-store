@@ -27,6 +27,10 @@ class ProduitManagement extends Component
     public $qteStock = '';
     public $typeMetal = '';
 
+    public $search = '';
+    public $ordreVariable = null;
+    public $ordre = 'asc';
+
     protected $rules = [
         'nom' => 'required|string|max:255',
         'prix' => 'required|numeric|min:0',
@@ -127,9 +131,25 @@ class ProduitManagement extends Component
         $this->typeMetal = '';
     }
 
+    public function sortBy($v){
+        if($this->ordreVariable == $v){
+            $this->ordre = $this->ordre === 'asc' ? 'desc':'asc';
+        }else{
+            $this->ordre = 'asc';
+        }
+
+        $this->ordreVariable = $v;
+    }
+
     public function render()
     {
-        $bijoux = Bijou::paginate(12);
+        $query = Bijou::where('nom','like','%'.$this->search.'%');
+
+        if(!empty($this->ordreVariable)){
+            $query->orderBy($this->ordreVariable,$this->ordre);
+        }
+
+        $bijoux = $query->paginate(12);
 
         return view('livewire.produit-management',[
             'bijoux' => $bijoux,
