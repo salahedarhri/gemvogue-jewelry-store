@@ -62,14 +62,14 @@
         @foreach($bijoux as $bijou)
           <tr class="border-b-third hover:bg-third transition-all">
             <td class="max-lg:hidden flex justify-center align-center gap-1">
-              <div class="avatar" @click="openDisplay= true; imageChoisi='{{ asset('images/produits/compressed/'.$bijou->photo1)}}'">
+              <div class="avatar" @click="openDisplay= true; imageChoisi='{{ asset('images/produits/notcompressed/'.$bijou->photo1)}}'">
                 <div class="mask h-8 w-8 p-0 rounded shadow">
-                  <img src="{{ asset('images/produits/compressed/'.$bijou->photo1) }}" alt="{{$bijou->photo1}}"/>
+                  <img src="{{ asset('images/produits/notcompressed/'.$bijou->photo1) }}" alt="{{$bijou->photo1}}"/>
                 </div>
               </div>
-              <div class="avatar" @click="openDisplay= true; imageChoisi='{{ asset('images/produits/compressed/'.$bijou->photo2)}}'">
+              <div class="avatar" @click="openDisplay= true; imageChoisi='{{ asset('images/produits/notcompressed/'.$bijou->photo2)}}'">
                 <div class="mask h-8 w-8 p-0 rounded shadow">
-                  <img src="{{ asset('images/produits/compressed/'.$bijou->photo2) }}" alt="{{$bijou->photo2}}"/>
+                  <img src="{{ asset('images/produits/notcompressed/'.$bijou->photo2) }}" alt="{{$bijou->photo2}}"/>
                 </div>
               </div>
             </td>

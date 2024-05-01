@@ -31,6 +31,4 @@
   display: none !important;
 }
 
-/* @media screen and (max-width: 768px) {
-  [x-cloak="mobile"] { display: none; }
-} */
+#nprogress .bar { background: #82444e !important; }
