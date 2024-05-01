@@ -13,9 +13,11 @@ use App\Livewire\ProduitComponent;
 use App\Livewire\UserManagement;
 use App\Livewire\ProduitManagement;
 use App\Livewire\MessageManagement;
-use App\Livewire\ModifierUtilisateur;
+use App\Livewire\CommandeManagement;
 use App\Livewire\AfficherMessage;
 use App\Livewire\AfficherProduit;
+use App\Livewire\ModifierUtilisateur;
+use App\Livewire\ModifierCommande;
 use App\Livewire\AdminDashboard;
 
 
@@ -76,6 +78,10 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     //Produits
     Route::get('bijoux', ProduitManagement::class)->name('adminBijoux');
     Route::get('bijou/{id}', AfficherProduit::class)->name('manageBijou');
+    //Commandes
+    Route::get('commandes', CommandeManagement::class)->name('adminCommandes');
+    Route::get('commande/{id}', ModifierCommande::class)->name('manageCommande');
+
 
     Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
 });
