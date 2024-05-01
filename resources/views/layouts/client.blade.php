@@ -23,19 +23,22 @@
 
   {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
-    <a href="{{ route('boutique') }}">
+    <a wire:navigate href="{{ route('boutique') }}">
       <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 Mars 2024)</p>
     </a>
   </div>
 
   {{-- Navbar  --}}
-  <div class="w-full font-dmsans bg-third border-b border-second">
+  <div class="w-full font-dmsans bg-third border-b border-second" x-data="{ nav:'{{request()->route()->getName()}}' }">
     <nav class="cabin flex justify-between p-3 max-w-7xl mx-auto text-first">
   
       <div class="md:w-1/3 md:justify-start flex gap-10 max-lg:gap-4 items-center max-md:hidden">
-        <a href="{{ route('accueil') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Accueil</a>
-        <a href="{{ route('boutique') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Boutique</a>
-        <a href="{{ route('apropos') }}" class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">À propos</a>
+        <a wire:navigate href="{{ route('accueil') }}" x-bind:class="{ 'underline decoration-fourth': nav==='accueil' }"
+        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Accueil</a>
+        <a wire:navigate href="{{ route('boutique') }}" x-bind:class="{ 'underline decoration-fourth': nav==='boutique' }"
+        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Boutique</a>
+        <a wire:navigate href="{{ route('apropos') }}" x-bind:class="{ 'underline decoration-fourth': nav==='apropos' }"
+        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">À propos</a>
       </div>
       <div class="md:w-1/3 md:justify-center flex items-center">
         <a href="{{ route('accueil')}}" class="flex">
@@ -46,7 +49,7 @@
       <div class="md:w-1/3 md:justify-end flex items-center">
 
         <div class="indicator mx-4">
-          <a href="{{ route('panier')}}">
+          <a wire:navigate href="{{ route('panier')}}">
             @if( Cart::instance('cart')->content()->count() > 0)
               <span class="indicator-item badge badge-secondary h-3 p-2">
                 {{ Cart::instance('cart')->content()->count() }} </span> 

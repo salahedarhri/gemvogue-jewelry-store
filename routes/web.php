@@ -14,6 +14,7 @@ use App\Livewire\UserManagement;
 use App\Livewire\ProduitManagement;
 use App\Livewire\MessageManagement;
 use App\Livewire\CommandeManagement;
+use App\Livewire\NewsletterManagement;
 use App\Livewire\AfficherMessage;
 use App\Livewire\AfficherProduit;
 use App\Livewire\ModifierUtilisateur;
@@ -81,6 +82,9 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     //Commandes
     Route::get('commandes', CommandeManagement::class)->name('adminCommandes');
     Route::get('commande/{id}', ModifierCommande::class)->name('manageCommande');
+    //Newsletters
+    Route::get('newsletters', NewsletterManagement::class)->name('adminNewsletters');
+
 
 
     Route::get('dashboard', AdminDashboard::class)->name('adminPanel');

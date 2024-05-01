@@ -12,41 +12,47 @@
   @vite('resources/js/app.js')
   
 </head>
-<body class="bg-neutral-100 min-h-screen text-black antialiased">
+<body x-data="{ nav:'{{ request()->route()->getName() }}' }" class="bg-neutral-100 min-h-screen text-black antialiased" >
 
   {{-- SideBar --}}
-  <div class="fixed left-0 top-0 w-64 h-full p-4 max-md:hidden bg-gradient-to-b from-secondDarker to-fourth">
+  <div class="fixed left-0 top-0 w-64 h-full p-4 pr-0 max-md:hidden bg-gradient-to-b from-secondDarker to-fourth">
     <a href="#" class="flex items-center pb-4 border-b border-b-third">
       <img src="{{ asset('images/composants/logo/ring-logo (2).png') }}" alt="logo" class="w-8 h-auto invert">
       <span class="text-lg font-bold text-third ml-3 font-dmsans">GemVogue</span>
     </a>
     <ul class="font-dmsans">
       <li>
-        <a wire:navigate href="{{ route('adminPanel') }}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminPanel') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminPanel'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-home-2-line mr-3 text-xl"></i>
-          <span>Dashboard</span></a>
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminPanel'}">Dashboard</span></a>
       </li>
       <li>
-        <a wire:navigate href="{{ route('adminUsers') }}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminUsers') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminUsers'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-user-line mr-3 text-xl"></i>
-          <span>Utilisateurs</span></a>
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminUsers'}">Utilisateurs</span></a>
       </li>
       <li>
-        <a wire:navigate href="{{ route('adminBijoux') }}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminBijoux') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminBijoux'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-vip-diamond-line mr-3 text-xl"></i>
-          <span>Produits</span></a></li>
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminBijoux'}">Produits</span></a></li>
       <li>
-        <a wire:navigate href="{{ route('adminCommandes')}}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminCommandes')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminCommandes'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-shopping-bag-2-line mr-3 text-xl"></i>
-          <span>Commandes</span></a></li>
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminCommandes'}">Commandes</span></a></li>
       <li>
-        <a wire:navigate href="{{ route('adminMessages')}}" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminMessages')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminMessages'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-chat-1-line mr-3 text-xl"></i>
-          <span>Messages</span></a></li>
-      {{-- <li>
-        <a href="#" class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminMessages'}">Messages</span></a></li>
+      <li>
+        <a wire:navigate href="{{ route('adminNewsletters')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminNewsletters'}"
+        class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-mail-line mr-3 text-xl"></i>
-          <span>Newsletter</span></a></li> --}}
+          <span x-bind:class="{ 'font-semibold underline':nav==='adminNewsletters'}">Newsletter</span></a></li>
     </ul>
   </div>
 

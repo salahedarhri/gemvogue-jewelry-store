@@ -48,7 +48,7 @@
                   <i class="ri-edit-line text-white bg-second hover:saturate-150 transition text-2xl p-1 rounded shadow"></i>
                 </a>
                 <button 
-                  wire:click="SupprimerUser({{ $utilisateur->id }})" 
+                  wire:click="SupprimerUser({{ $utilisateur->id }})" wire:key="user-{{ $utilisateur->id }}"
                   wire:confirm="Voulez-vous vraiment supprimer l'utilisateur {{$utilisateur->name}} ?">
                   <i class="ri-close-large-line text-white bg-red-700 hover:saturate-150 transition text-2xl p-1 rounded shadow"></i>
                 </button>
