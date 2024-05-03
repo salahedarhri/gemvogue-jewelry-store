@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Order;
@@ -48,7 +48,7 @@ class CommandeManagement extends Component
 
         $commandes = $query->paginate(12);
 
-        return view('livewire.commande-management',[
+        return view('livewire.admin.commande-management',[
             'commandes' => $commandes,
         ]);
     }

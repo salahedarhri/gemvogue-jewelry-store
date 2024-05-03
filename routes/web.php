@@ -10,16 +10,16 @@ use App\Livewire\afficherBoutique;
 use App\Livewire\PanierComponent;
 use App\Livewire\ProduitComponent;
 //Admin
-use App\Livewire\UserManagement;
-use App\Livewire\ProduitManagement;
-use App\Livewire\MessageManagement;
-use App\Livewire\CommandeManagement;
-use App\Livewire\NewsletterManagement;
-use App\Livewire\AfficherMessage;
-use App\Livewire\AfficherProduit;
-use App\Livewire\ModifierUtilisateur;
-use App\Livewire\ModifierCommande;
-use App\Livewire\AdminDashboard;
+use App\Livewire\Admin\UserManagement;
+use App\Livewire\Admin\ProduitManagement;
+use App\Livewire\Admin\MessageManagement;
+use App\Livewire\Admin\CommandeManagement;
+use App\Livewire\Admin\NewsletterManagement;
+use App\Livewire\Admin\AfficherMessage;
+use App\Livewire\Admin\AfficherProduit;
+use App\Livewire\Admin\ModifierUtilisateur;
+use App\Livewire\Admin\ModifierCommande;
+use App\Livewire\Admin\AdminDashboard;
 
 
 

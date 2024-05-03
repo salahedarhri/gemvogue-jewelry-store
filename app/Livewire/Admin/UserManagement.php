@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -72,7 +72,7 @@ class UserManagement extends Component
                         ->orWhere('email', 'like', '%'.$this->search.'%')
                         ->paginate(10);
 
-        return view('livewire.user-management',[
+        return view('livewire.admin.user-management',[
             'utilisateurs' => $utilisateurs,
         ]);
     }

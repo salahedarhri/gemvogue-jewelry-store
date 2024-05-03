@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -41,6 +41,6 @@ class ModifierCommande extends Component
     }
     public function render()
     {
-        return view('livewire.modifier-commande');
+        return view('livewire.admin.modifier-commande');
     }
 }

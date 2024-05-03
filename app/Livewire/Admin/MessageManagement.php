@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -26,7 +26,7 @@ class MessageManagement extends Component
     {
         $messages = Message::paginate(10);
 
-        return view('livewire.message-management',[
+        return view('livewire.admin.message-management',[
             'messages' => $messages,
         ]);
     }

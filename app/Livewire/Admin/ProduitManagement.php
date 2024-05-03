@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Bijou;
@@ -151,7 +151,7 @@ class ProduitManagement extends Component
 
         $bijoux = $query->paginate(12);
 
-        return view('livewire.produit-management',[
+        return view('livewire.admin.produit-management',[
             'bijoux' => $bijoux,
         ]);
     }

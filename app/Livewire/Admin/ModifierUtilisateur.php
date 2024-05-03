@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\User;
@@ -76,6 +76,6 @@ class ModifierUtilisateur extends Component
     
     public function render()
     {
-        return view('livewire.modifier-utilisateur');
+        return view('livewire.admin.modifier-utilisateur');
     }
 }

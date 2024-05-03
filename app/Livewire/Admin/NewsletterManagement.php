@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Newsletter;
@@ -48,7 +48,7 @@ class NewsletterManagement extends Component
     {
         $emails = Newsletter::where('email', 'like', '%'.$this->search.'%')->paginate(12);
 
-        return view('livewire.newsletter-management',[
+        return view('livewire.admin.newsletter-management',[
             'emails' => $emails,
         ]);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
@@ -118,6 +118,6 @@ class AfficherProduit extends Component
 
     public function render()
     {
-        return view('livewire.afficher-produit');
+        return view('livewire.admin.afficher-produit');
     }
 }
