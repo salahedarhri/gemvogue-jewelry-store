@@ -1,4 +1,4 @@
-<div x-data="{ openModalModify:false }">
+<div x-data="{ openModalModify:false, openModalAdd:false }">
 
     {{-- Alerte pour Suppression --}}
     @if (session()->has('success'))
@@ -24,7 +24,7 @@
     
     <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-3 justify-between place-items-center p-3 mt-2 font-dmsans">
       <input type="text" wire:model.live.debounce.300ms="search" placeholder="Rechercher par email.." class="rounded-xl shadow-sm focus:ring-fourth  focus:border-fourth border border-second  placeholder-slate-400 transition">
-      <button @click="openModal=!openModal" class="text-white bg-fourth hover:saturate-150 transition rounded py-1 px-3 flex flex-row place-items-center gap-2">
+      <button @click="openModalAdd=!openModalAdd" class="text-white bg-fourth hover:saturate-150 transition rounded py-1 px-3 flex flex-row place-items-center gap-2">
         <i class="ri-add-circle-line text-2xl "></i>
         <p>Ajouter un email</p></button>
     </div>
@@ -32,6 +32,11 @@
     <div x-cloak x-show="openModalModify">
       {{-- Modal associé à l'option --}}
       @include('admin.modalNewsletterModify')
+    </div>
+
+    <div x-cloak x-show="openModalAdd">
+      {{-- Modal associé à l'option --}}
+      @include('admin.modalEmailAdd')
     </div>
       
       {{-- Tableau --}}

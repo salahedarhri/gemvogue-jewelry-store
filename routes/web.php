@@ -70,6 +70,7 @@ Route::get('/dashboard', [Controller::class,'dashboard'])->middleware(['auth','v
 
 //Administration
 Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
+    Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
     //Utilisateurs
     Route::get('utilisateurs', UserManagement::class)->name('adminUsers');
     Route::get('utilisateur/{id}', ModifierUtilisateur::class)->name('manageUser');
@@ -84,10 +85,6 @@ Route::group(['prefix'=>'admin','middleware'=>['admin']],function(){
     Route::get('commande/{id}', ModifierCommande::class)->name('manageCommande');
     //Newsletters
     Route::get('newsletters', NewsletterManagement::class)->name('adminNewsletters');
-
-
-
-    Route::get('dashboard', AdminDashboard::class)->name('adminPanel');
 });
 
 require __DIR__.'/auth.php';

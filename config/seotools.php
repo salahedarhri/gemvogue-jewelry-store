@@ -9,13 +9,13 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "GemVogue", // set false to total remove
+            'title'        => 'GemVogue', // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'For those who helped create the Genki Dama', // set false to total remove
-            'separator'    => ' - ',
-            'keywords'     => [],
-            'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
-            'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
+            'description'  => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.',
+            'separator'    => ' | ',
+            'keywords'     => ['gemvogue','bijouterie','maroc','anneau','bague','collier','boucles','boutique','bijoux','agadir','casablanca','marrakech'],
+            'canonical'    => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'robots'       => 'all', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
          * Webmaster tags are always added.
@@ -36,9 +36,9 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
+            'title'       => 'GemVogue', // set false to total remove
+            'description' => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.', // set false to total remove
+            'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
             'images'      => [],
@@ -58,9 +58,9 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
-            'url'         => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
+            'title'       => 'GemVogue', // set false to total remove
+            'description' => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.', // set false to total remove
+            'url'         => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],
         ],

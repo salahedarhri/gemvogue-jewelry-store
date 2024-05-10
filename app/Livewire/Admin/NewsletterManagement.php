@@ -15,12 +15,35 @@ class NewsletterManagement extends Component
 
     public $search = '';
     public $email = '';
+    public $emailAdd = '';
     public $idEmail;
+
+    protected $rulesAdd = [
+        'emailAdd' => 'required|email'
+    ];
+
+    protected $rules = [
+        'email' => 'required|email'
+    ];
 
     public function SupprimerEmail($id){
         try{
             Newsletter::find($id)->delete();
             session()->flash('success','l\'email est supprimé avec succès !');
+
+        }catch(\Exception $e){
+            session()->flash('error',$e->getMessage());
+        }
+    }
+
+    public function AjouterEmail(){
+        $this->validate($this->rulesAdd);
+        try{
+            $newsletter = New Newsletter;
+            $newsletter->email = $this->emailAdd;
+
+            $newsletter->save();
+            session()->flash('success','l\'email est ajouté avec succès !');
 
         }catch(\Exception $e){
             session()->flash('error',$e->getMessage());
@@ -33,6 +56,8 @@ class NewsletterManagement extends Component
     }
 
     public function ModifierEmail(){
+        $this->validate($this->rules);
+
         try{
             $newsletter = Newsletter::findOrFail($this->idEmail);
             $newsletter->email = $this->email;

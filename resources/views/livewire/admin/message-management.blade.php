@@ -18,7 +18,7 @@
       </div>
     @endif
     
-    <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-3 justify-between place-items-center p-3 mt-2 font-dmsans">
+    <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-3 justify-between place-items-center p-3 mt-3">
       <p class="text-lg max-md:text-md text-fourth ">Liste des messages</p>
     </div>
       

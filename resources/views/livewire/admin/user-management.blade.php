@@ -14,7 +14,7 @@
     </div>
   @endif
 
-  <p class="text-lg max-md:text-md text-fourth p-3 mt-3">Liste des utilsateurs</p>
+  <p class="text-lg max-md:text-md text-fourth p-3 mt-3">Liste des utilisateurs</p>
   
   <div class="flex flex-row max-sm:flex-col max-sm:text-center max-sm:gap-3 justify-between place-items-center p-3 mt-2 font-dmsans">
     <input type="text" wire:model.live.debounce.300ms="search" placeholder="Rechercher par nom/email.." class="rounded-xl shadow-sm focus:ring-fourth  focus:border-fourth border border-second  placeholder-slate-400 transition">

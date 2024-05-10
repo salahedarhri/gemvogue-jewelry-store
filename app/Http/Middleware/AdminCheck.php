@@ -24,7 +24,7 @@ class AdminCheck
             
         }
 
-        abort(403,'Espace pour Admins uniquement.');
+        abort(403,'Espace pour Admins uniquement. Veuillez vous connecter en tant qu\'admin pour y accéder');
         
     }
 }

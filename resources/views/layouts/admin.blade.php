@@ -16,41 +16,47 @@
 
   {{-- SideBar --}}
   <div class="fixed left-0 top-0 w-64 h-full p-4 pr-0 max-md:hidden bg-gradient-to-b from-secondDarker to-fourth">
-    <a href="#" class="flex items-center pb-4 border-b border-b-third">
+    <a href="{{ route('accueil') }}" class="flex items-center pb-4 border-b border-b-third">
       <img src="{{ asset('images/composants/logo/ring-logo (2).png') }}" alt="logo" class="w-8 h-auto invert">
       <span class="text-lg font-bold text-third ml-3 font-dmsans">GemVogue</span>
     </a>
     <ul class="font-dmsans">
       <li>
-        <a wire:navigate href="{{ route('adminPanel') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminPanel'}"
+        <a wire:navigate href="{{ route('adminPanel') }}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminPanel'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-home-2-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminPanel'}">Dashboard</span></a>
       </li>
       <li>
-        <a wire:navigate href="{{ route('adminUsers') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminUsers'}"
+        <a wire:navigate href="{{ route('adminUsers') }}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminUsers'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-user-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminUsers'}">Utilisateurs</span></a>
       </li>
       <li>
-        <a wire:navigate href="{{ route('adminBijoux') }}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminBijoux'}"
+        <a wire:navigate href="{{ route('adminBijoux') }}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminBijoux'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-vip-diamond-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminBijoux'}">Produits</span></a></li>
       <li>
-        <a wire:navigate href="{{ route('adminCommandes')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminCommandes'}"
+        <a wire:navigate href="{{ route('adminCommandes')}}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminCommandes'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-shopping-bag-2-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminCommandes'}">Commandes</span></a></li>
       <li>
-        <a wire:navigate href="{{ route('adminMessages')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminMessages'}"
+        <a wire:navigate href="{{ route('adminMessages')}}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminMessages'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-chat-1-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminMessages'}">Messages</span></a></li>
       <li>
-        <a wire:navigate href="{{ route('adminNewsletters')}}" x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminNewsletters'}"
-        class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
+        <a wire:navigate href="{{ route('adminNewsletters')}}" 
+            x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminNewsletters'}"
+            class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-mail-line mr-3 text-xl"></i>
           <span x-bind:class="{ 'font-semibold underline':nav==='adminNewsletters'}">Newsletter</span></a></li>
     </ul>
@@ -61,15 +67,24 @@
     {{-- Barre de haut --}}
     <div class="py-2 px-6 bg-white flex items-center shadow-md">
 
-        {{-- Mobile seulement
-        <div class="dropdown dropdown-bottom md:hidden">
+        {{-- Mobile seulement --}}
+        <div class="dropdown dropdown-bottom md:hidden font-dmsans">
           <label tabindex="0" class="btn m-1 bg-neutral-100 hover:bg-neutral-300 border-neutral-100 hover:border-neutral-500"><i class="ri-menu-fill text-lg"></i></label>
-          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-darkShade text-whiteShade">
-            <li><a href="{{ route('admin.utilisateurs.index')}}"><i class="ri-account-circle-line mr-3 text-2xl"></i>Utilisateurs</a></li>
-            <li><a href="{{ route('admin.bijoux.index')}}"><i class="ri-vip-diamond-line mr-3 text-2xl"></i>Produits</a></li>
-            <li><a><i class="ri-shopping-cart-2-line mr-3 text-2xl"></i>Achats</a></li>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-fourth text-third">
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminPanel') }}">
+            <i class="ri-home-2-line mr-3 text-2xl"></i>Dashboard</a></li>
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminUsers') }}">
+            <i class="ri-account-circle-line mr-3 text-2xl"></i>Utilisateurs</a></li>
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminBijoux')}}">
+              <i class="ri-vip-diamond-line mr-3 text-2xl"></i>Produits</a></li>
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminCommandes')}}">
+              <i class="ri-shopping-bag-2-line mr-3 text-2xl"></i>Commandes</a></li>
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminMessages')}}">
+              <i class="ri-chat-1-line mr-3 text-2xl"></i>Messages</a></li>
+            <li class="rounded-full hover:font-semibold hover:bg-third hover:text-fourth transition-all"><a wire:navigate href="{{ route('adminNewsletters')}}">
+              <i class="ri-mail-line mr-3 text-2xl"></i>Newsletter</a></li>
           </ul>
-        </div> --}}
+        </div>
 
         <ul class="flex items-center ml-4 max-md:hidden">
           <li class="mr-2"><a href="#" class="text-neutral-500 hover:text-neutral-700 font-semiBold">Dashboard</a></li>
