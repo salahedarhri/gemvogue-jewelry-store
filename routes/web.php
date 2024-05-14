@@ -6,7 +6,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 //Livewire
-use App\Livewire\afficherBoutique;
+use App\Livewire\AfficherBoutique;
 use App\Livewire\PanierComponent;
 use App\Livewire\ProduitComponent;
 //Admin
