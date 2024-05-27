@@ -9,7 +9,7 @@
           <p class="md:text-4xl max-md:text-2xl font-semibold py-4">Votre destination unique pour des pièces de bijouterie  uniques et exquises.</p>
           <p class="lg:text-lg text-md py-2 font-dmsans">
             Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.          </p>
-          <a href="#" class="bg-second text-third text-lg text-center py-3 px-6 w-fit rounded-l-full my-4 font-semibold hover:bg-secondDarker hover:text-white transition">
+          <a href="{{ route('boutique') }}" class="bg-second text-third text-lg text-center py-3 px-6 w-fit rounded-l-full my-4 font-semibold hover:bg-secondDarker hover:text-white transition">
           Découvrir la collection</a>
         </div>
       
@@ -79,7 +79,7 @@
     <div class="w-full bg-white">
       <div class="max-w-7xl mx-auto grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 place-items-center">
 
-
+        
       </div>
     </div>
 
