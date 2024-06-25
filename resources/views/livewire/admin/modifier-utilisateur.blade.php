@@ -42,7 +42,7 @@
             @endif
 
             <div class="w-full">
-                <form wire:submit="ModifierUser" 
+                <form wire:submit.prevent="ModifierUser" 
                 class="w-full flex flex-col gap-8 max-sm:gap-4 py-3 font-dmsans">
                     <label for="nom" class="flex flex-col">
                         <p class="text-fourthDarker font-semibold pl-2 pb-1">

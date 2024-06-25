@@ -40,7 +40,8 @@ class CommandeManagement extends Component
 
     public function render()
     {
-        $query = Order::where('session_id','like','%'.$this->search.'%')->orWhere('status', 'like', '%'.$this->search.'%');
+        $query = Order::where('session_id','like','%'.$this->search.'%')
+                ->orWhere('status', 'like', '%'.$this->search.'%');
 
         if(!empty($this->ordreVariable)){
             $query->orderBy($this->ordreVariable,$this->ordre);

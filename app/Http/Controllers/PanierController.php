@@ -19,7 +19,7 @@ class PanierController extends Controller{
         Cart::instance('cart')->add($product->id,$product->nom,1 ,$product->prix)
                               ->associate('App\Models\Bijou');
 
-        return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
+    return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
     }
 
     public function checkout(){
@@ -43,7 +43,7 @@ class PanierController extends Controller{
                     'currency' => 'mad',
                     'product_data' => [
                         'name' => $produit->name,
-                        'images' => ['images/produits/'. $produit->model->photo1],
+                        'images' => [public_path('images/produits/'. $produit->model->photo1)],
                      ],
                     'unit_amount' => $produit->price * 100,],
                 'quantity' => $produit->qty,
@@ -92,7 +92,7 @@ class PanierController extends Controller{
         $sessionId = $request->get('session_id');
 
         // Données de la session en fonction du session_id
-        $session = \Stripe\Checkout\Session::retrieve($sessionId);
+        $session = \Stripe\Checkout\Session::retrieve($sessionId);  
 
         //Détails du client ( address->country , email, name)
         $client = $session->customer_details;

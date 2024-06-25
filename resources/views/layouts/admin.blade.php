@@ -26,39 +26,39 @@
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminPanel'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-home-2-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminPanel'}">Dashboard</span></a>
+          <span x-bind:class="{ 'font-semibold':nav==='adminPanel'}">Dashboard</span></a>
       </li>
       <li>
         <a wire:navigate href="{{ route('adminUsers') }}" 
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminUsers'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-user-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminUsers'}">Utilisateurs</span></a>
+          <span x-bind:class="{ 'font-semibold':nav==='adminUsers'}">Utilisateurs</span></a>
       </li>
       <li>
         <a wire:navigate href="{{ route('adminBijoux') }}" 
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminBijoux'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-vip-diamond-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminBijoux'}">Produits</span></a></li>
+          <span x-bind:class="{ 'font-semibold':nav==='adminBijoux'}">Produits</span></a></li>
       <li>
         <a wire:navigate href="{{ route('adminCommandes')}}" 
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third ':nav==='adminCommandes'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-shopping-bag-2-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminCommandes'}">Commandes</span></a></li>
+          <span x-bind:class="{ 'font-semibold':nav==='adminCommandes'}">Commandes</span></a></li>
       <li>
         <a wire:navigate href="{{ route('adminMessages')}}" 
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminMessages'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded-l-xl">
           <i class="ri-chat-1-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminMessages'}">Messages</span></a></li>
+          <span x-bind:class="{ 'font-semibold':nav==='adminMessages'}">Messages</span></a></li>
       <li>
         <a wire:navigate href="{{ route('adminNewsletters')}}" 
             x-bind:class="{ 'bg-gradient-to-r from-pink-700 to-rose-500 text-third':nav==='adminNewsletters'}"
             class="flex items-center py-2 px-4 text-whiteShade focus:bg-fourth focus:text-white rounded">
           <i class="ri-mail-line mr-3 text-xl"></i>
-          <span x-bind:class="{ 'font-semibold underline':nav==='adminNewsletters'}">Newsletter</span></a></li>
+          <span x-bind:class="{ 'font-semibold':nav==='adminNewsletters'}">Newsletter</span></a></li>
     </ul>
   </div>
 
