@@ -2,7 +2,7 @@
 
 # 💍 GemVogue
 
-DriveEase is an E-commerce website project for selling jewellery. using Laravel, Tailwind CSS, Alpine.js and Livewire.<br>
+GemVogue is an E-commerce website project for selling jewellery. using Laravel, Tailwind CSS, Alpine.js and Livewire.<br>
 - Visit the Website : <a href="https://gemvogue.fr" target="_blank">GemVogue</a>
 
 ## 💍 Features 
