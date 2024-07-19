@@ -11,9 +11,9 @@ return [
         'defaults'       => [
             'title'        => 'GemVogue', // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.',
+            'description'  => "Chez GemVogue, Nous proposons différents types de bijoux: Colliers, bracelets, boucles d'oreilles et bagues. Design classique au style moderne, nous avons quelque chose pour chacun.",
             'separator'    => ' | ',
-            'keywords'     => ['gemvogue','bijouterie','maroc','anneau','bague','collier','boucles','boutique','bijoux','agadir','casablanca','marrakech'],
+            'keywords'     => ['gemvogue','GemVogue','gemvogue.fr','bijouterie','maroc','anneau','bague','collier','boucles','boutique','bijoux'],
             'canonical'    => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'robots'       => 'all', // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
@@ -37,11 +37,16 @@ return [
          */
         'defaults' => [
             'title'       => 'GemVogue', // set false to total remove
-            'description' => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.', // set false to total remove
+            'description'  => "Chez GemVogue, Nous proposons différents types de bijoux: Colliers, bracelets, boucles d'oreilles et bagues. Design classique au style moderne, nous avons quelque chose pour chacun.",
             'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
-            'images'      => [],
+            'images'      => [ 
+                asset('images/composants/compressed/landing-redhead.png'),
+                asset('images/composants/landing-earrings.png'),
+                asset('images/composants/landing-necklace.png'),
+                asset('images/composants/landing-ring.png'),
+            ],
         ],
     ],
     'twitter' => [
@@ -59,10 +64,15 @@ return [
          */
         'defaults' => [
             'title'       => 'GemVogue', // set false to total remove
-            'description' => 'Ici, nous proposons différents types de bijoux, notamment des colliers, des bracelets, des boucles d\'oreilles et des bagues. Des designs classiques aux styles modernes, nous avons quelque chose pour chacun.', // set false to total remove
+            'description'  => "Chez GemVogue, Nous proposons différents types de bijoux: Colliers, bracelets, boucles d'oreilles et bagues. Design classique au style moderne, nous avons quelque chose pour chacun.",
             'url'         => 'current', // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'type'        => 'WebPage',
-            'images'      => [],
+            'images'      => [                
+                asset('images/composants/compressed/landing-redhead.png'),
+                asset('images/composants/landing-earrings.png'),
+                asset('images/composants/landing-necklace.png'),
+                asset('images/composants/landing-ring.png'),
+            ],
         ],
     ],
 ];

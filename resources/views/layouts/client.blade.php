@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  {!! SEO::generate() !!}
+
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/composants/logo/apple-touch-icon.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/composants/logo/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/composants/logo/favicon-16x16.png') }}">
@@ -24,12 +26,12 @@
   {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a wire:navigate href="{{ route('boutique') }}">
-      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 Mars 2024)</p>
+      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 août 2024)</p>
     </a>
   </div>
 
   {{-- Navbar  --}}
-  <div class="w-full font-dmsans bg-third border-b border-second" x-data="{ nav:'{{request()->route()->getName()}}' }">
+  <nav class="w-full font-dmsans bg-third border-b border-second" x-data="{ nav:'{{request()->route()->getName()}}' }">
     <nav class="cabin flex justify-between p-3 max-w-7xl mx-auto text-first">
   
       <div class="md:w-1/3 md:justify-start flex gap-10 max-lg:gap-4 items-center max-md:hidden">
@@ -96,28 +98,28 @@
 
 
     </nav>
-  </div>
+  </nav>
 
   {{-- Contenu  --}}
   @yield('content')
   
   <!-- Footer -->
   <footer class="w-full border-t-2 border-second bg-third font-martel">
-    <div class="grid lg:grid-cols-5 md:grid-cols-2 max-md:grid-cols-1 max-lg:text-center max-w-7xl mx-auto max-md:p-3 md:gap-4 max-md:gap-2 md:p-6">
+    <div class="grid lg:grid-cols-3 md:grid-cols-3 max-md:grid-cols-1 max-lg:text-center max-w-7xl mx-auto max-md:p-3 md:gap-4 max-md:gap-2 md:p-6">
 
-      <!-- Email -->
-      <div class="lg:col-span-2 max-lg:col-span-1 p-4">
+       {{-- Email --}}
+      {{-- <div class="lg:col-span-2 max-lg:col-span-1 p-4">
         <p class="text-xl font-semibold font-playfair text-second">Rejoignez notre NewsLetter</p>
         <p class="py-4 text-sm">S'abonner à GemVogue vous permet de rester informé(e) des dernières tendances et designs de l'industrie de la bijouterie.</p>
         <div class="flex max-lg:justify-center font-playfair">
 
-          {{-- <form action="{{ route('Newsletter')}}" method="POST"> --}}
-            {{-- @csrf --}}
+          <form action="{{ route('Newsletter')}}" method="POST">
+            @csrf
             <input type="email" name="email" placeholder="Email" class="rounded-l-full max-md:w-36 py-2 appearance-none">
             <input type="submit" value="Envoyer" class="rounded-r-full py-2 px-5 bg-second text-third hover:bg-secondDarker hover:text-white transition ">
-          {{-- </form> --}}
+          </form>
         </div>  
-      </div>
+      </div> --}}
     
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">Boutique</p>
@@ -140,7 +142,6 @@
         <p class="text-second text-xl py-2 font-playfair">Nos contacts</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
           <a href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
-          <a href="https://wa.me/212611223344">+212611223344</a>
         </div>
       </div>
     

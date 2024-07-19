@@ -44,33 +44,13 @@
             </form>
 
         </div>
-        <div class="flex flex-col justify-center align-center text-center font-dmsans">
+        <div class="flex flex-col align-center text-center font-dmsans">
             <p class="font-playfair text-xl text-center pb-6 bg-gradient-to-r from-second to-pink-800 font-bold text-transparent bg-clip-text">Nos Cordonnées</p>
 
             <div class="flex flex-col text-center py-3 gap-2 text-base">
-                <h2 class="font-bold underline text-second text-lg">Agadir</h2>
-                <p>Rue Mohammed V, Agadir, Maroc</p>
-                <p><b>Tél :</b> +212 5 28 45 67 89</p>
                 <p><b>Email :</b>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=agadir@locationvoituresexpress.com" target="_blank">gv.agadir@gemvogue.com</a></p>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arhri.salah@gmail.com" target="_blank">arhri.salah@gmail.com</a></p>
             </div>
-            <div class="flex flex-col text-center py-3 gap-2 text-base">
-                <h2 class="font-bold underline text-second text-lg">Marrakech</h2>
-                <p>Avenue Mohammed VI, Marrakech, Maroc</p>
-                <p><b>Tél :</b> +212 5 24 56 78 90</p>
-                <p><b>Email :</b>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=marrakech@locationvoituresexpress.com" target="_blank">gv.marrakech@gemvogue.com</a></p>
-            </div>
-            <div class="flex flex-col text-center py-3 gap-2 text-base">
-                <h2 class="font-bold underline text-second text-lg">Casablanca</h2>
-                <p>Boulevard Mohamed V, Casablanca, Maroc</p>
-                <p><b>Tél :</b> +212 5 22 34 56 78</p>
-                <p><b>Email :</b>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=casablanca@locationvoituresexpress.com" target="_blank">gv.casablanca@gemvogue.com</a></p>
-            </div>
-            
-
-            
         </div>
     </div>
 </div>
