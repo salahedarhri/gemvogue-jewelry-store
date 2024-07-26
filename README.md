@@ -10,7 +10,7 @@ GemVogue is an E-commerce website project for selling jewellery. using Laravel, 
 - Responsive Design with high focus on UX.
 - Website Design inspired of Figma moodboards.
 - Admin Dashboard for Product, User, Order and Newsletter management.
-- SEO Optimized while maintaining Aesthetically pleasing UI.
+- SEO Optimized with Aesthetically pleasing UI.
 
 ## 💍 Tech Stack & Technologies
 - `Laravel`
