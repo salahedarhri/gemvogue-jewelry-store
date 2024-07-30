@@ -9,7 +9,6 @@ use App\Models\Bijou;
 class AfficherBoutique extends Component
 {
     use WithPagination;
-
     public $bijoux;
     public $nbArticles = 12;
     public $categories = [];

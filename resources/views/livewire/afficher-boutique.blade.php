@@ -192,7 +192,7 @@
     
             @foreach ($bijoux as $bijou)
     
-              <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}" wire:key="{{ $bijou->id }}">
+              <a href="{{ route('bijou',[ 'slug' => $bijou->slug]) }}" wire:key="{{ $bijou->id }}" wire:navigate>
       
                 <div class="flex flex-col place-items-center relative shadow-lg rounded-2xl">
                   <img src="{{ asset('images/produits/compressed/'. $bijou->photo1 )}}" loading="eager"

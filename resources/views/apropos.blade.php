@@ -4,7 +4,7 @@
 
 <div class="antialiased w-full bg-third md:pb-8">
 
-    <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center shadow-xl rounded-b-xl" style="background-image:url({{asset('images/composants/landing-md.jpg')}});">
+    <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center shadow-xl rounded-b-xl" style="background-image:url({{asset('images/composants/landing-md-1200w.jpg')}});">
         <div class="h-full w-full bg-slate-950 bg-opacity-30 rounded-b-xl">
           <div class="flex items-center justify-center h-full pt-36">
             <p class="text-3xl text-third font-playfair font-semibold">Notre Histoire</p>
@@ -30,7 +30,12 @@
     <div class="w-full max-md:pt-4">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
-                <img class="w-80 h-auto object-center object-cover aspect-square border-2 border-second/50 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (1).jpg')}}" alt="shop(1)">
+                <img class="w-80 h-auto object-center object-cover aspect-square border-2 border-second/50 shadow-xl rounded-tr-3xl rounded-bl-3xl" 
+                src="{{ asset('images/composants/shop (1)-400w.jpg')}}"
+                srcset="{{ asset('images/composants/shop (1)-400w.jpg')}} 400w,
+                        {{ asset('images/composants/shop (1)-600w.jpg')}} 600w,
+                        {{ asset('images/composants/shop (1)-800w.jpg')}} 800w" 
+                 alt="vitrine de bijoux">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
@@ -54,7 +59,12 @@
             </div>
 
             <div class="p-4 max-md:p-6">
-                <img class="object-center object-cover w-80 h-auto border-4 rounded-t-full border-third shadow-xl " src="{{ asset('images/composants/element (1).jpg')}}" alt="shop(1)">
+                <img class="object-center object-cover w-80 h-auto border-4 rounded-t-full border-third shadow-xl"
+                src="{{ asset('images/composants/element (1)-400w.jpg')}}"
+                srcset="{{ asset('images/composants/element (1)-400w.jpg')}} 400w,
+                        {{ asset('images/composants/element (1)-600w.jpg')}} 600w,
+                        {{ asset('images/composants/element (1)-800w.jpg')}} 800w" 
+                  alt="jewelry on a blue background">
             </div>
 
         </div>
@@ -64,7 +74,12 @@
     <div class="w-full ">
         <div class="max-w-6xl mx-auto grid grid-cols-5 max-md:grid-cols-1 place-items-center">
             <div class="md:col-span-2 p-8 max-md:p-6">
-                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-secondDarker/60 shadow-xl rounded-tr-3xl rounded-bl-3xl" src="{{ asset('images/composants/shop (2).jpg')}}" alt="shop(1)">
+                <img class="w-96 h-auto object-center object-cover aspect-square border-2 border-secondDarker/60 shadow-xl rounded-tr-3xl rounded-bl-3xl"
+                src="{{ asset('images/composants/shop (2)-400w.jpg')}}"
+                srcset="{{ asset('images/composants/shop (2)-400w.jpg')}} 400w,
+                        {{ asset('images/composants/shop (2)-600w.jpg')}} 600w,
+                        {{ asset('images/composants/shop (2)-800w.jpg')}} 800w" 
+                 alt="jeweller making a jewelry by hand">
             </div>
 
             <div class="md:col-span-3 flex flex-col gap-4 max-md:text-center justify-center text-black font-dmsans md:px-4 max-md:p-4 max-md:h-96">
@@ -90,11 +105,16 @@
                      ou des créations audacieuses pour des événements spéciaux, notre gamme complète incarne la richesse de l'art joaillier.
                 </p>
 
-                <a href="{{route('boutique')}}" class="text-center"><button class="py-3 px-5 bg-third text-secondDarker hover:bg shadow-xl rounded font-playfair font-semibold text-xl hover:bg-fourthDarker hover:text-third transition">Découvrir nos collections</button></a>
+                <a wire:navigate href="{{route('boutique')}}" class="text-center"><button class="py-3 px-5 bg-third text-secondDarker hover:bg shadow-xl rounded font-playfair font-semibold text-xl hover:bg-fourthDarker hover:text-third transition">Découvrir nos collections</button></a>
             </div>
 
             <div class="p-4 max-md:p-6">
-                <img class="object-center object-cover w-80 h-auto border-4 border-third shadow-xl rounded-tl-3xl rounded-br-3xl" src="{{ asset('images/composants/shop (3).jpg')}}" alt="shop(1)">
+                <img class="object-center object-cover w-80 h-auto border-4 border-third shadow-xl rounded-tl-3xl rounded-br-3xl" 
+                src="{{ asset('images/composants/shop (3)-400w.jpg')}}"
+                srcset="{{ asset('images/composants/shop (3)-400w.jpg')}} 400w,
+                        {{ asset('images/composants/shop (3)-600w.jpg')}} 600w,
+                        {{ asset('images/composants/shop (3)-800w.jpg')}} 800w" 
+                alt="jeweller making jewelry">
             </div>
 
         </div>

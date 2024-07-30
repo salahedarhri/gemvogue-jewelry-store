@@ -53,10 +53,10 @@
         <div class="indicator mx-4">
           <a wire:navigate href="{{ route('panier')}}">
             @if( Cart::instance('cart')->content()->count() > 0)
-              <span class="indicator-item badge badge-secondary h-3 p-2">
+              <span class="indicator-item badge badge-secondary text-white h-3 p-2">
                 {{ Cart::instance('cart')->content()->count() }} </span> 
             @endif
-            <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" srcset="" class="w-7 h-auto hover:translate-x-1 transition-transform duration-300 ease-in-out">
+            <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" class="w-7 h-auto hover:translate-x-1 transition-transform duration-300 ease-in-out">
           </a>
         </div>
       
@@ -124,24 +124,24 @@
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">Boutique</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-            <a href="{{ route('boutiqueCategorie',['categorie' =>'boucles oreilles'])}}">Boucles d'oreilles</a>
-            <a href="{{ route('boutiqueCategorie',['categorie' =>'Anneau'])}}">Bagues</a>
-            <a href="{{ route('boutiqueCategorie',['categorie' =>'Bracelet'])}}">Bracelets</a>
-            <a href="{{ route('boutiqueCategorie',['categorie' =>'Collier'])}}">Collier</a>
+            <a wire:navigate href="{{ route('boutiqueCategorie',['categorie' =>'boucles oreilles'])}}">Boucles d'oreilles</a>
+            <a wire:navigate href="{{ route('boutiqueCategorie',['categorie' =>'Anneau'])}}">Bagues</a>
+            <a wire:navigate href="{{ route('boutiqueCategorie',['categorie' =>'Bracelet'])}}">Bracelets</a>
+            <a wire:navigate href="{{ route('boutiqueCategorie',['categorie' =>'Collier'])}}">Collier</a>
         </div>
       </div>
     
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">À propos</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-          <a href="{{ route('apropos')}}">À propos de nous</a>
+          <a wire:navigate href="{{ route('apropos')}}">À propos de nous</a>
         </div>
       </div>
     
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">Nos contacts</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-          <a href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
+          <a wire:navigate href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
         </div>
       </div>
     
