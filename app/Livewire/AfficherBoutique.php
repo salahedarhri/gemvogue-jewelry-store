@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Bijou;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class AfficherBoutique extends Component
 {
@@ -17,6 +18,14 @@ class AfficherBoutique extends Component
     public $ordre='asc';
 
     public function mount($categorie = null){
+
+        SEOTools::setTitle('Boutique');
+        SEOTools::setDescription('Explorez la boutique en ligne de GemVogue pour découvrir une sélection exclusive de bijoux raffinés. 
+            Que vous cherchiez une bague élégante, un collier brillant, ou des boucles d\'oreilles sophistiquées, notre collection répond à toutes vos attentes.');
+        SEOTools::opengraph()->setUrl( env('APP_URL').'/boutique' );
+        SEOTools::setCanonical( env('APP_URL').'/boutique'  );
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::jsonLd()->addImage( asset('images/composants/bg-hero-2-1200w.jpg'));
     
         if($categorie){
             $this->categories[] = $categorie;   }

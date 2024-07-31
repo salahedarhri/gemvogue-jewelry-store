@@ -5,20 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  {!! SEO::generate() !!}
-
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/composants/logo/apple-touch-icon.png') }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/composants/logo/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/composants/logo/favicon-16x16.png') }}">
 
+  
+  {!! SEO::generate() !!}
+
   <title>GemVogue</title>
 
-  <!-- Tailwind & Fonts -->
+  {{-- Tailwind & Fonts --}}
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
-
-  <!-- Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
 <body class="overflow-x-hidden antialiased font-swap">

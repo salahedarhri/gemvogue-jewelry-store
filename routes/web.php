@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\AfficherBoutique;
 use App\Livewire\PanierComponent;
 use App\Livewire\ProduitComponent;
+use App\Livewire\WelcomePage;
 //Admin
 use App\Livewire\Admin\UserManagement;
 use App\Livewire\Admin\ProduitManagement;
@@ -41,10 +42,10 @@ Route::get('/apropos', function () { return view('apropos');     })
     ->name('apropos');
 
 //Display de bijoux
-Route::get('/', function(){ return view('accueil'); })->name('accueil');
+Route::get('/', WelcomePage::class )->name('accueil');
 Route::get('/boutique', AfficherBoutique::class )->name('boutique');
-Route::get('/panier', PanierComponent::class)->name('panier');
-Route::get('/bijoux/{slug}', ProduitComponent::class)->name('bijou');
+Route::get('/panier', PanierComponent::class )->name('panier');
+Route::get('/bijoux/{slug}', ProduitComponent::class )->name('bijou');
 
 //Newsletter
 // Route::post('/newsletter', [NewsletterController::class, 'newsletter_email'])->name('Newsletter');

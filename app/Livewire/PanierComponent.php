@@ -6,10 +6,21 @@ use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Bijou;
 use App\Models\Order;
-
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class PanierComponent extends Component
 {
+    public function mount(){
+
+        SEOTools::setTitle('Panier');
+        SEOTools::setDescription('Votre panier GemVogue est prêt ! Vérifiez vos bijoux sélectionnés avant de finaliser votre achat. 
+            Profitez de notre processus de paiement sécurisé et de notre livraison rapide pour recevoir vos pièces précieuses directement chez vous.');
+        SEOTools::opengraph()->setUrl( env('APP_URL').'/panier' );
+        SEOTools::setCanonical( env('APP_URL').'/panier'  );
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::jsonLd()->addImage( asset('images/composants/bijoux-panier-800w.jpg'));
+    }
+
     public function incrementerProduit( $rowId ){
         $panier = Cart::instance('cart');
         $produit = $panier->get($rowId);
