@@ -57,7 +57,7 @@
               <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
     
               {{-- Options --}}
-              <div class="w-40 h-fit ml-auto grid grid-cols-3 items-center justify-between rounded-lg shadow-xl bg-gradient-to-r from-second to-fourth max-sm:mt-4">
+              <div class="w-40 h-fit md:ml-auto max-md:mx-auto grid grid-cols-3 place-items-center justify-between rounded-lg shadow-xl bg-gradient-to-r from-second to-fourth max-sm:mt-4">
                 <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center rounded-l-lg hover:bg-secondDarker transition-all">
                     <img src="{{ asset('images/composants/logo/moins.png')}}" alt="plus.png" class="w-4 h-4 object-contain invert">
                 </button>

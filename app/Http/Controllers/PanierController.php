@@ -19,7 +19,7 @@ class PanierController extends Controller{
         Cart::instance('cart')->add($product->id,$product->nom,1 ,$product->prix)
                               ->associate('App\Models\Bijou');
 
-    return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
+        return redirect()->back()->with('success','Bijou ajouté dans votre panier avec succès !');
     }
 
     public function checkout(){
@@ -43,7 +43,7 @@ class PanierController extends Controller{
                     'currency' => 'mad',
                     'product_data' => [
                         'name' => $produit->name,
-                        'images' => [public_path('images/produits/'. $produit->model->photo1)],
+                        //'images' => [ asset('images/produits/compressed/'. $produit->model->photo1)],
                      ],
                     'unit_amount' => $produit->price * 100,],
                 'quantity' => $produit->qty,
@@ -109,7 +109,6 @@ class PanierController extends Controller{
         }
 
         Cart::instance('cart')->store($client->name);
-
         Cart::instance('cart')->destroy();
 
         return view('checkout.success',compact('order','client'));
@@ -121,7 +120,7 @@ class PanierController extends Controller{
         return redirect()->route('panier')->with('error','Paiement annulé.');
     }
 
-        // public function index(){
+    // public function index(){
     //     $cartItems = Cart::instance('cart')->content();
 
     //     if($cartItems->count() >= 3){

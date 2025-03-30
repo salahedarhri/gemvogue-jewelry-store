@@ -139,7 +139,7 @@
       <div class="flex flex-col font-semibold">
         <p class="text-second text-xl py-2 font-playfair">Nos contacts</p>
         <div class="flex flex-col justify-evenly gap-2 text-sm p-2">
-          <a wire:navigate href="mailto:arhri.salah@gmail.com">arhri.salah@gmail.com</a>
+        <a href="mailto:arhri.salah@gmail.com" target="_blank">arhri.salah@gmail.com</a>
         </div>
       </div>
     

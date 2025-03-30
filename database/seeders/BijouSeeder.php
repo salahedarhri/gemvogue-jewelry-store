@@ -43,7 +43,7 @@ class BijouSeeder extends Seeder {
             $slug = Str::slug("$nom-$type_bijou");
 
             
-            Bijou::create([
+            $bijou = Bijou::create([
                 'nom' => $nom,
                 'description' => $faker->sentence,
                 'type' => $type_bijou,
@@ -55,6 +55,8 @@ class BijouSeeder extends Seeder {
                 'type_metal' => $faker->randomElement(['Or', 'Argent', 'Platine']),
                 'slug' => $slug,
             ]);
+
+            // $bijou->tailles()->attach($bijou)
         }
     }
 }
