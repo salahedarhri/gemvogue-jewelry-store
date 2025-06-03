@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('jewelry_sizes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_bijou')->constrained()->onDelete('cascade'); 
+            $table->foreignId('id_bijou')->constrained('jewelry_products')->onDelete('cascade'); 
             $table->string('taille');
             $table->integer('qte'); 
             $table->timestamps();

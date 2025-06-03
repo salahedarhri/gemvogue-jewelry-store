@@ -24,7 +24,7 @@
   {{-- Banner --}}
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a wire:navigate href="{{ route('boutique') }}">
-      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 août 2024)</p>
+      <p class="text-sm animate-translate">L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 août 2025)</p>
     </a>
   </div>
 
