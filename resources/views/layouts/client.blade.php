@@ -48,15 +48,24 @@
 
       <div class="md:w-1/3 md:justify-end flex items-center">
 
-        <div class="indicator mx-4">
+      <div class="indicator mx-4"
+            x-data="{ 
+              count: {{ Cart::instance('cart')->content()->count() }},
+              init() {
+                  window.addEventListener('produit-ajoute', () => {
+                  this.count++;
+                });
+              }
+          }">
           <a wire:navigate href="{{ route('panier')}}">
-            @if( Cart::instance('cart')->content()->count() > 0)
-              <span class="indicator-item badge badge-secondary text-white h-3 p-2">
-                {{ Cart::instance('cart')->content()->count() }} </span> 
-            @endif
-            <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" class="w-7 h-auto hover:translate-x-1 transition-transform duration-300 ease-in-out">
+              <span 
+                  x-show="count > 0"
+                  x-text="count"
+                  class="indicator-item badge badge-secondary text-white h-3 p-2">
+              </span>
+              <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" class="w-7 h-auto hover:translate-x-1 transition-transform duration-300 ease-in-out">
           </a>
-        </div>
+      </div>
       
         @auth
           <div class="dropdown dropdown-end max-md:hidden">
@@ -146,5 +155,6 @@
     </div>
   </footer>
 
+  @include('composants.toast')
 </body>
 </html>

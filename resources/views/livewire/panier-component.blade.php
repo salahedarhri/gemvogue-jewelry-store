@@ -1,170 +1,194 @@
-<div class="w-full bg-third">
+<div class="w-full bg-third min-h-screen">
 
     {{-- Banner --}}
     <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center rounded-b-xl"
-      style="background-image:url({{asset('images/composants/compressed/bijoux-panier.jpg')}});">
-      <div class="h-full w-full bg-gray-950 bg-opacity-40 rounded-b-xl">
-        <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
-          <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
+        style="background-image:url({{asset('images/composants/compressed/bijoux-panier.jpg')}});">
+        <div class="h-full w-full bg-gray-950 bg-opacity-40 rounded-b-xl flex items-center justify-center">
+            <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
         </div>
-      </div>
     </div>
-  
-    {{-- Alertes Succès ou Refus --}}
+
+    {{-- Alertes --}}
     @if(session('success'))
-      <div class="alert alert-success max-sm:fixed text-white inset-0 max-sm:mt-24 sm:max-w-xl max-sm:w-fit h-fit z-30 mx-auto max-sm:px-3 flex max-w-xl my-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span>{{ session('success') }}</span>
-      </div>
+        <div class="alert alert-success text-white max-w-xl mx-auto my-4 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>{{ session('success') }}</span>
+        </div>
     @endif
     @if(session('error'))
-      <div class="alert alert-error max-sm:fixed text-white inset-0 max-sm:mt-24 sm:max-w-xl max-sm:w-fit h-fit z-30 mx-auto max-sm:px-3 flex max-w-xl my-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <span>{{ session('error') }}</span>
-      </div>
-    @endif
-  
-    @if ($produits->count() > 0)
-  
-    <div class="mx-auto sm:px-8 sm:py-14 max-sm:py-6 max-w-6xl flex sm:flex-row max-sm:flex-col font-dmsans">
-  
-      {{-- Section Produit --}}
-      <div class="wrapper sm:mx-4 sm:w-2/3 max-sm:w-full">
-        <p class="text-xl font-semibold p-4">Votre panier ({{ $qte_total }})</p>
-  
-        @foreach ($produits as $item)
-          <div
-            class="flex flex-row max-sm:flex-col items-center p-1 border-b border-second border-opacity-40 max-sm:gap-3 max-sm:mx-12">
-            {{-- Photo --}}
-            <div class="sm:w-1/4">
-              <a wire:navigate href="{{ route('bijou',[ 'slug' => $item->model->slug]) }}" wire:key="{{ $item->id }}">
-                <img src="{{ asset('images/produits/compressed/' . $item->model->photo1) }}" alt="{{ $item->model->photo1 }}"
-                  class="sm:w-40 max-sm:w-52 aspect-square object-cover shadow-lg rounded-sm border-opacity-40">
-              </a>
-            </div>
-            
-            {{-- Infos du Produit --}}
-            <div class="sm:w-3/4 max-sm:text-center sm:p-2 max-sm:py-2 items-center">
-              <p class="text-lg font-semibold">{{ $item->name }}</p>
-              <p class="text-sm mt-2 italic text-second pl-1">Prix : {{ $item->price }} Dh</p>
-              <p class="text-sm mb-2 italic text-second pl-1">Qte : {{ $item->qty}}</p>
-              <p class="text mb-2">Total : {{ $item->subtotal()}} Dh</p>
-    
-              {{-- Options --}}
-              <div class="w-40 h-fit md:ml-auto max-md:mx-auto grid grid-cols-3 place-items-center justify-between rounded-lg shadow-xl bg-gradient-to-r from-second to-fourth max-sm:mt-4">
-                <button wire:click="decrementerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center rounded-l-lg hover:bg-secondDarker transition-all">
-                    <img src="{{ asset('images/composants/logo/moins.png')}}" alt="plus.png" class="w-4 h-4 object-contain invert">
-                </button>
-                <p class="text-center h-full w-full px-4 border-x border-second text-lg font-semibold bg-white text-black">{{ $item->qty }}</p>
-                <button wire:click="incrementerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center rounded-r-lg hover:bg-fourthDarker transition-all">
-                    <img src="{{ asset('images/composants/logo/plus.png')}}" alt="moins.png" class="w-4 h-4 object-contain invert">
-                </button>
-                {{-- <button wire:click="retirerProduit('{{ $item->rowId }}')" class="w-full h-full flex items-center justify-center bg-slate-400 rounded-r-lg">
-                    <img src="{{ asset('images/composants/logo/delete.png')}}" alt="delete.png" class="w-5 h-5 object-contain invert">
-                </button> --}}
-              </div>
-            
-            </div>
-    
-          </div>
-        @endforeach
-      </div>
-  
-      {{-- Récapitulatif --}}
-      <div class="min-w-64 w-1/3 p-4  max-sm:w-full max-sm:text-center 
-            border-r border-l border-b border-opacity-70 border-second font-dmsans">
-  
-        <p class="font-bold mb-8 text-xl">Récapitulatif :</p>
-  
-        <div class="flex flex-col gap-16">
-          <div class="grid grid-cols-2">
-  
-            @foreach ($produits as $item)
-              <p class="text-left">{{ $item->model->type }} x {{ $item->qty }}</p>
-              <p class="text-right text-second">{{ $item->price }} DH x {{ $item->qty }}</p>
-            @endforeach
-  
-            <p class="text-left mt-3"> Livraison<i class="text-sm text-second"> / Pays : Maroc</i> </p>
-            <p class="text-right text-second mt-3">{{ $livraison }} DH</p>
-  
-            <p class="text-left text-lg mt-3">Total TTC: </p>
-            <p class="text-right text-lg mt-3">{{ $total }} DH</p>
-          </div>
-  
-          <form action="{{route('checkout')}}" method="POST">
-            @csrf
-            <button
-              class="w-full mx-auto px-4 py-2 text-center bg-gradient-to-r from-indigo-500 to-purple-700 hover:saturate-150 transition-all shadow-md hover:shadow-indigo-950 rounded-lg text-white">Payer
-              en ligne via Stripe</button>
-          </form>
+        <div class="alert alert-error text-white max-w-xl mx-auto my-4 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>{{ session('error') }}</span>
         </div>
-      </div>
-  
-    </div>
-  
-    @else
-  
-    <div class="max-w-4xl  mx-auto md:py-7  font-playfair">
-      <p class="py-5 text-center md:text-xl text-lg">Votre panier est vide pour le moment.<br>
-        Trouvez ce qui vous correspond en visitant notre humble sélection.</p>
-      <p class="py-5 max-sm:p-2 font-semibold md:text-2xl max-md:text-lg">Nos sélections  </p>
-  
+    @endif
 
-      <div class="w-full grid lg:grid-cols-4 md:grid-cols-2 max-md:grid-cols-1 place-items-center gap-4 py-2 text-xl font-playfair">
-  
-        {{-- Onglet Anneaux --}}
-        <div class="relative w-full flex flex-col shadow-lg bg-cover bg-center h-full hover:transform hover:scale-105 transition duration-300 aspect-square"
-          style="background-image:url({{ asset('images/produits/compressed/ring2.jpg') }})">
-  
-          <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Anneau'])}}" class="h-full w-full">
-            <p class="absolute top-3/4 w-full text-center text-white">Anneaux</p>
-            <div class="w-full h-full bg-stone-800 bg-opacity-40 shadow-lg hover:bg-opacity-10 transition">
+    @if ($produits->count() > 0)
+
+        <div class="max-w-6xl mx-auto px-4 py-10 flex lg:flex-row flex-col gap-8 font-dmsans">
+
+            {{-- Liste des produits --}}
+            <div class="flex-1">
+
+                {{-- Header --}}
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-semibold font-playfair text-first">
+                        Panier 
+                        <span class="text-sm font-normal text-first/50">({{ $qte_total }} articles)</span>
+                    </h2>
+                    <button wire:click="viderPanier" 
+                        class="text-sm text-first/40 hover:text-red-400 transition font-dmsans">
+                        Vider le panier
+                    </button>
+                </div>
+
+                {{-- Articles --}}
+                <div class="flex flex-col divide-y divide-second/20">
+                    @foreach ($produits as $item)
+                        <div class="flex gap-4 py-5">
+
+                            {{-- Image --}}
+                            <a wire:navigate href="{{ route('bijou', ['slug' => $item->model->slug]) }}" 
+                                class="shrink-0 hover:opacity-80 transition">
+                                <img src="{{ asset('images/produits/compressed/' . $item->model->photo1) }}" 
+                                    alt="{{ $item->name }}"
+                                    class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-lg shadow-md">
+                            </a>
+
+                            {{-- Infos --}}
+                            <div class="flex flex-1 flex-col justify-between">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="font-semibold text-first font-playfair">{{ $item->name }}</p>
+                                        <p class="text-sm text-first/50 mt-0.5">{{ $item->model->type_metal }}</p>
+                                    </div>
+                                    <button wire:click="supprimerProduit('{{ $item->rowId }}')"
+                                        class="text-first/30 hover:text-red-400 transition ml-4">
+                                        <i class="ri-delete-bin-line text-lg"></i>
+                                    </button>
+                                </div>
+
+                                <div class="flex items-center justify-between mt-3">
+                                    {{-- Prix --}}
+                                    <div>
+                                        <p class="text-second font-semibold">{{ $item->subtotal() }} DH</p>
+                                        <p class="text-xs text-first/40">{{ $item->price }} DH / unité</p>
+                                    </div>
+
+                                    {{-- Quantité --}}
+                                    <div class="flex items-center gap-2 border border-second/30 rounded-lg overflow-hidden">
+                                        <button wire:click="decrementerProduit('{{ $item->rowId }}')"
+                                            class="w-8 h-8 flex items-center justify-center hover:bg-second/10 transition text-first">
+                                            −
+                                        </button>
+                                        <span class="w-6 text-center text-sm font-semibold text-first">{{ $item->qty }}</span>
+                                        <button wire:click="incrementerProduit('{{ $item->rowId }}')"
+                                            class="w-8 h-8 flex items-center justify-center hover:bg-second/10 transition text-first">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- Continuer shopping --}}
+                <a wire:navigate href="{{ route('boutique') }}" 
+                    class="inline-flex items-center gap-2 mt-6 text-sm text-first/50 hover:text-fourth transition">
+                    <i class="ri-arrow-left-line"></i>
+                    Continuer mes achats
+                </a>
             </div>
-        </a>
-        </div>
-  
-        {{-- Onglet Colliers --}}
-        <div class="relative w-full flex flex-col shadow-lg bg-cover bg-center h-full hover:transform hover:scale-105 transition duration-300 aspect-square"
-          style="background-image:url({{ asset('images/produits/compressed/necklace2.jpg') }})">
-  
-          <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Collier'])}}" class="h-full w-full">
-            <p class="absolute top-3/4 w-full text-center text-white">Colliers</p>
-            <div class="w-full h-full bg-stone-800 bg-opacity-40 shadow-lg hover:bg-opacity-10 transition">
+
+            {{-- Récapitulatif --}}
+            <div class="lg:w-80 w-full">
+                <div class="bg-whiteBeige rounded-xl p-6 shadow-sm sticky top-24">
+                    
+                    <h3 class="font-playfair font-bold text-xl text-first mb-6">Récapitulatif</h3>
+
+                    {{-- Détail articles --}}
+                    <div class="flex flex-col gap-3 pb-4 border-b border-second/20">
+                        @foreach ($produits as $item)
+                            <div class="flex justify-between text-sm">
+                                <span class="text-first/70">{{ $item->name }} x{{ $item->qty }}</span>
+                                <span class="text-first font-medium">{{ $item->subtotal() }} DH</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Livraison --}}
+                    <div class="flex justify-between text-sm py-4 border-b border-second/20">
+                        <span class="text-first/70">Livraison <span class="text-xs">(Maroc)</span></span>
+                        <span class="text-first font-medium">{{ $livraison }} DH</span>
+                    </div>
+
+                    {{-- Total --}}
+                    <div class="flex justify-between items-center py-4">
+                        <span class="font-semibold text-first">Total TTC</span>
+                        <span class="text-xl font-bold text-second">{{ $total }} DH</span>
+                    </div>
+
+                    {{-- Paiement --}}
+                    <form action="{{ route('checkout') }}" method="POST">
+                        @csrf
+                        <button class="w-full py-3 bg-fourth hover:bg-fourthDarker transition text-white font-semibold font-dmsans rounded-lg shadow-md">
+                            Payer en ligne
+                        </button>
+                    </form>
+
+                    {{-- Sécurité --}}
+                    <div class="flex items-center justify-center gap-2 mt-4 text-xs text-first/40">
+                        <i class="ri-lock-line"></i>
+                        <span>Paiement sécurisé via Stripe</span>
+                    </div>
+
+                </div>
             </div>
-        </a>     
+
         </div>
-  
-        {{-- Onglet Bracelets --}}
-        <div class="relative w-full flex flex-col shadow-lg bg-cover bg-center h-full hover:transform hover:scale-105 transition duration-300 aspect-square"
-          style="background-image:url({{ asset('images/produits/compressed/bracelet2.jpg') }})">
-  
-          <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Bracelet'])}}" class="h-full w-full">
-            <p class="absolute top-3/4 w-full text-center text-white">Bracelets</p>
-            <div class="w-full h-full bg-stone-800 bg-opacity-40 shadow-lg hover:bg-opacity-10 transition">
+
+    @else
+
+        {{-- Panier vide --}}
+        <div class="max-w-4xl mx-auto py-10 px-4 font-playfair">
+            <div class="text-center py-10">
+                <i class="ri-shopping-cart-line text-5xl text-first/20 mb-4"></i>
+                <p class="text-xl text-first/60 mb-2">Votre panier est vide</p>
+                <p class="text-sm text-first/40 mb-6">Trouvez ce qui vous correspond en visitant notre sélection.</p>
+                <a wire:navigate href="{{ route('boutique') }}" 
+                    class="inline-block px-6 py-2 bg-fourth text-white rounded-lg hover:bg-fourthDarker transition font-dmsans text-sm">
+                    Découvrir la boutique
+                </a>
             </div>
-          </a>     
-        </div>
-  
-        {{-- Onglet Boucles oreilles --}}
-        <div class="relative w-full flex flex-col shadow-lg bg-cover bg-center h-full hover:transform hover:scale-105 transition duration-300 aspect-square"
-          style="background-image:url({{ asset('images/produits/compressed/boucles2.jpg') }})">
-  
-          <a wire:navigate href="{{ route('boutiqueCategorie',['categorie'=>'Boucles oreilles'])}}" class="h-full w-full">
-            <p class="absolute top-3/4 w-full text-center text-white">Boucles d'oreilles</p>
-            <div class="w-full h-full bg-stone-800 bg-opacity-40 shadow-lg hover:bg-opacity-10 transition">
+
+            <p class="font-semibold text-2xl mb-4 mt-6">Nos sélections</p>
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4">
+
+                @foreach([
+                    ['categorie' => 'Anneau',          'label' => 'Anneaux',           'img' => 'ring2.jpg'],
+                    ['categorie' => 'Collier',          'label' => 'Colliers',          'img' => 'necklace2.jpg'],
+                    ['categorie' => 'Bracelet',         'label' => 'Bracelets',         'img' => 'bracelet2.jpg'],
+                    ['categorie' => 'Boucles oreilles', 'label' => "Boucles d'oreilles",'img' => 'boucles2.jpg'],
+                ] as $cat)
+                    <a wire:navigate href="{{ route('boutiqueCategorie', ['categorie' => $cat['categorie']]) }}"
+                        class="relative aspect-square overflow-hidden rounded-lg shadow-md group">
+                        <img src="{{ asset('images/produits/compressed/' . $cat['img']) }}" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+                        <p class="absolute bottom-4 w-full text-center text-white font-semibold text-lg">
+                            {{ $cat['label'] }}
+                        </p>
+                    </a>
+                @endforeach
+
             </div>
-          </a>     
         </div>
-  
-      </div>
-    </div>
-  
+
     @endif
-  
-  </div>
+
+</div>

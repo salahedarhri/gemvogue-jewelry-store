@@ -29,9 +29,13 @@ class PanierComponent extends Component
             $qte = (int)$produit->qty;
             ++$qte;
             $panier->update($rowId, $qte);
-            session()->flash('success', 'Quantité mise à jour avec succès !');
+            $this->dispatch('toast', message: 'Quantité mise à jour avec succès !', type: 'success');
+
+            // session()->flash('success', 'Quantité mise à jour avec succès !');
         }else{
-            session()->flash('error', 'Article introuvable dans le panier.');
+            $this->dispatch('toast', message: 'Article introuvable dans le panier.', type: 'error');
+
+            // session()->flash('error', 'Article introuvable dans le panier.');
         }
     }
 
@@ -43,9 +47,13 @@ class PanierComponent extends Component
             $qte = (int)$produit->qty;
             --$qte;
             $panier->update($rowId, $qte);
-            session()->flash('success', 'Quantité mise à jour avec succès !');
+            $this->dispatch('toast', message: 'Quantité mise à jour avec succès !', type: 'success');
+
+            // session()->flash('success', 'Quantité mise à jour avec succès !');
         }else{
-            session()->flash('error', 'Article introuvable dans le panier.');
+            $this->dispatch('toast', message: 'Article introuvable dans le panier.', type: 'error');
+
+            // session()->flash('error', 'Article introuvable dans le panier.');
         }
     }
 

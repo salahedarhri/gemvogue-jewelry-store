@@ -10,15 +10,15 @@ class ProduitComponent extends Component{
 
     public $slug;
 
-    public function mount($slug)
-    {
-        $this->slug = $slug;
+    public function mount($slug){
 
+        $this->slug = $slug;
         $bijou = Bijou::where('slug', $this->slug)->first();
         if (!$bijou) {  abort(404); }
 
         SEOTools::setTitle( $bijou->nom );
-        SEOTools::setDescription('Conçu avec des pierres précieuses et des métaux fins, '.$bijou->nom.' est parfait pour ajouter une touche de sophistication à votre style. 
+        SEOTools::setDescription('Conçu avec des pierres précieuses et des métaux fins, '
+            .$bijou->nom.' est parfait pour ajouter une touche de sophistication à votre style. 
             Commandez maintenant avec livraison rapide.');
         SEOTools::opengraph()->setUrl(env('APP_URL') . '/bijoux/' . $this->slug);
         SEOTools::setCanonical(env('APP_URL') . '/bijoux/' . $this->slug);
@@ -31,11 +31,12 @@ class ProduitComponent extends Component{
         Cart::instance('cart')->add($produit->id,$produit->nom,1 ,$produit->prix)
                               ->associate('App\Models\Bijou');
 
+        $this->dispatch('produit-ajoute');
         session()->flash('success','Bijou ajouté dans votre panier avec succès !');
     }
 
-    public function render()
-    {
+    public function render(){
+        
         $bijou = Bijou::where('slug', $this->slug)->first();
 
         $bijouxSimilaires = Bijou::where('collection' , $bijou->collection )
