@@ -5,19 +5,19 @@ GemVogue est un projet de site e-commerce dédié à la vente de bijoux, dévelo
 
 ## 💍 Fonctionnalités
 
-Paiement en ligne via Stripe.
-Design responsive avec une attention particulière à l'expérience utilisateur.
-Design du site inspiré de moodboards Figma.
-Tableau de bord administrateur pour la gestion des produits, utilisateurs, commandes et newsletters.
-Optimisé pour le SEO avec une interface visuellement soignée.
+- Paiement en ligne via Stripe.
+- Design responsive avec une attention particulière à l'expérience utilisateur.
+- Design du site inspiré de moodboards Figma.
+- Tableau de bord administrateur pour la gestion des produits, utilisateurs, commandes et newsletters.
+- Optimisé pour le SEO avec une interface visuellement soignée.
 
 ## 💍 Stack technique & Technologies
 
-Laravel
-Alpine.js
-Livewire
-Tailwind CSS
-Daisy UI
+- `Laravel`
+- `Alpine.js`
+- `Livewire`
+- `Tailwind CSS`
+- `Daisy UI`
 
 ## 💍 Interface Client
 <img src="https://github.com/salahedarhri/gemvogue-jewelry-store/blob/main/accueil.jpg" width="100%" alt="GV Admin Dashboard">
