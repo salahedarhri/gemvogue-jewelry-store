@@ -2,29 +2,13 @@
 
     {{-- Banner --}}
     <div class="md:h-60 max-md:h-48 max-w-7xl mx-auto bg-cover bg-center rounded-b-xl"
-        style="background-image:url({{asset('images/composants/compressed/bijoux-panier.jpg')}});">
-        <div class="h-full w-full bg-gray-950 bg-opacity-40 rounded-b-xl flex items-center justify-center">
-            <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
+      style="background-image:url({{asset('images/composants/compressed/bijoux-panier.jpg')}});">
+      <div class="h-full w-full bg-gray-950 bg-opacity-50 rounded-b-xl">
+        <div class="flex items-center justify-center h-full md:pt-36 max-md:pt-24">
+          <p class="text-3xl text-third font-playfair font-semibold">Votre Panier</p>
         </div>
+      </div>
     </div>
-
-    {{-- Alertes --}}
-    @if(session('success'))
-        <div class="alert alert-success text-white max-w-xl mx-auto my-4 flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>{{ session('success') }}</span>
-        </div>
-    @endif
-    @if(session('error'))
-        <div class="alert alert-error text-white max-w-xl mx-auto my-4 flex">
-            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <span>{{ session('error') }}</span>
-        </div>
-    @endif
 
     @if ($produits->count() > 0)
 
@@ -32,8 +16,6 @@
 
             {{-- Liste des produits --}}
             <div class="flex-1">
-
-                {{-- Header --}}
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-semibold font-playfair text-first">
                         Panier 
@@ -97,7 +79,6 @@
                     @endforeach
                 </div>
 
-                {{-- Continuer shopping --}}
                 <a wire:navigate href="{{ route('boutique') }}" 
                     class="inline-flex items-center gap-2 mt-6 text-sm text-first/50 hover:text-fourth transition">
                     <i class="ri-arrow-left-line"></i>
@@ -141,7 +122,6 @@
                         </button>
                     </form>
 
-                    {{-- Sécurité --}}
                     <div class="flex items-center justify-center gap-2 mt-4 text-xs text-first/40">
                         <i class="ri-lock-line"></i>
                         <span>Paiement sécurisé via Stripe</span>
@@ -156,10 +136,10 @@
 
         {{-- Panier vide --}}
         <div class="max-w-4xl mx-auto py-10 px-4 font-playfair">
-            <div class="text-center py-10">
-                <i class="ri-shopping-cart-line text-5xl text-first/20 mb-4"></i>
-                <p class="text-xl text-first/60 mb-2">Votre panier est vide</p>
-                <p class="text-sm text-first/40 mb-6">Trouvez ce qui vous correspond en visitant notre sélection.</p>
+            <div class="text-center py-6">
+                <i class="ri-shopping-cart-line text-5xl text-first"></i>
+                <p class="text-xl text-first mt-4 mb-2 font-semibold">Votre panier est vide</p>
+                <p class="text-sm font-dmsans text-first mb-6">Trouvez ce qui vous correspond en visitant notre sélection.</p>
                 <a wire:navigate href="{{ route('boutique') }}" 
                     class="inline-block px-6 py-2 bg-fourth text-white rounded-lg hover:bg-fourthDarker transition font-dmsans text-sm">
                     Découvrir la boutique

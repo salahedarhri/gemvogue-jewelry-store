@@ -1,11 +1,11 @@
-import './bootstrap';
-import 'remixicon/fonts/remixicon.css';
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
 
-import Alpine from 'alpinejs';
+import 'remixicon/fonts/remixicon.css';
+// import './bootstrap';
+// import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
-
-Alpine.start();
+Livewire.start()
 
 
 
