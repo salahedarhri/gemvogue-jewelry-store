@@ -17,7 +17,7 @@
             {{-- Liste des produits --}}
             <div class="flex-1">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold font-playfair text-first">
+                    <h2 class="text-xl font-bold font-martel text-first">
                         Panier 
                         <span class="text-sm font-normal text-first/50">({{ $qte_total }} articles)</span>
                     </h2>
@@ -44,7 +44,7 @@
                             <div class="flex flex-1 flex-col justify-between">
                                 <div class="flex justify-between items-start">
                                     <div>
-                                        <p class="font-semibold text-first font-playfair">{{ $item->name }}</p>
+                                        <p class="font-semibold text-first font-martel">{{ $item->name }}</p>
                                         <p class="text-sm text-first/50 mt-0.5">{{ $item->model->type_metal }}</p>
                                     </div>
                                     <button wire:click="supprimerProduit('{{ $item->rowId }}')"
@@ -61,14 +61,14 @@
                                     </div>
 
                                     {{-- Quantité --}}
-                                    <div class="flex items-center gap-2 border border-second/30 rounded-lg overflow-hidden">
+                                    <div class="flex items-center gap-2 border border-second/30 rounded-lg overflow-hidden bg-white">
                                         <button wire:click="decrementerProduit('{{ $item->rowId }}')"
-                                            class="w-8 h-8 flex items-center justify-center hover:bg-second/10 transition text-first">
+                                            class="w-8 h-8 flex items-center justify-center bg-second/10 hover:bg-second/20 transition text-first">
                                             −
                                         </button>
                                         <span class="w-6 text-center text-sm font-semibold text-first">{{ $item->qty }}</span>
                                         <button wire:click="incrementerProduit('{{ $item->rowId }}')"
-                                            class="w-8 h-8 flex items-center justify-center hover:bg-second/10 transition text-first">
+                                            class="w-8 h-8 flex items-center justify-center bg-second/10 hover:bg-second/20 transition text-first">
                                             +
                                         </button>
                                     </div>
@@ -88,9 +88,9 @@
 
             {{-- Récapitulatif --}}
             <div class="lg:w-80 w-full">
-                <div class="bg-whiteBeige rounded-xl p-6 shadow-sm sticky top-24">
+                <div class="bg-white rounded-xl p-6 shadow-sm sticky top-24">
                     
-                    <h3 class="font-playfair font-bold text-xl text-first mb-6">Récapitulatif</h3>
+                    <h3 class="font-martel font-bold text-xl text-first mb-6">Récapitulatif</h3>
 
                     {{-- Détail articles --}}
                     <div class="flex flex-col gap-3 pb-4 border-b border-second/20">
@@ -117,12 +117,12 @@
                     {{-- Paiement --}}
                     <form action="{{ route('checkout') }}" method="POST">
                         @csrf
-                        <button class="w-full py-3 bg-fourth hover:bg-fourthDarker transition text-white font-semibold font-dmsans rounded-lg shadow-md">
+                        <button class="w-full py-3 bg-second hover:bg-secondDarker transition text-white font-semibold font-dmsans rounded-lg shadow-md">
                             Payer en ligne
                         </button>
                     </form>
 
-                    <div class="flex items-center justify-center gap-2 mt-4 text-xs text-first/40">
+                    <div class="flex items-center justify-center gap-2 mt-4 text-xs text-first/60">
                         <i class="ri-lock-line"></i>
                         <span>Paiement sécurisé via Stripe</span>
                     </div>

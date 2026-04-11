@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/composants/logo/favicon-32x32.png') }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/composants/logo/favicon-16x16.png') }}">
 
-  
   {!! SEO::generate() !!}
 
   <title>GemVogue</title>
@@ -25,7 +24,7 @@
   <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
     <a wire:navigate href="{{ route('boutique') }}">
       <p class="text-sm animate-translate">
-        L'hiver est là ! profitez d'un collier cadeau jusqu'au fin d'année pour tous vos achats (dernier délai le 30 août 2026)</p>
+        Le primtemps est là ! profitez d'un collier cadeau pour tous vos achats (dernier délai le 1er juin 2026)</p>
     </a>
   </div>
 
@@ -36,7 +35,7 @@
   @yield('content')
   
   {{-- Footer --}}
-  @include('composants.navbar')
+  @include('composants.footer')
 
   {{-- Toaster pour notifications --}}
   @include('composants.toast')
