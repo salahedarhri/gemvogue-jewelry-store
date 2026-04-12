@@ -20,19 +20,28 @@
 </head>
 <body class="overflow-x-hidden antialiased font-swap">
 
-  {{-- Banner --}}
-  <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
-    <a wire:navigate href="{{ route('boutique') }}">
-      <p class="text-sm animate-translate">
-        Le primtemps est là ! profitez d'un collier cadeau pour tous vos achats (dernier délai le 1er juin 2026)</p>
-    </a>
+{{-- Fixed navbar --}}
+  <nav id="navbar" class="fixed top-0 w-full z-50">
+
+    {{-- Banner --}}
+    <div class="w-full text-center p-2 max-md:hidden bg-fourthDarker text-white font-dmsans">
+      <a wire:navigate href="{{ route('boutique') }}">
+        <p class="text-sm animate-translate">
+          Le primtemps est là ! profitez d'un collier cadeau pour tous vos achats (dernier délai le 1er juin 2026)</p>
+      </a>
+    </div>
+
+    {{-- Navbar  --}}
+    @include('composants.navbar')
+  </nav>
+
+  {{-- Contenu & Adjusted padding for navbar --}}
+  <div id="main-content"
+     x-data="{ adjustPadding() { $el.style.paddingTop = document.getElementById('navbar').offsetHeight + 'px' } }"
+     x-init="adjustPadding()"
+     @resize.window="adjustPadding()">
+    @yield('content')
   </div>
-
-  {{-- Navbar  --}}
-  @include('composants.navbar')
-
-  {{-- Contenu  --}}
-  @yield('content')
   
   {{-- Footer --}}
   @include('composants.footer')

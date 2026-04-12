@@ -1,44 +1,56 @@
   <nav class="w-full font-dmsans bg-third border-b border-second" x-data="{ nav:'{{request()->route()->getName()}}' }">
-    <nav class="cabin flex justify-between p-3 max-w-7xl mx-auto text-first">
+    <div class="cabin flex justify-between p-3 max-w-7xl mx-auto text-first">
   
       <div class="md:w-1/3 md:justify-start flex gap-10 max-lg:gap-4 items-center max-md:hidden">
-        <a wire:navigate href="{{ route('accueil') }}" x-bind:class="{ 'underline decoration-fourth': nav==='accueil' }"
-        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Accueil</a>
-        <a wire:navigate href="{{ route('boutique') }}" x-bind:class="{ 'underline decoration-fourth': nav==='boutique' }"
-        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">Boutique</a>
-        <a wire:navigate href="{{ route('apropos') }}" x-bind:class="{ 'underline decoration-fourth': nav==='apropos' }"
-        class="text-md cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out">À propos</a>
+        <a wire:navigate href="{{ route('accueil') }}" 
+          x-bind:class="{ 'after:w-full after:transition-none': nav==='accueil' }"
+          class="text-first relative inline-block after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-second after:transition-all after:duration-300 hover:after:w-full"
+          >Accueil</a>
+        <a wire:navigate href="{{ route('boutique') }}" 
+          x-bind:class="{ 'after:w-full after:transition-none': nav==='boutique' }"
+          class="text-first relative inline-block after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-second after:transition-all after:duration-300 hover:after:w-full"
+          >Boutique</a>
+        <a wire:navigate href="{{ route('apropos') }}" 
+          x-bind:class="{ 'after:w-full after:transition-none': nav==='apropos' }"
+          class="text-first relative inline-block after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-second after:transition-all after:duration-300 hover:after:w-full"
+          >À propos</a>
       </div>
       <div class="md:w-1/3 md:justify-center flex items-center">
-        <a href="{{ route('accueil')}}" class="flex">
-          <p class="text-2xl font-playfair">GemVogue</p>
-        </a>
+        <a href="{{ route('accueil')}}" 
+        class="flex text-2xl font-playfair tracking-wide transition-all duration-500 ease-in-out hover:tracking-widest cursor-pointer"
+        >GemVogue</a>
       </div>
 
       <div class="md:w-1/3 md:justify-end flex items-center">
 
-      <div class="indicator mx-4"
-            x-data="{ 
-              count: {{ Cart::instance('cart')->content()->count() }},
-              init() {
-                  window.addEventListener('produit-ajoute', () => {
-                  this.count++;
-                });
-              }
-          }">
-          <a wire:navigate href="{{ route('panier')}}">
-              <span 
-                  x-show="count > 0"
-                  x-text="count"
-                  class="indicator-item badge badge-secondary text-white h-3 p-2">
-              </span>
-              <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" class="w-7 h-auto hover:translate-x-1 transition-transform duration-300 ease-in-out">
-          </a>
-      </div>
+        @livewire('panier-miniature')
+
+         {{-- 
+        <div class="indicator mx-4"
+              x-data="{ 
+                count: {{ Cart::instance('cart')->content()->count() }},
+                init() {
+                    window.addEventListener('produit-ajoute', () => {
+                    this.count++;
+                  });
+                }
+            }">
+            <a wire:navigate href="{{ route('panier')}}">
+                <span 
+                    x-show="count > 0"
+                    x-text="count"
+                    class="indicator-item badge badge-secondary text-white h-3 p-2">
+                </span>
+                <img src="{{ asset('images/composants/logo/shoppingb.png')}}" alt="cart" 
+                class="w-7 h-auto transition-transform duration-300 ease-out hover:scale-110">
+            </a>
+        </div> --}}
+
       
         @auth
           <div class="dropdown dropdown-end max-md:hidden">
-            <div tabindex="0" role="button" class="m-1 hover:translate-x-1 transition"><i class="ri-user-fill text-2xl p-1 border-2 border-second border-opacity-20 rounded-lg shadow"></i></div>
+            <div tabindex="0" role="button" class="m-1 transition-transform duration-300 ease-out hover:scale-110">
+              <i class="ri-user-3-line text-2xl p-1"></i></div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               <li><a href="{{ route('dashboard')}}" class="hover:bg-second hover:text-white transition ease-in-out text-base">Espace Client</a></li>
               <li><a href="{{ route('register')}}" class="hover:bg-second hover:text-white transition ease-in-out text-base">S'inscrire</a></li>
@@ -46,7 +58,8 @@
           </div>  
         @else
           <div class="dropdown dropdown-end max-md:hidden">
-            <div tabindex="0" role="button" class="m-1 hover:translate-x-1 transition"><i class="ri-user-fill text-2xl p-1 border-2 border-second border-opacity-20 rounded-lg shadow"></i></div>
+            <div tabindex="0" role="button" class="m-1 transition-transform duration-300 ease-out hover:scale-110">
+              <i class="ri-user-3-line text-2xl p-1"></i></div>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               <li><a href="{{ route('login')}}" class="hover:bg-second hover:text-white transition ease-in-out text-base">Connexion</a></li>
               <li><a href="{{ route('register')}}" class="hover:bg-second hover:text-white transition ease-in-out text-base">S'inscrire</a></li>
@@ -73,5 +86,5 @@
       </div>
 
 
-    </nav>
+    </div>
   </nav>

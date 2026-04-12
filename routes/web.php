@@ -5,11 +5,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+
 //Livewire
-use App\Livewire\AfficherBoutique;
-use App\Livewire\PanierComponent;
-use App\Livewire\ProduitComponent;
-use App\Livewire\WelcomePage;
+use App\Livewire\Boutique;
+use App\Livewire\Panier;
+use App\Livewire\Produit;
+use App\Livewire\Accueil;
 
 
 
@@ -24,24 +25,22 @@ use App\Livewire\WelcomePage;
 |
 */
 
-Route::get('/welcome', function () { return view('welcome');     })
-    ->name('welcome');
-Route::get('/apropos', function () { return view('apropos');     })
-    ->name('apropos');
 
-//Display de bijoux
-Route::get('/', WelcomePage::class )->name('accueil');
-Route::get('/boutique', AfficherBoutique::class )->name('boutique');
-Route::get('/panier', PanierComponent::class )->name('panier');
-Route::get('/bijoux/{slug}', ProduitComponent::class )->name('bijou');
+
+//Pages Principaux
+Route::get('/', Accueil::class )->name('accueil');
+Route::get('/apropos', function () { return view('apropos'); })->name('apropos');
+Route::get('/boutique', Boutique::class )->name('boutique');
+Route::get('/panier', Panier::class )->name('panier');
+Route::get('/bijoux/{slug}', Produit::class )->name('bijou');
 
 //Newsletter
 // Route::post('/newsletter', [NewsletterController::class, 'newsletter_email'])->name('Newsletter');
 
 //Sorting & Filter 
-Route::get('/boutique/{categorie}', AfficherBoutique::class )->name('boutiqueCategorie');
-Route::get('/boutique/{metal}', AfficherBoutique::class )->name('boutiqueMetal');
-Route::get('/boutique/{prix}', AfficherBoutique::class )->name('boutiquePrix');
+Route::get('/boutique/{categorie}', Boutique::class )->name('boutiqueCategorie');
+Route::get('/boutique/{metal}', Boutique::class )->name('boutiqueMetal');
+Route::get('/boutique/{prix}', Boutique::class )->name('boutiquePrix');
 
 //Paiement 
 Route::post('/checkout',[PanierController::class,'checkout'])->name('checkout');

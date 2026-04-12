@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Artesaos\SEOTools\Facades\SEOTools;
 
-class WelcomePage extends Component
+class Accueil extends Component
 {
     public function mount(){
         SEOTools::setTitle('Accueil');
@@ -20,6 +20,6 @@ class WelcomePage extends Component
 
     public function render()
     {
-        return view('livewire.welcome-page')->extends('layouts.client')->section('content');
+        return view('livewire.accueil')->extends('layouts.client')->section('content');
     }
 }

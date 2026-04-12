@@ -23,7 +23,11 @@
    
     {{-- Second part --}}
    <section class="font-playfair w-full bg-white text-first py-6">
-     <p class="text-center lg:text-3xl text-2xl p-4">Notre Collection</p>
+      <div class="text-center mb-12">
+          <p class="text-xs tracking-[0.3em] uppercase font-dmsans text-second mb-3">Venez découvrir</p>
+          <h3 class="font-playfair text-3xl font-semibold">Notre collection</h3>
+          <div class="w-10 h-px bg-second/40 mx-auto mt-4"></div>
+      </div>
  
      <div class="grid md:grid-cols-3 max-md:grid-cols-1 max-w-6xl mx-auto justify-between gap-12 md:py-6 max-md:items-center text-lg font-semibold">
        
@@ -47,8 +51,60 @@
      </div>
    </section>
 
-   {{-- Fourth part --}}
-   <section class="w-full bg-third text-black ">
+   {{-- Fourth --}}
+    <section class="w-full bg-third text-first py-16 border-t border-second/10">
+        <div class="max-w-5xl mx-auto px-6">
+
+            {{-- Titre --}}
+            <div class="text-center mb-12">
+                <p class="text-xs tracking-[0.3em] uppercase font-dmsans text-second mb-3">L'excellence GemVogue</p>
+                <h3 class="font-playfair text-3xl font-semibold">Pourquoi nous choisir</h3>
+                <div class="w-10 h-px bg-second/40 mx-auto mt-4"></div>
+            </div>
+
+            {{-- Icônes --}}
+            <div class="grid md:grid-cols-4 grid-cols-2 gap-8">
+
+                <div class="flex flex-col items-center text-center gap-3">
+                    <div class="w-14 h-14 rounded-full border border-second/20 flex items-center justify-center bg-white">
+                        <i class="ri-shield-check-line text-2xl text-second"></i>
+                    </div>
+                    <p class="font-martel font-semibold text-md text-second">Authenticité garantie</p>
+                    <p class="font-dmsans text-sm text-first leading-relaxed">Chaque pièce est certifiée et traçable, de la source à vos mains.</p>
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-3">
+                    <div class="w-14 h-14 rounded-full border border-second/20 flex items-center justify-center bg-white">
+                        <i class="ri-truck-line text-2xl text-second"></i>
+                    </div>
+                    <p class="font-martel font-semibold text-md text-second">Livraison soignée</p>
+                    <p class="font-dmsans text-sm text-first leading-relaxed">Vos bijoux arrivent dans un écrin élégant, prêts à être offerts.</p>
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-3">
+                    <div class="w-14 h-14 rounded-full border border-second/20 flex items-center justify-center bg-white">
+                        <i class="ri-service-line text-2xl text-second"></i>
+                    </div>
+                    <p class="font-martel font-semibold text-md text-second">Service personnalisé</p>
+                    <p class="font-dmsans text-sm text-first leading-relaxed">Notre équipe vous accompagne pour trouver la pièce idéale.</p>
+                </div>
+
+                <div class="flex flex-col items-center text-center gap-3">
+                    <div class="w-14 h-14 rounded-full border border-second/20 flex items-center justify-center bg-white">
+                        <i class="ri-recycle-line text-2xl text-second"></i>
+                    </div>
+                    <p class="font-martel font-semibold text-md text-second">Matériaux éthiques</p>
+                    <p class="font-dmsans text-sm text-first leading-relaxed">Nous sélectionnons des matières responsables et durables.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+   {{-- Fifth --}}
+   <section class="w-full bg-white text-black ">
      <div class="max-w-screen-2xl mx-auto grid lg:grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 md:gap-4 place-items-center p-4">
        <img src="{{ asset('images/composants/landing-4women-400w.png')}}" 
            srcset="{{ asset('images/composants/landing-4women-400w.png')}} 400w,

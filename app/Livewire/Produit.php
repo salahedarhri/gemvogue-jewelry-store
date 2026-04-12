@@ -6,7 +6,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Artesaos\SEOTools\Facades\SEOTools;
 
-class ProduitComponent extends Component{
+class Produit extends Component{
 
     public $slug;
 
@@ -16,6 +16,7 @@ class ProduitComponent extends Component{
         $bijou = Bijou::where('slug', $this->slug)->first();
         if (!$bijou) {  abort(404); }
 
+        //SEO using SSR
         SEOTools::setTitle( $bijou->nom );
         SEOTools::setDescription('Conçu avec des pierres précieuses et des métaux fins, '
             .$bijou->nom.' est parfait pour ajouter une touche de sophistication à votre style. 
@@ -31,8 +32,11 @@ class ProduitComponent extends Component{
         Cart::instance('cart')->add($produit->id,$produit->nom,1 ,$produit->prix)
                               ->associate('App\Models\Bijou');
 
+        // Pour mettre à jour le Cart Icon
         $this->dispatch('produit-ajoute');
-        session()->flash('success','Bijou ajouté dans votre panier avec succès !');
+
+        $this->dispatch('toast', message: 'Bijou ajouté dans votre panier avec succès !', type: 'success');
+
     }
 
     public function render(){
@@ -44,7 +48,7 @@ class ProduitComponent extends Component{
         ->limit(8)
         ->get();
 
-        return view('livewire.produit-component',[
+        return view('livewire.produit',[
             'bijou'=> $bijou,
             'bijouxSimilaires'=> $bijouxSimilaires,
         ])->extends('layouts.client')->section('content');
